@@ -1,0 +1,50 @@
+<nav class="navbar">
+    <app-nav-back></app-nav-back>
+</nav>
+
+<div class="container-fluid">
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Contenu de la barre de navigation -->
+        ...
+    </nav>
+    
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        
+        <!-- Contenu principal -->
+        <div class="container mt-4">
+            <h2>Add Favoris</h2>
+    
+            <form [formGroup]="favorisForm" (ngSubmit)="addFavoris()" class="favoris-form">
+    
+                <!-- Groupe de champs pour les détails du favoris -->
+                <fieldset>
+                    <legend>Favoris Details</legend>
+    
+                    <div class="form-group">
+                        <label for="nomFav">Name:</label>
+                        <input type="text" id="nomFav" formControlName="nomFav" class="form-control" />
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="nbfav">Number of Favoris:</label>
+                        <input type="number" id="nbfav" formControlName="nbfav" class="form-control" />
+                    </div>
+    
+                </fieldset>
+    
+                <!-- Boutons de soumission et d'annulation -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Favoris</button>
+                    <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>
+</div>
+

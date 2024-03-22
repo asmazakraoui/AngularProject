@@ -11,6 +11,19 @@ import { NavBackComponent } from './BackOffice/nav-back/nav-back.component';
 import { SidebarComponent } from './BackOffice/sidebar/sidebar.component';
 import { FooterBackComponent } from './BackOffice/footer-back/footer-back.component';
 import { BackComponent } from './BackOffice/back/back.component';
+import { AddLibraryComponent } from './LibraryManagment/library-add/add-library.component';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EventAddComponent } from './EventManagment/event-add/event-add.component';
+import { EventAffComponent } from './EventManagment/event-aff/event-aff.component';
+import { EventUpdateComponent } from './EventManagment/event-update/event-update.component';
+import { UpLibraryComponent } from './LibraryManagment/up-library/up-library.component';
+import { LibraryAffComponent } from './LibraryManagment/library-aff/library-aff.component';
+import { FavorisAddComponent } from './FavorisManagment/favoris-add/favoris-add.component';
+import { FavorisUppComponent } from './FavorisManagment/favoris-upp/favoris-upp.component';
+import { FavorisAffComponent } from './FavorisManagment/favoris-aff/favoris-aff.component';
+
+
 
 @NgModule({
   declarations: [
@@ -22,11 +35,25 @@ import { BackComponent } from './BackOffice/back/back.component';
     NavBackComponent,
     SidebarComponent,
     FooterBackComponent,
-    BackComponent
+    BackComponent,
+    AddLibraryComponent,
+    EventAddComponent,
+    EventAffComponent,
+    EventUpdateComponent,
+    UpLibraryComponent,
+    LibraryAffComponent,
+    FavorisAddComponent,
+    FavorisUppComponent,
+    FavorisAffComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

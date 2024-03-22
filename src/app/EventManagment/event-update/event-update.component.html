@@ -1,0 +1,86 @@
+<nav class="navbar">
+    <app-nav-back></app-nav-back>
+  </nav>
+  
+  <div class="container-fluid">
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Contenu de la barre de navigation -->
+        ...
+    </nav>
+    
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+    <div class="container mt-4">
+      <h2>Update Event</h2>
+    
+      <form [formGroup]="eventForm" (ngSubmit)="updateEvent()" class="event-form">
+    
+        <!-- Groupe de champs pour les détails de l'événement -->
+        <fieldset>
+          <legend>Event Details</legend>
+    
+         <div class="form-group">
+            <label for="titreEvent">Title:</label>
+            <input type="text" id="titreEvent" formControlName="titreEvent" class="form-control" />
+          </div>
+    
+          <div class="form-group">
+            <label for="dateEvent">Date:</label>
+            <input type="date" id="dateEvent" formControlName="dateEvent" class="form-control" />
+          </div>
+    
+          <div class="form-group">
+            <label for="imageEvent">Image URL:</label>
+            <input type="text" id="imageEvent" formControlName="imageEvent" class="form-control" />
+          </div>
+    
+          <div class="form-group">
+            <label for="nrParticipants">Number of Participants:</label>
+            <input type="number" id="nrParticipants" formControlName="nrParticipants" class="form-control" />
+          </div>
+    
+          <div class="form-group">
+            <label for="nbTotalPlace">Total Places:</label>
+            <input type="number" id="nbTotalPlace" formControlName="nbTotalPlace" class="form-control" />
+          </div>
+    
+          <div class="form-group">
+            <label for="adresseEvent">Address:</label>
+            <input type="text" id="adresseEvent" formControlName="adresseEvent" class="form-control" />
+          </div>
+        
+        </fieldset>
+    
+        <!-- Groupe de champs pour le type d'événement et le moyen de transport -->
+        <fieldset>
+          <legend>Event Type and Transport</legend>
+    
+          <div class="form-group">
+            <label for="typeEvent">Event Type:</label>
+            <select id="typeEvent" formControlName="typeEvent" class="form-control">
+              <option *ngFor="let type of typeEventOptions" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+    
+          <div class="form-group">
+            <label for="meansTransport">Means of Transport:</label>
+            <select id="meansTransport" formControlName="meansTransport" class="form-control">
+              <option *ngFor="let transport of MeansTransportOptions" [value]="transport">{{ transport }}</option>
+            </select>
+          </div>
+    
+        </fieldset>
+    
+        <!-- Boutons de soumission et d'annulation -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Add Event</button>
+        </div>
+    
+      </form>
+    </div>
+   
+
