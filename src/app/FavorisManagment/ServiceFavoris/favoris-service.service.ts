@@ -28,4 +28,8 @@ export class FavorisServiceService {
     return this.http.put<Favoris>(`${this.baseUrl}Favoris/updateFavoris/${id}`, fav);
   }
 
+  getFavorisById(id: number): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}Favoris/getFavorisById/${id}`);
+  }
+
 }

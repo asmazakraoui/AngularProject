@@ -21,8 +21,23 @@ export class FavorisUppComponent implements OnInit {
       nomFav: ['', Validators.required],
       nbfav : ['', Validators.required]
     });
-    
+    this.favorisService.getFavorisById(this.id).subscribe(
+      (fav: any)=> {
+        this.favorisForm.patchValue({
+          nomFav: fav.nomFav,
+          nbfav : fav.nbfav
+        })
+      }
+    )
   }
+/*
+  getFavorisById(){
+    this.favorisService.getFavorisById(this.id).subscribe((fa)=>{
+      this.favorisForm.patchValue(fa);
+    });
+  }
+
+ */
 
   updateFavoris(): void {
     this.favorisService.updateFavoris(this.id, this.favorisForm.value).subscribe(()=>{

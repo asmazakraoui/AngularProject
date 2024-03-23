@@ -36,7 +36,7 @@
                                 <td>{{ favoris.nbfav }}</td>
                               <!--  <td>{{ favoris.visibilite ? 'Oui' : 'Non' }}</td>-->
                                 <td>
-                                    <button class="btn btn-primary" [routerLink]="['/FavorisUpp', favoris.idFav]">Update</button>
+                                    <button class="btn btn-primary" [routerLink]="['/FaUpp', favoris.idFav]">Update</button>
                                     <button class="btn btn-danger" (click)="deleteFavoris(favoris.idFav)">Delete</button>
                                 </td>
                             </tr>

@@ -26,7 +26,7 @@ updateEvent(id: number, event : Event): Observable<Event> {
   return this.http.put<Event>(`${this.baseUrl}Event/updateEvent/${id}`, event);
 }
 getEventById(id:any):Observable<any>{
-  return this.http.get(`${this.baseUrl}Event/getAllEventById/${id}`);
+  return this.http.get(`${this.baseUrl}Event/getEventById/${id}`);
 }
 }
 

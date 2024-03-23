@@ -14,10 +14,12 @@ export class EventUpdateComponent implements OnInit{
   eventForm!: FormGroup;
   id: any;
 
-  constructor(private formBuilder: FormBuilder, private eventService: EventService, private activatedRoute: ActivatedRoute ){}
   typeEventOptions: string[] = Object.values(TypeEvent);
   MeansTransportOptions: string[] = Object.values(MeansTransport);
 
+
+  constructor(private formBuilder: FormBuilder, private eventService: EventService, private activatedRoute: ActivatedRoute ){}
+  
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.eventForm= this.formBuilder.group({
@@ -30,17 +32,32 @@ export class EventUpdateComponent implements OnInit{
       typeEvent: [null, Validators.required],
       meansTransport: [null, Validators.required]
     });
+    // Charger les données du livre à modifier
+    this.eventService.getEventById(this.id).subscribe(
+      (event: any)=> {
+        this.eventForm.patchValue({
+          titreEvent: event.titreEvent,
+          dateEvent: event.dateEvent,
+          imageEvent: event.imageEvent,
+          nrParticipants: event.nrParticipants,
+          nbTotalPlace: event.nbTotalPlace,
+          adresseEvent: event.adresseEvent,
+          typeEvent: event.typeEvent,
+          meansTransport: event.meansTransport
+        })
+      }
+    )
   }
 
-  getEventById(){
+  /*getEventById(){
     this.eventService.getEventById(this.id).subscribe((evv)=>{
       this.eventForm.patchValue(evv);
     })
-  }
+  }*/
 
   updateEvent(): void {
     this.eventService.updateEvent(this.id, this.eventForm.value).subscribe(()=>{
-      alert("Event updated!");
+      alert("Event Updated!");
       this.eventForm.reset();
     });
   }

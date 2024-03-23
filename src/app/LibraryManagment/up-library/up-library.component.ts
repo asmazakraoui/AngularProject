@@ -19,7 +19,16 @@ export class UpLibraryComponent implements OnInit {
     this.libraryForm= this.formBuilder.group({
       ttLibrary: ['',Validators.required]
     });
+    this.libraryService.getLibraryById(this.id).subscribe(
+      (lib: any)=> {
+        this.libraryForm.patchValue({
+          ttLibrary: lib.ttLibrary
+        })
+      }
+    )
   }
+
+  
 
   updateLibrary(): void{
     this.libraryService.updateLibrary(this.id, this.libraryForm.value).subscribe(()=>{

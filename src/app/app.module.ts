@@ -22,6 +22,12 @@ import { LibraryAffComponent } from './LibraryManagment/library-aff/library-aff.
 import { FavorisAddComponent } from './FavorisManagment/favoris-add/favoris-add.component';
 import { FavorisUppComponent } from './FavorisManagment/favoris-upp/favoris-upp.component';
 import { FavorisAffComponent } from './FavorisManagment/favoris-aff/favoris-aff.component';
+import { BookAffComponent } from './BookManagment/book-aff/book-aff.component';
+import { BookUppComponent } from './BookManagment/book-upp/book-upp.component';
+import { BookAddComponent } from './BookManagment/book-add/book-add.component';
+import { PodcastAddComponent } from './PodcastManagment/podcast-add/podcast-add.component';
+import { PodcastAffComponent } from './PodcastManagment/podcast-aff/podcast-aff.component';
+import { PodcastUppComponent } from './PodcastManagment/podcast-upp/podcast-upp.component';
 
 
 
@@ -45,6 +51,12 @@ import { FavorisAffComponent } from './FavorisManagment/favoris-aff/favoris-aff.
     FavorisAddComponent,
     FavorisUppComponent,
     FavorisAffComponent,
+    BookAffComponent,
+    BookUppComponent,
+    BookAddComponent,
+    PodcastAddComponent,
+    PodcastAffComponent,
+    PodcastUppComponent,
 
   ],
   imports: [

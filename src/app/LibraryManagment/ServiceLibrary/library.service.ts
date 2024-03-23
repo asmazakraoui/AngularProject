@@ -27,5 +27,9 @@ export class LibraryService {
 
     deleteLibrary(id:number): Observable<void>{
       return this.http.delete<void>(`${this.baseUrl}Library/deleteLibrary/${id}`);
-    } 
+    }
+    
+    getLibraryById(id: number): Observable<Library>{
+      return this.http.get<Library>(`${this.baseUrl}Library/getLibraryById/${id}`)
+    }
 }

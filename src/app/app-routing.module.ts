@@ -12,6 +12,12 @@ import { LibraryAffComponent } from './LibraryManagment/library-aff/library-aff.
 import { FavorisAddComponent } from './FavorisManagment/favoris-add/favoris-add.component';
 import { FavorisAffComponent } from './FavorisManagment/favoris-aff/favoris-aff.component';
 import { FavorisUppComponent } from './FavorisManagment/favoris-upp/favoris-upp.component';
+import { BookAffComponent } from './BookManagment/book-aff/book-aff.component';
+import { BookAddComponent } from './BookManagment/book-add/book-add.component';
+import { BookUppComponent } from './BookManagment/book-upp/book-upp.component';
+import { PodcastAffComponent } from './PodcastManagment/podcast-aff/podcast-aff.component';
+import { PodcastAddComponent } from './PodcastManagment/podcast-add/podcast-add.component';
+import { PodcastUppComponent } from './PodcastManagment/podcast-upp/podcast-upp.component';
 
 export const routes: Routes = [
   {
@@ -36,10 +42,17 @@ export const routes: Routes = [
   {path: "EventAdd", component: EventAddComponent},
   {path: "EventUpp/:id", component: EventUpdateComponent},
   ///////
-  {path: "FavorisAdd", component: FavorisAddComponent},
-  {path: "FavorisAff", component: FavorisAffComponent},
-  {path: "FavorisUpp/:id", component: FavorisUppComponent}
- 
+  {path: "FaAdd", component: FavorisAddComponent},
+  {path: "FaAff", component: FavorisAffComponent},
+  {path: "FaUpp/:id", component: FavorisUppComponent},
+  //////
+  {path: "BookAff", component: BookAffComponent},
+  {path: "BookAdd", component: BookAddComponent},
+  {path: "BookUpp/:id", component: BookUppComponent},
+  /////
+  {path: "PodcastAff", component: PodcastAffComponent},
+  {path: "PodcastAdd", component: PodcastAddComponent},
+  {path: "PodcastUpp/:id", component: PodcastUppComponent}
 ];
 
 @NgModule({
