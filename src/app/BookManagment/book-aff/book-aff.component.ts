@@ -27,6 +27,9 @@ export class BookAffComponent implements OnInit {
       }
     );
   }
+  getImageUrl(book: Book): string {
+    return `http://localhost/Uploads/Images/${book.imageBook}`;
+  }
 
   deleteBook(id:number): void {
     this.bookService.deleteBook(id).subscribe((): void => {

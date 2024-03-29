@@ -34,9 +34,9 @@
           </div>
     
           <div class="form-group">
-            <label for="imageEvent">Image URL:</label>
-            <input type="text" id="imageEvent" formControlName="imageEvent" class="form-control" />
-          </div>
+            <label for="imageEvent">Event Image</label>
+            <input type="file" (change)="onFileSelected($event)" class="form-control">
+        </div>
     
           <div class="form-group">
             <label for="nrParticipants">Number of Participants:</label>

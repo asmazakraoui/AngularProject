@@ -16,8 +16,8 @@ export class EventService {
 getAllEvent(): Observable<Event[]> {
   return this.http.get<Event[]>(this.baseUrl + 'Event/getAllEvent');
 }
-addEvent(event : Event): Observable<Event>{
-  return this.http.post<Event>(this.baseUrl + 'Event/addEvent', event );
+addEvent(formData : FormData): Observable<Event>{
+  return this.http.post<Event>(this.baseUrl + 'Event/addEvent', formData );
 }
 deleteEvent(id: number): Observable<void> {
   return this.http.delete<void>(`${this.baseUrl}Event/deleteEvent/${id}`);

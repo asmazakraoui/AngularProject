@@ -1,6 +1,7 @@
 export class Book {
     idBook!: number;
     titreBook!: string;
+    imageBook!: string;
     typeBook!: TypeBook;
     pdfBook !: string;
     authorName!: string;

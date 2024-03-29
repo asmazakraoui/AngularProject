@@ -35,10 +35,14 @@
                             <option *ngFor="let type of typeBookOptions" [value]="type">{{ type }}</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="imageBook">Image Book</label>
+                        <input type="file" (change)="onFileSelected($event)" class="form-control" />
+                    </div>
         
                     <div class="form-group">
-                        <label for="pdfBook">PDF URL:</label>
-                        <input type="text" id="pdfBook" formControlName="pdfBook" class="form-control" />
+                        <label for="pdfBook">Book Pdf</label>
+                        <input type="file" (change)="onFileSelectedBook($event)" class="form-control" />
                     </div>
         
                     <div class="form-group">

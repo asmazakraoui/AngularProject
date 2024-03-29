@@ -26,8 +26,16 @@ export class EventAffComponent implements OnInit {
       (error) => {
         console.error('Error fetching events:', error);
       }
+      
     );
   }
+
+
+  getImageUrl(event: Event): string {
+    return `http://localhost/Uploads/Images/${event.imageEvent}`;
+  }
+  
+
   
   deleteEvent(id:number): void {
     this.eventservice.deleteEvent(id).subscribe(() : void => {

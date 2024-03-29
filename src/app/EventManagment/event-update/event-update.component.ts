@@ -13,6 +13,7 @@ export class EventUpdateComponent implements OnInit{
 
   eventForm!: FormGroup;
   id: any;
+  selectedFile: File | null = null;
 
   typeEventOptions: string[] = Object.values(TypeEvent);
   MeansTransportOptions: string[] = Object.values(MeansTransport);
@@ -48,6 +49,10 @@ export class EventUpdateComponent implements OnInit{
       }
     )
   }
+  onFileSelected(event: any): void{
+    this.selectedFile = event.target.files[0];
+  }
+
 
   /*getEventById(){
     this.eventService.getEventById(this.id).subscribe((evv)=>{
@@ -56,11 +61,13 @@ export class EventUpdateComponent implements OnInit{
   }*/
 
   updateEvent(): void {
+    
     this.eventService.updateEvent(this.id, this.eventForm.value).subscribe(()=>{
       alert("Event Updated!");
       this.eventForm.reset();
     });
   }
+
 
 
 
