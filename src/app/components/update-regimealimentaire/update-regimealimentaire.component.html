@@ -1,0 +1,16 @@
+<app-header-front></app-header-front>
+<div class="container">
+    <h2>Modification d'un régime alimentaire</h2>
+    <form [formGroup]="regimealimentaireForm" (submit)="updateRegimeAlimentaire()">
+        <div class="form-group">
+            <label for="typeRegime">Type de régime alimentaire:</label>
+            <input type="text" id="typeRegime" class="form-control" formControlName="typeRegime">
+        </div>
+        <div class="form-group">
+            <label for="descriptionRegime">Description du régime alimentaire:</label>
+            <textarea id="descriptionRegime" class="form-control" formControlName="descriptionRegime"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>
+<app-footer-front></app-footer-front>
