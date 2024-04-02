@@ -56,7 +56,7 @@ export class UpdateFuneralLocationComponent implements OnInit {
   
       this.funeralLocationService.updateFuneralLocation(this.funeralLocation.idLoc, formData).subscribe({
         next: () => {
-          this.router.navigate(['/funeral-location-list']);
+          this.router.navigate(['/admin/funeral-location-list']);
         },
         error: (error) => {
           console.error(error);

@@ -39,7 +39,7 @@ export class AddFuneralLocationComponent {
       this.funeralLocationService.addFuneralLocation(formData).subscribe({
         next: (Response) => {
           console.log(Response);
-          this.router.navigate(['/funeral-location-list'])
+          this.router.navigate(['/admin/funeral-location-list'])
         },
         error: (error) => {
           console.error(error);

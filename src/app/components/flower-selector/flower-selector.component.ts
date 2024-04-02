@@ -5,6 +5,7 @@ import { AppStateService } from 'src/app/services/app-state.service';
 import { CeremonyService } from 'src/app/services/ceremony.service';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { FlowerStatisticsService } from 'src/app/services/flower-statistics.service';
 @Component({
   selector: 'app-flower-selector',
   templateUrl: './flower-selector.component.html',
@@ -21,6 +22,7 @@ export class FlowerSelectorComponent {
     private appStateService: AppStateService,
     private ceremonyService: CeremonyService,
     private router:Router,
+    private flowerStatisticsService: FlowerStatisticsService
   ) {}
   
 
@@ -46,6 +48,7 @@ export class FlowerSelectorComponent {
       console.log('Fleur sélectionnée:', selectedFlower);
       // Vous pouvez ici ajouter d'autres logiques, comme naviguer vers une autre vue ou ajouter la fleur à une liste
       this.affectFlowerToCeremony();
+      this.flowerStatisticsService.trackSelectedFlower(selectedFlower.nomFlower);
     }
 
 

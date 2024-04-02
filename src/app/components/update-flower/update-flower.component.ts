@@ -55,7 +55,7 @@ export class UpdateFlowerComponent {
   
       this.flowerService.updateFlower(this.flower.idFlower, formData).subscribe({
         next: () => {
-          this.router.navigate(['/flower-list']);
+          this.router.navigate(['/admin/flower-list']);
         },
         error: (error) => {
           console.error(error);

@@ -1,11 +1,16 @@
 .container {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 600px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+  position: absolute; /* ou "absolute" si vous préférez que l'élément soit positionné par rapport à un conteneur parent */
+  top: 40px; /* Placez l'élément à 20 pixels du haut de la fenêtre */
+  left: 0; /* Facultatif : positionnez l'élément à gauche de la fenêtre */
+  right: 0; /* Facultatif : positionnez l'élément à droite de la fenêtre */
+  margin: 0 auto; /* Ajustez la marge horizontale comme vous le souhaitez */
+  padding: 20px;
+  max-height: 0%; /* Réduisez la hauteur maximale à 50% de la hauteur du conteneur parent */
+  max-width: 50%; /* Réduisez la largeur maximale à 50% de la largeur du conteneur parent */
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
   
   h2 {
     margin-bottom: 20px;

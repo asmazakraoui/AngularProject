@@ -44,6 +44,6 @@ export class FlowerListComponent {
   }
 
   editFlower(id: number): void {
-    this.router.navigate(['/update-flower', id]);
+    this.router.navigate(['/admin/update-flower', id]);
   }
 }

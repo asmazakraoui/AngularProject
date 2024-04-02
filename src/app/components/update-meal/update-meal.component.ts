@@ -55,7 +55,7 @@ export class UpdateMealComponent {
   
       this.mealService.updateMeal(this.meal.idMeal, formData).subscribe({
         next: () => {
-          this.router.navigate(['/Meals-list']);
+          this.router.navigate(['/admin/Meals-list']);
         },
         error: (error) => {
           console.error(error);

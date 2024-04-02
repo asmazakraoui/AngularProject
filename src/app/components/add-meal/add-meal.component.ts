@@ -43,7 +43,7 @@ export class AddMealComponent {
       this.mealService.addMeal(formData).subscribe({
         next: (Response) => {
           console.log(Response);
-          this.router.navigate(['/Meals-list'])
+          this.router.navigate(['/admin/Meals-list'])
         },
         error: (error) => {
           console.error(error);

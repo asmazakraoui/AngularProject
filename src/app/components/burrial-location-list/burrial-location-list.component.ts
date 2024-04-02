@@ -45,6 +45,6 @@ export class BurrialLocationListComponent implements OnInit {
   }
 
   editBurrialLocation(id: number): void {
-    this.router.navigate(['/update-cemetery', id]);
+    this.router.navigate(['/admin/update-cemetery', id]);
   }
 }

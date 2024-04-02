@@ -44,7 +44,7 @@ export class MealsListComponent {
   }
 
   editMeal(id: number): void {
-    this.router.navigate(['/update-meal', id]);
+    this.router.navigate(['/admin/update-meal', id]);
     
   }
 }

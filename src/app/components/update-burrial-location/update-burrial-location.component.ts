@@ -57,7 +57,7 @@ export class UpdateBurrialLocationComponent {
   
       this.burrialLocationService.updateBurrialLocation(this.burrialLocation.idBurrial, formData).subscribe({
         next: () => {
-          this.router.navigate(['/cemetery-list']);
+          this.router.navigate(['/admin/cemetery-list']);
         },
         error: (error) => {
           console.error(error);

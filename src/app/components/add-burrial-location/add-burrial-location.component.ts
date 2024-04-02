@@ -39,7 +39,7 @@ export class AddBurrialLocationComponent {
       this.burrialLocationService.addBurrialLocation(formData).subscribe({
         next: (Response) => {
           console.log(Response);
-          this.router.navigate(['/cemetery-list'])
+          this.router.navigate(['/admin/cemetery-list'])
         },
         error: (error) => {
           console.error(error);

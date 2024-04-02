@@ -38,7 +38,7 @@ export class AddFlowerComponent {
       this.flowerService.addFlower(formData).subscribe({
         next: (Response) => {
           console.log(Response);
-          this.router.navigate(['/flower-list'])
+          this.router.navigate(['/admin/flower-list'])
         },
         error: (error) => {
           console.error(error);

@@ -45,7 +45,7 @@ export class FuneralLocationListComponent implements OnInit {
   }
 
   editFuneralLocation(id: number): void {
-    this.router.navigate(['/update-funeral-location', id]);
+    this.router.navigate(['/admin/update-funeral-location', id]);
   }
 
 }

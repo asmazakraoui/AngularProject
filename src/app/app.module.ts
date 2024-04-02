@@ -52,6 +52,7 @@ import { FarrangementListComponent } from './components/farrangement-list/farran
 import { UpdateFarrangementComponent } from './components/update-farrangement/update-farrangement.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotificationComponent } from './components/notification/notification.component';
+import { FlowerStatisticsComponent } from './components/flower-statistics/flower-statistics.component';
 
 
 
@@ -96,6 +97,7 @@ import { NotificationComponent } from './components/notification/notification.co
       FarrangementListComponent,
       UpdateFarrangementComponent,
       NotificationComponent,
+      FlowerStatisticsComponent,
   
 
       

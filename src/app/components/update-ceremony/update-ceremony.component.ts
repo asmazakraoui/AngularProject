@@ -34,7 +34,7 @@ export class UpdateCeremonyComponent {
       this.ceremonyService.updateCeremony(this.id, this.ceremony).subscribe({
         next: (updatedCeremony) => {
           console.log(updatedCeremony);
-          this.router.navigate(['/ceremony-list']); // Adjust the route as per your routing configuration
+          this.router.navigate(['/admin/ceremony-list']); // Adjust the route as per your routing configuration
         },
         error: (error) => {
           console.error(error);

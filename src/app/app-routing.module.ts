@@ -32,6 +32,7 @@ import { RecaptchaComponent } from './components/recaptcha/recaptcha.component';
 import { AddFArrangementComponent } from './components/add-farrangement/add-farrangement.component';
 import { FarrangementListComponent } from './components/farrangement-list/farrangement-list.component';
 import { UpdateFarrangementComponent } from './components/update-farrangement/update-farrangement.component';
+import { FlowerStatisticsComponent } from './components/flower-statistics/flower-statistics.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,7 @@ export const routes: Routes = [
         component:HomeFrontComponent
         
       },
+
      
     ]
   },
@@ -51,6 +53,17 @@ export const routes: Routes = [
     component:BackComponent,
     children:[
       { path: 'add-funeral-location', component: AddFuneralLocationComponent },
+      { path: 'funeral-location-list', component: FuneralLocationListComponent },
+{path: 'update-funeral-location/:id', component: UpdateFuneralLocationComponent},
+{ path: 'add-cemetery', component: AddBurrialLocationComponent },
+{ path: 'cemetery-list', component: BurrialLocationListComponent },
+{ path: 'update-cemetery/:id', component: UpdateBurrialLocationComponent },
+{ path: 'add-flower', component: AddFlowerComponent },
+{ path: 'flower-list', component: FlowerListComponent },
+{ path: 'update-flower/:id', component: UpdateFlowerComponent },
+{ path: 'add-meal', component: AddMealComponent  },
+{ path: 'Meals-list', component: MealsListComponent },
+{ path: 'update-meal/:id', component: UpdateMealComponent },
 
       
        
@@ -88,6 +101,9 @@ export const routes: Routes = [
 { path: 'AddFarrangemenet', component: AddFArrangementComponent },
 { path: 'FarrList', component: FarrangementListComponent },
 { path: 'UpdateFArr/:id', component: UpdateFarrangementComponent },
+{ path: 'flowerstat', component: FlowerStatisticsComponent },
+
+
 
 
 
