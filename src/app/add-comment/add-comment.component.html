@@ -1,0 +1,30 @@
+<!-- AddCommentComponent HTML template -->
+<!--<span (click)="navigateToPostPage(post.idPost)" class="text-sm cursor-pointer break-all font-normal">{{comment.descCmnt}}</span>-->
+
+<form [formGroup]="CommentForm" (ngSubmit)="createComment()">
+  <div>
+    <label for="descCmnt">Description:</label>
+    <input type="text" id="descCmnt" formControlName="descCmnt" required>
+  </div>
+  
+  <!--<div>
+    <label for="idPost">Select Post:</label>
+    <select id="idPost" formControlName="idPost" required> 
+       Populate options dynamically based on available posts 
+      <option *ngFor="let post of posts" [value]="post.idPost">{{ post.descPost }}</option>
+    </select>
+    <div *ngIf="CommentForm.get('idPost')?.hasError('required')">
+      Please select a post.
+    </div>
+  </div>-->
+  <button type="submit" [disabled]="CommentForm.invalid">Submit</button>
+</form>
+
+<div *ngIf="!isLoading" role="status" class="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
+  <!-- Loading content -->
+</div>
+
+<div *ngIf="isLoading" class="shadow-xl flex max-[900px]:flex-col min-w-[310px] rounded-md border w-7/12 h-full">
+  <!-- Content display logic here -->
+</div>
+

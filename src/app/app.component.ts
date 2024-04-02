@@ -1,3 +1,4 @@
+import { PostService } from './Services/post.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularProjPi';
+
+  //constructor(private PostService: PostService) {}
 }

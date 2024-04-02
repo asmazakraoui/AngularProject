@@ -1,0 +1,79 @@
+
+<app-back></app-back>
+
+<h1>Posts</h1>
+<div class="col-md-6 col-12 mb-50">
+  <div class="d-flex justify-content-between align-items-center">
+    <label class="d-flex align-items-center">Search
+      <input type="search" placeholder="Search" class="form-control ml-25" [(ngModel)]="searchKeyword"(input)="searchPost()" />
+    </label>
+  </div>
+</div>
+<button (click)="addPost()" class="btn btn-primary float-right">Add Post</button>
+
+<table class="table table-striped">
+
+  
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Date de création</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    
+    <tr *ngFor="let post of Posts">
+      <td>{{ post.idPost }}</td>
+      <td>{{ post.descPost }}</td>
+      <td>{{ post.dateCreation }}</td>
+      <td>
+        <img [src]="getImageUrl(post)" alt="Image de post" style="max-width: 400px; max-height: 400px;">
+    </td>
+     
+        
+      <td>
+       <!-- <button (click)="commentOnPost(post.idPost)" class="btn btn-link">Commenter <i class="fas fa-pencil-alt"></i>&nbsp;</button>-->
+      <button (click)="updatePost(post.idPost)" class="btn  btn-link">Modifier<i class="fas fa-pencil-alt"></i>&nbsp;</button>
+      <button (click)="deletePost(post.idPost)" class="btn btn-link">Supprimer <i class="fas fa-trash-alt"></i>&nbsp;</button>
+      <!-- <button (click)="showPostDetails(post.idPost)" class="btn btn-link">Details  <i class="fas fa-list-alt"></i>&nbsp;</button>-->
+       <!-- <button (click)="likePost(post.idPost)"><i class="fas fa-thumbs-up"></i> Like </button>
+        <button (click)="dislikePost(post.idPost)"><i class="fas fa-thumbs-down"></i> Dislike </button>-->
+
+      </td>
+      
+    </tr>
+
+
+  </tbody>
+</table>
+
+<!--
+<div class="col">
+  <div class="row m-3">
+    <div class="col-md-8 p-0">
+      <h1></h1>
+    </div>
+   
+    <div class="alert alert-danger" *ngIf="errorMsg">
+      {{ errorMsg }}
+    </div>
+  </div>
+  <div class="col m-3" *ngFor="let p of Posts">
+    <app-post-details
+      
+      [post]="p"
+      (suppressionResult)="handleSuppression($event)"
+    >
+  </app-post-details>  </div>
+  <div class="row mb-3" *ngIf="Posts.length">
+    <div class=" col-md-12 text-center">
+     <app-post-paginator></app-post-paginator>
+    </div>
+  </div>
+
+</div>
+-->

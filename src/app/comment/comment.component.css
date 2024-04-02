@@ -1,0 +1,49 @@
+/* Ajoutez ces styles dans le fichier CSS associé à votre composant */
+
+/* Tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  /* En-tête du tableau */
+  thead {
+    background-color: #f2f2f2;
+  }
+  
+  /* Cellules du tableau */
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  /* Lignes impaires du tableau */
+  tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Boutons d'action */
+  .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .ml-2 {
+    margin-left: 2px;
+  }
+  
+  /* Ajoutez d'autres styles au besoin */
+  
