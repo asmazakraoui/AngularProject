@@ -1,11 +1,10 @@
+<div class="container-scroller">
+    <app-nav-back></app-nav-back>
+    <div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+   <div class="main-panel">
+  <div class="col-md-12">
 
-<app-back></app-back>
-    
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-3">
-            <app-sidebar></app-sidebar>
-        </div>
         <h2>Update Post</h2>
 <form [formGroup]="postForm" (ngSubmit)="updatePost()">
     <div class="form-group">
@@ -28,4 +27,3 @@
     <button type="submit" class="btn btn-success">Add</button>
 </form>
 
-</div>

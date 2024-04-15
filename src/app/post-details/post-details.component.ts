@@ -48,7 +48,7 @@ id: any;
     this.postService.findAll().subscribe(
       data => {
         this.posts = data;
-        
+
         this.totalPages = Math.ceil(this.posts.length / this.pageSize);
         this.applyPagination();
         this.loadCommentsForAllPosts();
@@ -66,7 +66,7 @@ id: any;
       post.dislikes = Number(localStorage.getItem(`post_${post.idPost}_dislikes`)) || 0;
     });
   }
-  
+
   loadCommentsForAllPosts(): void {
     this.posts.forEach(post => {
       this.commentService.getCommentBypostid(post.idPost).subscribe(
@@ -79,45 +79,57 @@ id: any;
       );
     });
   }
-  
 
-  //add comment to post 
+
+  //add comment to post
   addComment(post: Post, commentDesc: string): void {
+    console.log("🚀 ~ PostDetailsComponent ~ addComment ~ post:", post)
     const comment: Comment = {
-      idCmnt: null, 
+      idCmnt: null,
       descCmnt: commentDesc,
       dateCmnt: new Date(),
-      post: null 
+      post: null
     };
-  
-     this.commentService.addCommentToPost(post.idPost, comment).subscribe(
-    newComment => {
-      console.log('Comment added successfully', newComment);
-      post.comments.push(newComment);
-      // Refresh comments after successfully adding a comment
-      this.refreshComments(post);
-    },
-    (error: HttpErrorResponse) => {
-      if (error.status !== 201) {
-        console.error('Error adding comment', error);
-        alert(error);
-      }
+    try {
+      this.commentService.addCommentToPost(post.idPost, comment).subscribe(
+        newComment => {
+          console.log('Comment added successfully', newComment);
+          // Ajouter le nouveau commentaire à la liste des commentaires du post
+            post.comments = newComment
+          // Refresh comments after successfully adding a comment
+
+          // this.refreshComments(post);
+          // Effacer le texte du commentaire après l'ajout
+        this.commentText = '';
+
+        },
+        (error: HttpErrorResponse) => {
+          console.log("🚀 ~ PostDetailsComponent ~ addComment ~ error:", error)
+          if (error.status !== 201) {
+            console.error('Error adding comment', error);
+            alert(error);
+          }
+        }
+      );
+    } catch (error) {
+    console.log("🚀 ~ PostDetailsComponent ~ addComment ~ error:", error)
+
     }
-  ); 
+
 }
   refreshComments(post: Post): void {
     this.commentService.getCommentsForPost(post.idPost).subscribe(
       comments => {
         post.comments = comments;
-        
+
       },
       error => {
         console.error('Error loading comments for post:', error);
       }
     );
   }
-  //delete comment of post 
-  getAllComments(): void { 
+  //delete comment of post
+  getAllComments(): void {
     this.commentService.findAllcomment().subscribe(
       data => {
         this.comments = data;
@@ -140,10 +152,10 @@ id: any;
     });
   }
 
-  
 
-  
-//// like and dislike 
+
+
+//// like and dislike
   likePost(post: Post): void {
     this.reactService.likePost(post.idPost).subscribe(
       response => {
@@ -201,7 +213,7 @@ id: any;
     this.displayedPosts = this.posts.slice(startIndex, endIndex);
   }
 
- 
+
 }
 
 

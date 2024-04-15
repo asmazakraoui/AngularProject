@@ -1,79 +1,166 @@
+<div class="container-scroller">
+  <app-nav-back></app-nav-back>
+  <div class="container-fluid page-body-wrapper">
+  <app-sidebar></app-sidebar>
+ <div class="main-panel pt-5">
+<div class="col-md-12">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <!-- <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"></h4>
 
-<app-back></app-back>
+        <label class="d-flex align-items-center">Search
+          <input type="search" placeholder="Search" class="form-control ml-25" [(ngModel)]="searchKeyword"(input)="searchPost()" />
+        </label>
+        <div class="table-responsive">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Date de création</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-<h1>Posts</h1>
-<div class="col-md-6 col-12 mb-50">
-  <div class="d-flex justify-content-between align-items-center">
-    <label class="d-flex align-items-center">Search
-      <input type="search" placeholder="Search" class="form-control ml-25" [(ngModel)]="searchKeyword"(input)="searchPost()" />
-    </label>
+                  <tr *ngFor="let post of Posts">
+                    <td>{{ post.idPost }}</td>
+                    <td>{{ post.descPost }}</td>
+                    <td>{{ post.dateCreation }}</td>
+                    <td>
+                      <img [src]="getImageUrl(post)" alt="Image de post" style="max-width: 400px; max-height: 400px;">
+                  </td>
+
+
+                    <td>
+                      <button (click)="commentOnPost(post.idPost)" class="btn btn-link">Commenter <i class="fas fa-pencil-alt"></i>&nbsp;</button>
+                    <button (click)="updatePost(post.idPost)" class="btn  btn-link">Modifier<i class="fas fa-pencil-alt"></i>&nbsp;</button>
+                    <button (click)="deletePost(post.idPost)" class="btn btn-link">Supprimer <i class="fas fa-trash-alt"></i>&nbsp;</button>
+                     <button (click)="showPostDetails(post.idPost)" class="btn btn-link">Details  <i class="fas fa-list-alt"></i>&nbsp;</button>
+                     <button (click)="likePost(post.idPost)"><i class="fas fa-thumbs-up"></i> Like </button>
+                      <button (click)="dislikePost(post.idPost)"><i class="fas fa-thumbs-down"></i> Dislike </button>
+
+                    </td>
+
+                  </tr>
+
+
+                </tbody>
+                <div class="col-md-6 col-12 mb-50">
+                  <div class="d-flex justify-content-between align-items-center">
+
+                  </div>
+                </div>
+          </table>
+          <button (click)="addPost()" class="btn btn-primary float-right">Add Post</button>
+
+        </div>
+      </div>
+    </div> -->
+    <div class="card">
+      <p-toast></p-toast>
+      <p-toolbar styleClass="mb-4 gap-2">
+          <ng-template pTemplate="left">
+              <button pButton pRipple label="New Post" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+              <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedPosts()" [disabled]="!selectedPosts || !selectedPosts.length"></button> -->
+          </ng-template>
+
+          <!-- <ng-template pTemplate="right">
+              <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
+              <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+          </ng-template> -->
+      </p-toolbar>
+
+      <p-table
+          #dt
+          [value]="posts"
+          [rows]="10"
+          [paginator]="true"
+          [globalFilterFields]="['idPost', 'descPost', 'imagePost', 'dateCreation']"
+          [tableStyle]="{ 'min-width': '75rem' }"
+          [(selection)]="selectedPosts"
+          [rowHover]="true"
+          dataKey="id"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [showCurrentPageReport]="true"
+      >
+          <ng-template pTemplate="caption">
+              <div class="flex align-items-center justify-content-between">
+                  <h5 class="m-0">Manage Posts</h5>
+                  <span class="p-input-icon-left">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt.filter($any($event.target)?.value, 'descPost', 'contains')"  placeholder="Search..." />
+                  </span>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th style="width: 4rem">
+                      <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                  </th>
+                  <th pSortableColumn="idPost" style="min-width:15rem">ID <p-sortIcon field="idPost"></p-sortIcon></th>
+                  <th>Description</th>
+                  <th pSortableColumn="imagePost" style="min-width:10rem">Image <p-sortIcon field="imagePost"></p-sortIcon></th>
+                  <th pSortableColumn="dateCreation">Date de création <p-sortIcon field="dateCreation"></p-sortIcon></th>
+                  <th pSortableColumn="rating">Actions <p-sortIcon field="rating"></p-sortIcon></th>
+                   <th></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-post>
+              <tr>
+                  <td>
+                      <p-tableCheckbox [value]="post"></p-tableCheckbox>
+                  </td>
+                  <td>{{ post.idPost }}</td>
+                  <td>{{ post.descPost }}</td>
+                  <td><img [src]="getImageUrl(post)" [alt]="post.imagePost" width="50" class="shadow-4" /></td>
+                  <td>{{ post.dateCreation }}</td>
+
+                  <td>
+                      <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editPost(post)"></button>
+                      <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletePost(post)"></button>
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+              <div class="flex align-items-center justify-content-between">In total there are {{ posts ? posts.length : 0 }} posts.</div>
+          </ng-template>
+      </p-table>
+    </div>
   </div>
 </div>
-<button (click)="addPost()" class="btn btn-primary float-right">Add Post</button>
 
-<table class="table table-striped">
+<p-dialog [(visible)]="postDialog" [style]="{ width: '450px' }" header="Post Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+      <div class="field">
+        <label for="description">Description</label>
+        <textarea id="description" pInputTextarea [(ngModel)]="post.descPost" required rows="3" cols="20"></textarea>
+      </div>
+      <div class="field">
+          <label for="date">Date:</label>
+          <input type="date" pInputText id="date" [(ngModel)]="post.dateCreation" required autofocus />
+          <small class="p-error" *ngIf="submitted && !post.descPost">Date is required.</small>
+      </div>
+      <div class="field">
 
-  
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Description</th>
-      <th>Date de création</th>
-      <th>Image</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    
-    <tr *ngFor="let post of Posts">
-      <td>{{ post.idPost }}</td>
-      <td>{{ post.descPost }}</td>
-      <td>{{ post.dateCreation }}</td>
-      <td>
-        <img [src]="getImageUrl(post)" alt="Image de post" style="max-width: 400px; max-height: 400px;">
-    </td>
-     
-        
-      <td>
-       <!-- <button (click)="commentOnPost(post.idPost)" class="btn btn-link">Commenter <i class="fas fa-pencil-alt"></i>&nbsp;</button>-->
-      <button (click)="updatePost(post.idPost)" class="btn  btn-link">Modifier<i class="fas fa-pencil-alt"></i>&nbsp;</button>
-      <button (click)="deletePost(post.idPost)" class="btn btn-link">Supprimer <i class="fas fa-trash-alt"></i>&nbsp;</button>
-      <!-- <button (click)="showPostDetails(post.idPost)" class="btn btn-link">Details  <i class="fas fa-list-alt"></i>&nbsp;</button>-->
-       <!-- <button (click)="likePost(post.idPost)"><i class="fas fa-thumbs-up"></i> Like </button>
-        <button (click)="dislikePost(post.idPost)"><i class="fas fa-thumbs-down"></i> Dislike </button>-->
-
-      </td>
-      
-    </tr>
+          <label for="imagePost">Post Image:</label>
+        <input type="file" (change)="onFileSelected($event)" class="form-control" id="imagePost" formControlName="imagePost" required>
+        <div *ngIf="PostForm.get('imagePost').invalid && (PostForm.get('imagePost').dirty || PostForm.get('imagePost').touched)">
+          <span class="error">Image is required</span>
+        </div>
+        </div>
 
 
-  </tbody>
-</table>
+  </ng-template>
 
-<!--
-<div class="col">
-  <div class="row m-3">
-    <div class="col-md-8 p-0">
-      <h1></h1>
-    </div>
-   
-    <div class="alert alert-danger" *ngIf="errorMsg">
-      {{ errorMsg }}
-    </div>
-  </div>
-  <div class="col m-3" *ngFor="let p of Posts">
-    <app-post-details
-      
-      [post]="p"
-      (suppressionResult)="handleSuppression($event)"
-    >
-  </app-post-details>  </div>
-  <div class="row mb-3" *ngIf="Posts.length">
-    <div class=" col-md-12 text-center">
-     <app-post-paginator></app-post-paginator>
-    </div>
-  </div>
+  <ng-template pTemplate="footer">
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+      <button *ngIf="this.action == 'create'" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="savePost()"></button>
+      <button  *ngIf="this.action == 'update'" pButton pRipple label="Update" icon="pi pi-check" class="p-button-text" (click)="updatePost()"></button>
+  </ng-template>
+</p-dialog>
 
-</div>
--->
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+

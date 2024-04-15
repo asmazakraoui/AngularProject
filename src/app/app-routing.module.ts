@@ -1,3 +1,4 @@
+import { ChatComponent } from './chat/chat.component';
 import { UpdateCommentComponent } from './update-comment/update-comment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { ReactComponent } from './react/react.component';
+import { UserComponent } from './user/user.component';
+import { GroupeComponent } from './groupe/groupe.component';
 //import { UpdateCommentComponent } from './update-comment/update-comment.component';
 export const routes: Routes = [
   {
@@ -58,6 +61,12 @@ export const routes: Routes = [
  { path: 'addComment', component: CommentComponent}, // Exemple de route pour les détails de publication avec un paramètre d'ID
  { path: 'getCommentBypostid/:idPost', component: CommentComponent}, // Exemple de route pour les détails de publication avec un paramètre d'ID
  { path: 'add/:idPost', component: ReactComponent}, // Exemple de route pour les détails de publication avec un paramètre d'ID
+ { path: 'user', component: UserComponent },
+ { path: 'groupe', component: GroupeComponent },
+ { path: 'chat/:userId', component: ChatComponent },
+
+
+
 
 ];
 

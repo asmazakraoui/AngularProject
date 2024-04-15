@@ -12,7 +12,6 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CommentService {
-  private forbiddenWords: string[] = ['stupid', 'fuck', 'bad'];
 
   private baseURL =  'http://localhost:8082/test/api/comments'
   constructor(private http: HttpClient) { }
@@ -29,7 +28,7 @@ export class CommentService {
       })
     );
   }*/
-  
+
 
   getCommentById(id : number): Observable<Comment>{
     return this.http.get<Comment>(`${this.baseURL}/retrieveComment/${id}`) ;
@@ -45,11 +44,11 @@ export class CommentService {
 
 
 /*
-  
+
   addCommentToPost(comment: Comment, idPost: number): Observable<Comment> {
     comment.post = { idPost: idPost } as Post; // Create a Post object with the specified idPost
     const url = `${this.baseURL}/addCommentToPost/${idPost}`;
-    
+
     if (this.containsForbiddenWords(comment.descCmnt)) {
       // If the comment contains forbidden words, emit an error observable
       return throwError('Comment contains bad words.');
@@ -63,14 +62,12 @@ export class CommentService {
       );
     }
   }*/
-  
-  
+
+
 
 
  addCommentToPost(idPost: number, comment: Comment): Observable<any> {
-  if (this.containsForbiddenWords(comment.descCmnt)) {
-    return throwError('Sorry, your comment contains inappropriate language. Please refrain from using offensive words.');
-  }
+
     const newComment: Comment = {
       idCmnt: 0, // Remplacez par l'ID approprié si nécessaire
       descCmnt: comment.descCmnt, // Utilisez la description du commentaire fournie
@@ -80,27 +77,20 @@ export class CommentService {
 
     return this.http.post(`${this.baseURL}/addComment/${idPost}`, newComment);
   }
-  // badword
-  private containsForbiddenWords(comment: string): boolean {
-    for (const word of this.forbiddenWords) {
-      if (comment.toLowerCase().includes(word)) {
-        return true;
-      }
-    }
-    return false;
-  }
+
+
 
 
 
  getCommentsForPost(idPost: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.baseURL}/getCommentsForPost/${idPost}`);
+    return this.http.get<Comment[]>(`${this.baseURL}/getCommentBypostid/${idPost}`);
   }
-  
+
   createComment(idPost: number, comment: string): Observable<any> {
     return this.http.post<any>(`${this.baseURL}/addComment/${idPost}/${comment}`, null);
   }
-  
-  
+
+
   /////
 
   getCommentBypostid(idPost: number): Observable<Comment[]> {
@@ -111,7 +101,7 @@ export class CommentService {
   return this.http.delete(`${this.baseURL}/deleteCommentsByPostId/${postId}`);
 }*/
 
-  
- 
+
+
 }
 

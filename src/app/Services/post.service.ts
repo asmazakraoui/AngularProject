@@ -19,34 +19,6 @@ export class PostService {
     return this.http.get<Post[]>(`${this.baseURL}/get`);
 
   }
-  
-  
- /* addPost(post: Post, file: File): Observable<Object> {
-    return this.http.post(`${this.baseURL}/addPost`, post);
-    if (file != null) {
-      this.uploadImage(file);
-  }
-  }
-  
-
-  
-  private uploadImage(file: File) {
-    let formData = new FormData();
-    formData.append('file', file);
-    const req = this.http.post('/upload', formData);
-
-    req.subscribe((data) => {
-        console.log(data);
-    }, (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-            console.log('An error occured: ', err.error.message);
-        }
-        else {
-            console.log('Backend returned code', err.status, 'body was ', err.error);
-        }
-    });
-
-}*/
 addPost(formData : FormData): Observable<Post>{
   return this.http.post<Post>(this.baseURL + '/addPost', formData );
 }
@@ -59,6 +31,7 @@ addPost(formData : FormData): Observable<Post>{
   /*updatePost(id: number, post: Post): Observable<any> {
     return this.http.put(`${this.baseURL}/updatePost/${id}`, post);
   }*/
+  
   updatePost(id: number, formData: FormData): Observable<any> {
     return this.http.put(`${this.baseURL}/updatePost/${id}`, formData);
   }
