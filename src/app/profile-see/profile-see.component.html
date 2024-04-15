@@ -1,0 +1,40 @@
+<app-front></app-front>
+<section class="aboutus-section spad">
+  <div class="profile" *ngIf="currentUser">
+
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6">
+              <div class="about-text">
+                  <div class="section-title">
+                   
+
+                      <span>User Profile</span>
+                      <h2>{{ currentUser.prenomUser }} {{ currentUser.nomUser }}</h2>
+                  </div>
+                  <p><strong>Religion:</strong> {{ currentUser.religion }}</p>
+                  <p><strong>Gender:</strong> {{ currentUser.sexe }}</p>
+                  <p><strong>State:</strong> {{ currentUser.etat }}</p>
+                  <p><strong>Telephone Number:</strong> {{ currentUser.numTel }}</p>
+
+                  <p><strong>Email:</strong> {{ currentUser.emailUser }}</p>
+                  <p><strong>Address:</strong> {{ currentUser.adressUser }}</p>
+                  <!-- Add more user profile details as needed -->
+              </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="about-pic">
+                <div class="row">
+                    <div class="profile-photo">
+                        <img class="bigger-photo" [src]="getImageUrl(currentUser)" alt="Profile Photo">
+                    </div>
+                    <!-- Add more profile photos or elements as needed -->
+                </div>
+            </div>
+        </div>
+     
+  </div>
+
+  </div>
+</div>
+</section>

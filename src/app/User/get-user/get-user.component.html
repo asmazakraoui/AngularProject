@@ -1,0 +1,73 @@
+<div class="container-scroller">
+  <app-nav-back></app-nav-back>
+  <div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+      <div class="col-md-12">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">List of Users </h4>
+              
+              
+              <div class="row align-items-center mb-3">
+                <div class="col-md-3">
+                  <input type="text" [(ngModel)]="keyword" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-primary" (click)="searchUsers()">Search</button>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-secondary mr-2" (click)="sortUsersByDateOfBirth()">Sort by Date Of Birth</button>
+                  <button class="btn btn-secondary" (click)="sortUsersAlphabetically()">Sort Alphabetically</button>
+                </div>
+              </div>
+            
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>User Photo</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Mobile Number</th>
+                      <th>Sex</th>
+                      <th>Status</th>
+                      <th>Religion</th>
+                      <th>Account</th>
+                      <th>Date of Birth</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of users | paginate: { itemsPerPage: pageSize, currentPage: currentPage, id: 'userPagination' }">
+                      <td>
+                        <img [src]="getImageUrl(user)" alt="Profile Photo" style="max-width: 200px; max-height: 200px;">
+                      </td>
+                      <td>{{ user.prenomUser }}</td>
+                      <td>{{ user.nomUser }}</td>
+                      <td>{{ user.emailUser }}</td>
+                      <td>{{ user.numTel }}</td>
+                      <td>{{ user.sexe }}</td>
+                      <td [ngClass]="user.etat ? 'online' : 'offline'">{{ user.etat ? 'Online' : 'Offline' }}</td>
+                      <td>{{ user.religion }}</td>
+                      <td [ngClass]="user.accountConfirmed ? 'Confirmed' : 'Waiting'">{{ user.accountConfirmed ? 'Confirmed' : 'Waiting' }}</td>
+                      <td>{{user.dateNaiss}}</td>
+                      <td>
+                        <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+                        <button class="btn btn-sm btn-primary" (click)="editUser(user.id)">Edit</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="onPageChange($event)" id="userPagination"></pagination-controls>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
