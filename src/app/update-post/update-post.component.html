@@ -1,0 +1,29 @@
+<div class="container-scroller">
+    <app-nav-back></app-nav-back>
+    <div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+   <div class="main-panel">
+  <div class="col-md-12">
+
+        <h2>Update Post</h2>
+<form [formGroup]="postForm" (ngSubmit)="updatePost()">
+    <div class="form-group">
+        <label for="descPost">Desc</label>
+        <input type="text" formControlName="descPost" class="form-control" placeholder="Enter Description">
+    </div>
+   
+   
+    <div class="form-group">
+        <label for="dateCreation">Date</label>
+        <input type="date" formControlName="dateCreation" class="form-control" placeholder="Enter Date">
+    </div>
+    <div class="form-group">
+        <label for="imagePost">Image</label>
+        <!-- Use input type="file" for image selection -->
+        <input type="file" (change)="onFileSelected($event)" class="form-control" placeholder="Select Image">
+    </div>
+    
+ 
+    <button type="submit" class="btn btn-success">Add</button>
+</form>
+
