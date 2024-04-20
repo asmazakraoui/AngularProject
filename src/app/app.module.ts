@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
-import { FrontComponent } from './FrontOffice/front/front.component';
 import { NavBackComponent } from './BackOffice/nav-back/nav-back.component';
 import { SidebarComponent } from './BackOffice/sidebar/sidebar.component';
 import { FooterBackComponent } from './BackOffice/footer-back/footer-back.component';
@@ -40,7 +39,6 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
 import { UpdateCommentComponent } from './update-comment/update-comment.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { ReactComponent } from './react/react.component';
-import { UserComponent } from './user/user.component';
 import { GroupeComponent } from './groupe/groupe.component';
 import { ChatComponent } from './chat/chat.component';
 
@@ -132,9 +130,15 @@ import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
 import { MessageService } from 'primeng/api';
 import { HeroSectionComponent } from './FrontOffice/hero-section/hero-section.component';
+import { DashFrontComponent } from './FrontOffice/dash-front/dash-front.component';
+import { DashAfterlogComponent } from './FrontOffice/dash-afterlog/dash-afterlog.component';
+import { HeaderSecComponent } from './FrontOffice/header-sec/header-sec.component';
+import { FrontComponent } from './FrontOffice/front/front.component';
+
 
 @NgModule({
   declarations: [
+    //ranim
     AppComponent,
     HomeFrontComponent,
     FooterFrontComponent,
@@ -155,7 +159,13 @@ import { HeroSectionComponent } from './FrontOffice/hero-section/hero-section.co
     ResetPasswordComponent,
     ForgetPassComponent,
     ProfileSeeComponent,
-    ProfileAdminComponent    
+    ProfileAdminComponent,
+    DashFrontComponent,
+    DashAfterlogComponent,
+    HeaderSecComponent   ,
+    
+    
+//asmaa
     PostComponent,
     AddPostComponent,
     UpdatePostComponent,
@@ -165,11 +175,11 @@ import { HeroSectionComponent } from './FrontOffice/hero-section/hero-section.co
     PostDetailsComponent,
     ReactComponent,
 
-    UserComponent,
     GroupeComponent,
     ChatComponent,
     HeroSectionComponent,
-
+   
+    
 
 
   ],
@@ -180,12 +190,22 @@ import { HeroSectionComponent } from './FrontOffice/hero-section/hero-section.co
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    NgxPaginationModule, // Include the pagination module here
+    NgxPaginationModule, 
+    
+    CommonModule,
+    FormsModule,
+    TableModule,
+    ToastModule,
+    ToolbarModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    DialogModule,
+    ConfirmDialogModule
 
 
      
   ],
-  providers: [authInterceptorProviders
+  providers: [authInterceptorProviders,
     
     AvatarModule,
     AvatarGroupModule,

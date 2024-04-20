@@ -2,7 +2,6 @@ import { ChatComponent } from './chat/chat.component';
 import { UpdateCommentComponent } from './update-comment/update-comment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FrontComponent } from './FrontOffice/front/front.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { AuthComponentComponent } from './User/auth-component/auth-component.component';
 import { LoginComponent } from './User/login/login.component';
@@ -26,8 +25,10 @@ import { FormsModule } from '@angular/forms';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { ReactComponent } from './react/react.component';
-//import { UserComponent } from './user/user.component';
 import { GroupeComponent } from './groupe/groupe.component';
+import { FrontComponent } from './FrontOffice/front/front.component';
+import { DashFrontComponent } from './FrontOffice/dash-front/dash-front.component';
+import { AuthGuard } from './User/AuthGuard';
 //import { UpdateCommentComponent } from './update-comment/update-comment.component';
 export const routes: Routes = [
   {
@@ -44,21 +45,20 @@ export const routes: Routes = [
   },
   { path: 'Register', component: AuthComponentComponent },
   { path:"login",component:LoginComponent },
-  { path:"admin",component:DashbordComponent },
+  { path:"admin",component:DashbordComponent , canActivate: [AuthGuard]},
+  
   { path:"role", component:RoleComponent },
-  { path:"update/:id", component:ProfileComponent },
-  { path:"showProfile", component:ProfileSeeComponent },
-  { path:"getUser", component:GetUserComponent },
-  { path: "updateUser/:id", component: UpdateUserComponent },
+  { path:"update/:id", component:ProfileComponent, canActivate: [AuthGuard] },
+  { path:"showProfile", component:ProfileSeeComponent, canActivate: [AuthGuard] },
+  { path:"getUser", component:GetUserComponent , canActivate: [AuthGuard]},
+  { path: "updateUser/:id", component: UpdateUserComponent, canActivate: [AuthGuard] },
   {path: "forget",component:ForgetPassComponent},
   {path: "reset",component:ResetPasswordComponent},
-  {path:"profileAdmin", component:ProfileAdminComponent},
+  {path:"profileAdmin", component:ProfileAdminComponent, canActivate: [AuthGuard]},
   
- 
-  {
-    path:"admin",
-    component:BackComponent,
-  },
+  {path:"dashFront",component:DashFrontComponent, canActivate: [AuthGuard]},
+
+  //asma
   {
     path:"index",
     component:PostComponent
@@ -88,7 +88,6 @@ export const routes: Routes = [
  { path: 'addComment', component: CommentComponent}, // Exemple de route pour les détails de publication avec un paramètre d'ID
  { path: 'getCommentBypostid/:idPost', component: CommentComponent}, // Exemple de route pour les détails de publication avec un paramètre d'ID
  { path: 'add/:idPost', component: ReactComponent}, // Exemple de route pour les détails de publication avec un paramètre d'ID
- { path: 'user', component: UserComponent },
  { path: 'groupe', component: GroupeComponent },
  { path: 'chat/:userId', component: ChatComponent },
 

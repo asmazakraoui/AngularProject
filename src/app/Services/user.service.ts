@@ -6,7 +6,6 @@ import { User } from 'src/models/user';
 import { catchError, map } from 'rxjs/operators';
 import { Page } from 'src/models/Page';
 import { RegisterService } from './register.service';
-//import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'

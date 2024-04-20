@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { React } from '../models/react';
 import { Observable } from 'rxjs';
+import { catchError ,tap} from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +27,40 @@ export class ReactService {
     return this.http.delete<void>(`${this.baseURL}/remove/${idReact}`);
   }
 
-  likePost(idPost: number): Observable<any> {
-    const url = `${this.baseURL}/like/${idPost}`;
-    return this.http.post<any>(url, null);}
+  likePost(postId: number): Observable<any> {
+    return this.http.post(`http://localhost:8082/test/api/react/like/${postId}`, {}).pipe(
+      tap(response => {
+        console.log('Like Post Response:', response);
+        if (response && response.hasOwnProperty('message')) {
+          console.log('Post liked successfully');
+        } else {
+          throw new Error('Failed to like post. Unexpected response.');
+        }
+      }),
+      catchError(error => {
+        console.error('Error liking post:', error);
+        throw new Error('Failed to like post. Please try again.');
+      })
+    );
+  }
+  
 
-  dislikePost(idPost: number): Observable<any> {
-      const url = `${this.baseURL}/dislike/${idPost}`;
-      return this.http.post<any>(url, null);}
-
+  dislikePost(postId: number): Observable<any> {
+    return this.http.post(`${this.baseURL}/dislike/${postId}`, {}).pipe(
+      tap(response => {
+        console.log('Dislike Post Response:', response);
+        if (response && response.hasOwnProperty('message')) {
+          console.log('Post disliked successfully');
+        } else {
+          throw new Error('Failed to dislike post. Unexpected response.');
+        }
+      }),
+      catchError(error => {
+        console.error('Error disliking post:', error);
+        return throwError('Failed to dislike post. Please try again.');
+      })
+    );
+  }
       
       getTotalLikesByPostId(idPost: number): Observable<number> {
         const url = `${this.baseURL}/total-likes/${idPost}`;

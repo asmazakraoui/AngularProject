@@ -131,8 +131,9 @@
     </div>
   </div>
 </div>
+<p-dialog header="Post Details" [(visible)]="postDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
 
-<p-dialog [(visible)]="postDialog" [style]="{ width: '450px' }" header="Post Details" [modal]="true" styleClass="p-fluid">
+<!--<p-dialog [(visible)]="postDialog" [style]="{ width: '450px' }" header="Post Details" [modal]="true" styleClass="p-fluid">-->
   <ng-template pTemplate="content">
       <div class="field">
         <label for="description">Description</label>
@@ -162,5 +163,5 @@
   </ng-template>
 </p-dialog>
 
-<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+<p-confirmDialog [style]="{ 'width': '450px' }"></p-confirmDialog>
 

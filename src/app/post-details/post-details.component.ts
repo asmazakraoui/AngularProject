@@ -10,11 +10,14 @@ import { throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { ReactService } from '../Services/react.service';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-post-details',
   templateUrl: './post-details.component.html',
-  styleUrls: ['./post-details.component.css']
+  styleUrls: ['./post-details.component.css'],
+  providers: [DatePipe] 
 })
 export class PostDetailsComponent implements OnInit {
   comments: Comment[];
@@ -27,6 +30,8 @@ export class PostDetailsComponent implements OnInit {
   commentText: string = ''; // Propriété pour stocker le texte du commentaire
   likes: number = 0;
   dislikes: number = 0;
+  currentDate: Date;
+
 
 
 id: any;
@@ -35,12 +40,21 @@ id: any;
     private postService: PostService,
     private commentService: CommentService,
     private reactService : ReactService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private datePipe: DatePipe
+  ) {
+    this.currentDate = new Date();
+  }
 
   ngOnInit(): void {
     this.getAllPosts();
   }
+ 
+  formatDate(date: Date): string {
+    const dateFormat = 'yyyy-MM-dd HH:mm:ss';
+    return this.datePipe.transform(date, dateFormat) || '';
+  }
+  
   getImageUrl(post: Post): string {
     return `http://localhost/Uploads/Images/${post.imagePost}`;
   }
@@ -87,19 +101,14 @@ id: any;
     const comment: Comment = {
       idCmnt: null,
       descCmnt: commentDesc,
-      dateCmnt: new Date(),
+      dateCmnt: new Date(), // Use new Date() to set the current date and time
       post: null
     };
     try {
       this.commentService.addCommentToPost(post.idPost, comment).subscribe(
         newComment => {
           console.log('Comment added successfully', newComment);
-          // Ajouter le nouveau commentaire à la liste des commentaires du post
             post.comments = newComment
-          // Refresh comments after successfully adding a comment
-
-          // this.refreshComments(post);
-          // Effacer le texte du commentaire après l'ajout
         this.commentText = '';
 
         },
@@ -156,19 +165,21 @@ id: any;
 
 
 //// like and dislike
-  likePost(post: Post): void {
-    this.reactService.likePost(post.idPost).subscribe(
-      response => {
-        console.log('Post liked successfully', response);
-        post.likes++; // Incrémente le compteur de like de la publication
-     // Met à jour le stockage local avec le nouveau nombre de dislikes
-     localStorage.setItem(`post_${post.idPost}_likes`, post.likes.toString()); // Mettre à jour le stockage local
-     },
-      error => {
-        console.error('Error liking post', error);
-      }
-    );
-  }
+likePost(post: Post): void {
+  this.reactService.likePost(post.idPost).subscribe(
+    response => {
+      console.log('Post liked successfully', response);
+      post.likes++;
+      localStorage.setItem(`post_${post.idPost}_likes`, post.likes.toString());
+    },
+    error => {
+      console.error('Error liking post:', error);
+      alert('Failed to like post. Please try again.');
+    }
+  );
+}
+
+
 
   dislikePost(post: Post): void {
     this.reactService.dislikePost(post.idPost).subscribe(
@@ -180,8 +191,12 @@ id: any;
       },
       error => {
         console.error('Error disliking post', error);
+        console.error('Error liking post:', error);
+        alert('Failed to like post. Please try again.');
       }
+      
     );
+
   }
 
 

@@ -1,5 +1,4 @@
 import { ReactService } from './../Services/react.service';
-//import { React, TypeReact } from './../models/react';
 import { CommentService } from './../Services/comment.service';
 import { Component } from '@angular/core';
 import { PostService } from './../Services/post.service';
@@ -8,6 +7,7 @@ import { Comment } from '../models/comment';
 import { Post } from '../models/Post';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',

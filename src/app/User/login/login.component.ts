@@ -40,7 +40,7 @@ export class LoginComponent {
               (user: any) => {
                 this.registerService.setUser(user);
                 console.log(user);
-                this.router.navigate(['/']);
+                this.router.navigate(['/dashFront']);
               }
             );
           }
