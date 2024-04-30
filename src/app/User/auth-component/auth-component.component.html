@@ -1,0 +1,111 @@
+<app-back></app-back>
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content-wrapper d-flex align-items-center auth px-0">
+      <div class="row w-100 mx-0">
+        <div class="col-lg-8 mx-auto">
+          <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+            <div class="brand-logo">
+              <img src="/assets/BackOffice/images/logo3.png" alt="logo">
+            </div>
+            <h4>New here?</h4>
+            <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+            <form class="pt-3" [formGroup]="userForm" (ngSubmit)="register()">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number" formControlName="mobileNumber">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="adressUser">Address</label>
+                    <input type="text" class="form-control" id="adressUser" placeholder="Address" formControlName="adressUser">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="roleNames">Role Names</label>
+                <input type="text" class="form-control" id="roleNames" [placeholder]="roleNamesPlaceholder" formControlName="roleNames">
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="imageUser">Profile Image</label>
+                    <input type="file" class="form-control-file" id="imageUser" (change)="onFileSelected($event)" formControlName="imageUser">
+                    <img *ngIf="imageUrl" [src]="imageUrl" class="img-thumbnail mt-2" alt="Selected Image">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="religion">Religion</label>
+                    <select class="form-control" id="religion" formControlName="religion">
+                      <option value="Muslim">Muslim</option>
+                      <option value="Christian">Christian</option>
+                      <option value="Jewish">Jewish</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="dateNaiss">Date of Birth</label>
+                    <input type="date" class="form-control" id="dateNaiss" placeholder="Date of Birth" formControlName="dateNaiss">
+                  </div>
+                </div>
+              </div>
+                <div class="col-md-6">
+                  <label>Gender</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sexe" id="male" value="male" formControlName="sexe">
+                    <label class="form-check-label" for="male">Male</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sexe" id="female" value="female" formControlName="sexe">
+                    <label class="form-check-label" for="female">Female</label>
+                  </div>
+                </div>
+              
+              <div class="mt-3">
+                <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</button>
+              </div>
+              <div class="text-center mt-4 font-weight-light">
+                Already have an account? <a [routerLink]="['/login']" class="text-primary">Login</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
