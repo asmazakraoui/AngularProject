@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../Services/user.service';
 import { User } from 'src/models/user';
 import { Router } from '@angular/router';
+import { RegisterService } from 'src/app/Services/register.service';
+import { JobApplication } from 'src/models/JobApplication';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-get-user',
   templateUrl: './get-user.component.html',
-  styleUrls: ['./get-user.component.css']
+  styleUrls: ['./get-user.component.css'],
+  providers: [MessageService, ConfirmationService]
 })
 export class GetUserComponent implements OnInit {
   users: User[] = [];
@@ -17,10 +21,14 @@ export class GetUserComponent implements OnInit {
   pageSize = 3;
   totalElements = 100;
   field = 'firstName';
-  constructor(private userService: UserService, private router: Router) {}
+  doctors: JobApplication[] = [];
+
+  jobApplicationId:number;
+  constructor(private messageService:MessageService,private confirmationService:ConfirmationService,private userService: UserService, private router: Router,private registerService:RegisterService) {}
 
   ngOnInit(): void {
-    this.retrieveUsers(); // Load users initially
+    this.retrieveUsers();
+    this.retrieveDoctors();
   }
   onPageChange(page: number): void {
     console.log('Page changed:', page);
@@ -28,7 +36,16 @@ export class GetUserComponent implements OnInit {
     this.retrieveUsers(); // Fetch data for the new page
   }
   
- 
+  retrieveDoctors(): void {
+    this.userService.retrieveDoctors().subscribe(
+      (data: JobApplication[]) => {
+        this.doctors = data;
+      },
+      (error) => {
+        console.error('Error fetching doctors:', error);
+      }
+    );
+  }
 retrieveUsers(): void {
   console.log('Fetching users for page:', this.currentPage);
   this.userService.retrieveUsers().subscribe(
@@ -123,20 +140,47 @@ sortUsersAlphabetically(): void {
   
 
 
-  deleteUser(id: number): void {
-    this.userService.deleteUser(id).subscribe(
-      () => {
-        console.log('User deleted successfully.');
-        // After deletion, refresh the user list
-        this.retrieveUsers();
+  editUser(userId: number): void {
+    this.router.navigate(['/update', userId]);
+  }
+  confirmJobApplication(id: number): void {
+    this.registerService.confirmJobApplication(id).subscribe(
+      response => {
+        console.log('Job application confirmed successfully:', response);
+        // Handle success, maybe show a success message to the user
       },
-      (error) => {
-        console.error('Error deleting user:', error);
+      error => {
+        console.error('An error occurred while confirming job application:', error);
+        // Handle error, maybe show an error message to the user
       }
     );
   }
+  
 
-  editUser(userId: number): void {
-    this.router.navigate(['/update', userId]);
+  deleteUser(user: User) {
+    this.confirmationService.confirm({
+        message: 'Are you sure you want to delete this User?',
+        header: 'Confirm',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+          this.userService.deleteUser(user.id).subscribe(() : void => {
+            this.retrieveUsers();
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'User Deleted', life: 3000 });
+          });
+            //@ts-ignore
+            this.post = {};
+        }
+    });
+  }
+  
+  postDialog: boolean = false;
+  
+
+  submitted: boolean = false;
+
+  
+  hideDialog() {
+    this.postDialog = false;
+    this.submitted = false;
   }
 }

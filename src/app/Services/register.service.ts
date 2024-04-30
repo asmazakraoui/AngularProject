@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError,of } from 'rxjs';
 import { TypeReligion, User } from 'src/models/user';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 
 @Injectable({
@@ -165,6 +165,20 @@ public getUserRole(){
   }
  
  
- 
-
+  confirmJobApplication(id: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/confirm-job-application/${id}`, null).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 200) {
+          // If the status code is 200, treat it as a success
+          console.log('Job application confirmed successfully');
+          return of('Job application confirmed successfully'); // Return a successful response
+        } else {
+          // If the status code is not 200, treat it as an error
+          console.error('An error occurred while confirming job application:', error);
+          return throwError('An error occurred while confirming job application'); // Throw an error
+        }
+      })
+    );
+  }
+  
 }

@@ -134,45 +134,7 @@ import { DashFrontComponent } from './FrontOffice/dash-front/dash-front.componen
 import { DashAfterlogComponent } from './FrontOffice/dash-afterlog/dash-afterlog.component';
 import { HeaderSecComponent } from './FrontOffice/header-sec/header-sec.component';
 import { FrontComponent } from './FrontOffice/front/front.component';
-import { HttpClient } from '@angular/common/http';
-import { AddFuneralLocationComponent } from './components/add-funeral-location/add-funeral-location.component';
-import { FuneralLocationListComponent } from './components/funeral-location-list/funeral-location-list.component';
-import { UpdateFuneralLocationComponent } from './components/update-funeral-location/update-funeral-location.component';
-import { AddBurrialLocationComponent } from './components/add-burrial-location/add-burrial-location.component';
-import { BurrialLocationListComponent } from './components/burrial-location-list/burrial-location-list.component';
-import { UpdateBurrialLocationComponent } from './components/update-burrial-location/update-burrial-location.component';
-import { AddFlowerComponent } from './components/add-flower/add-flower.component';
-import { UpdateFlowerComponent } from './components/update-flower/update-flower.component';
-import { FlowerListComponent } from './components/flower-list/flower-list.component';
-import { AddMealComponent } from './components/add-meal/add-meal.component';
-import { MealsListComponent } from './components/meals-list/meals-list.component';
-import { UpdateMealComponent } from './components/update-meal/update-meal.component';
-import { AddCeremonyComponent } from './components/add-ceremony/add-ceremony.component';
-import { CeremonyListComponent } from './components/ceremony-list/ceremony-list.component';
-import { UpdateCeremonyComponent } from './components/update-ceremony/update-ceremony.component';
-import { MealSelectorComponent } from './components/meal-selector/meal-selector.component';
-import { FlowerSelectorComponent } from './components/flower-selector/flower-selector.component';
-import { BurrialSelectorComponent } from './components/burrial-selector/burrial-selector.component';
-import { FuneralSelectorComponent } from './components/funeral-selector/funeral-selector.component';
-import { PaiementComponent } from './components/paiement/paiement.component';
-import { SuccessComponent } from './components/success/success.component';
-import { InvitationComponent } from './components/invitation/invitation.component';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RatingComponent } from './components/rating/rating.component';
-
-
-import { NgxCaptchaModule } from 'ngx-captcha';
-import { RecaptchaComponent } from './components/recaptcha/recaptcha.component';
-import { AddFArrangementComponent } from './components/add-farrangement/add-farrangement.component';
-import { FarrangementListComponent } from './components/farrangement-list/farrangement-list.component';
-import { UpdateFarrangementComponent } from './components/update-farrangement/update-farrangement.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NotificationComponent } from './components/notification/notification.component';
-import { FlowerStatisticsComponent } from './components/flower-statistics/flower-statistics.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
-
-
+import { JobAppComponent } from './job-app/job-app.component';
 
 
 @NgModule({
@@ -217,47 +179,11 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     GroupeComponent,
     ChatComponent,
     HeroSectionComponent,
+    JobAppComponent,
    
     
 
 
-    AddFuneralLocationComponent,
-   
-  FuneralLocationListComponent,
-      UpdateFuneralLocationComponent,
-      AddBurrialLocationComponent,
-      BurrialLocationListComponent,
-      UpdateBurrialLocationComponent,
-      AddFlowerComponent,
-      UpdateFlowerComponent,
-      FlowerListComponent,
-      AddMealComponent,
-      MealsListComponent,
-      UpdateMealComponent,
-      AddCeremonyComponent,
-      CeremonyListComponent,
-      UpdateCeremonyComponent,
-      MealSelectorComponent,
-      FlowerSelectorComponent,
-      BurrialSelectorComponent,
-      FuneralSelectorComponent,
-      PaiementComponent,
-      SuccessComponent,
-      InvitationComponent,
-      RatingComponent,
-      RecaptchaComponent,
-      AddFArrangementComponent,
-      FarrangementListComponent,
-      UpdateFarrangementComponent,
-      NotificationComponent,
-      FlowerStatisticsComponent,
-      CalendarComponent,
-  
-
-      
-      
-     
-      
   ],
   imports: [
     BrowserModule,
@@ -372,16 +298,6 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     StyleClassModule,
 
     TabViewModule
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    NgxCaptchaModule,
-    MatSnackBarModule 
-   
-    
-   
-    
   ],
   bootstrap: [AppComponent]
 })

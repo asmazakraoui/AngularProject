@@ -50,11 +50,7 @@ export class AuthComponentComponent implements OnInit {
   }
  
 
-  onCertificateSelected(event:any) {
-    if (event.target.files && event.target.files.length > 0) {
-      this.certificateFile = event.target.files[0];
-    }
-  }
+
 
   register(): void {
     if (this.userForm.invalid) {
@@ -101,6 +97,7 @@ export class AuthComponentComponent implements OnInit {
       reader.readAsDataURL(file);
     }
   }
+  
 
   logout(): void {
     localStorage.removeItem('auth_token');

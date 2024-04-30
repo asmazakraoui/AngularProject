@@ -1,33 +1,100 @@
-<div class="chat_window">
-    <div class="top_menu">
-      <div class="buttons">
-        <div class="button close"></div>
-        <div class="button minimize"></div>
-        <div class="button maximize"></div>
+
+<app-header-sec></app-header-sec>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Your CSS styles here */
+        /* Make sure to include the styles from your provided template */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xl-12 chat">
+                <div class="card">
+                    <div class="card-header msg_head">
+                        <div class="d-flex bd-highlight">
+                            <div class="img_cont">
+                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">
+                                <span class="online_icon"></span>
+                            </div>
+                            <div class="user_info">
+                                <span>Chat Room</span>
+                            </div>
+                            <div class="video_cam" >
+                                <span><i class="fas fa-video"></i></span>
+                                <span><i class="fas fa-phone"></i></span>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="card-body msg_card_body">
+                       
+        <div class="chat-messages">
+          <!-- Display old chats -->
+          <div class="media" *ngFor="let oldChat of oldChats">
+              <div class="user-icon">
+                  <span>{{ oldChat.sender.prenomUser.charAt(0) }}</span>
+              </div>
+              <div class="media-body">
+                  <h5 class="mt-0">{{ oldChat.sender.prenomUser }}</h5>
+                  <div class="message-content received-message">
+                      <p>{{ oldChat.message }}</p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Display new messages -->
+          <div class="media" *ngFor="let message of messages">
+              <div class="media-body">
+
+                  <h5 class="mt-0">{{ message.senderUsername }}</h5>
+                  <div class="message-content sent-message">
+                    <div class="msg_cotainer">
+                      <p>{{ message.content }}</p>
+                    </div>
+                  </div>
+              </div>
+              <div class="user-icon">
+                  <span>{{ message.senderUsername.charAt(0) }}</span>
+              </div>
+          </div>
       </div>
-      <div class="title">
-        <img src="../../../assets/whatsapp-icon.png" width="25px" height="25px">
-        WhatsApp
-      </div>
-    </div>
-    <ul class="messages">
-      <li class="message right" *ngFor="let item of messageList"
-      [ngClass]="{'left': item.message_side === 'receiver', 'right': item.message_side === 'sender'}"
-      >
-        <div class="avatar"></div>
-        <div class="text_wrapper">
-          <div class="text">{{item.message}}</div>
+
+                    </div>
+                    <div class="card-footer">
+                        <form (ngSubmit)="sendMessageto()" #messageForm="ngForm">
+                          <div class="input-group ">
+                            <textarea name="messageContent" class="form-control type_msg" [(ngModel)]="messageContent" placeholder="Type your message..."></textarea>
+                            <div class="input-group-append">
+                                <button type="submit" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+                              </div>
+                          </div>
+                      </form>
+        
+                  </div>
+                  
+                </div>
+            </div>
         </div>
-      </li>
-    </ul>
-    <div class="bottom_wrapper clearfix">
-      <div class="message_input_wrapper">
-        <input class="message_input" placeholder="Message..." [(ngModel)]="messageInput" 
-        (keyup.enter)="sendMessage()"/>
-      </div>
-      <div class="send_message" (click)="sendMessage()">
-        <div class="icon"></div>
-        <div class="text">Send</div>
-      </div>
     </div>
-  </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Your custom JavaScript here -->
+    <script>
+        // Your JavaScript code here
+        // Make sure to include the JavaScript code you provided earlier
+    </script>
+</body>
+</html>

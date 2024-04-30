@@ -55,15 +55,18 @@
                       <td [ngClass]="user.accountConfirmed ? 'Confirmed' : 'Waiting'">{{ user.accountConfirmed ? 'Confirmed' : 'Waiting' }}</td>
                       <td>{{user.dateNaiss}}</td>
                       <td>
-                        <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
-                        <button class="btn btn-sm btn-primary" (click)="editUser(user.id)">Edit</button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteUser(user)">Delete</button>
+                        <button class="btn btn-sm btn-danger" (click)="confirmJobApplication(user.id)">Confirm</button>
                       </td>
+
                     </tr>
                   </tbody>
                 </table>
                 <pagination-controls (pageChange)="onPageChange($event)" id="userPagination"></pagination-controls>
 
               </div>
+
+           
             </div>
           </div>
         </div>

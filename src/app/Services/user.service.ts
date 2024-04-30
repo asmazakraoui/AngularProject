@@ -1,11 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs'; // Import throwError
 import { ProfileRequest } from 'src/models/ProfileRequest';
 import { User } from 'src/models/user';
 import { catchError, map } from 'rxjs/operators';
 import { Page } from 'src/models/Page';
 import { RegisterService } from './register.service';
+import { Injectable } from '@angular/core';
+import { JobApplication } from 'src/models/JobApplication';
 
 @Injectable({
   providedIn: 'root'
@@ -94,5 +95,9 @@ export class UserService {
   private handleError(error: any): Observable<never> {
     console.error('Error retrieving user profile:', error);
     return throwError('Failed to retrieve user profile');
+  }
+  retrieveDoctors(): Observable<JobApplication[]> {
+    const url = `${this.apiUrl}/retrieveDoctors`; // Construct the complete URL for the retrieveDoctors endpoint
+    return this.http.get<JobApplication[]>(url);
   }
 }

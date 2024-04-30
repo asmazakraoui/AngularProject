@@ -13,3 +13,7 @@
 .logout-btn i {
     margin-right: 5px; /* Spacing between icon and text */
 }
+.success-snackbar {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
