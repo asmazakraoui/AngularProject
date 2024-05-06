@@ -1,0 +1,38 @@
+<div class="container-scroller">
+    <app-nav-back></app-nav-back>
+    <div class="container-fluid page-body-wrapper">
+      <app-sidebar></app-sidebar>
+      <div class="main-panel">
+        <!-- Contenu principal -->
+        <div class="col-md-12 mt-5">
+          <div class="container">
+            <h2>Statistics Products by Category</h2>
+            
+            <div style="display: block;">
+              <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                chartType="bar" 
+                [plugins]="barChartPlugins">
+              </canvas>
+            </div>
+            <h2 style="padding: 20px;">Statistics Delivery by Gouvernorate</h2>
+            <div style="display: block">
+              <div style="display: block; width: 400px; height: 400px; padding-left:50px ;">
+                <canvas baseChart
+                        [data]="pieChartData"
+                        [labels]="pieChartLabels"
+                        chartType="pie"
+                        [options]="{ responsive: true, maintainAspectRatio: false }"
+                        [colors]="pieChartColors">
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

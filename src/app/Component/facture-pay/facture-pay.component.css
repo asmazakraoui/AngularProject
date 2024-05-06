@@ -1,0 +1,41 @@
+.order-details {
+    width: 980px;
+    margin-top: 20px;
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .product-image-container {
+    width: 120px;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-details {
+    margin-left: 150px;
+    font-family: 'Pacifico', cursive;
+  }
+  
+  .product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .product-price,
+  .product-quantity,
+  .product-total-price {
+    margin: 5px 0;
+  }
+
+  

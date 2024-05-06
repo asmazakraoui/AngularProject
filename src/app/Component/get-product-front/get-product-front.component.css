@@ -1,0 +1,436 @@
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 300px;
+  
+  }
+  
+  .input {
+    width: 260px;
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: 0.3s ease;
+
+  }
+  
+  .input::placeholder {
+    color: #9e9ea7;
+  
+  }
+  
+  .input:focus,
+  input:hover {
+    outline: none;
+    border-color: rgba(247, 127, 0, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgb(247 127 0 / 10%);
+  }
+  
+  .icon {
+    position: absolute;
+    left: 1rem;
+    fill: #9e9ea7;
+    width: 1rem;
+    height: 1rem;
+
+  }
+
+  /* Style du conteneur du filtre */
+  .filter-container {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style des titres des filtres */
+  .filter-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 15px;
+  }
+  
+  /* Style des options des filtres */
+  .filter-option {
+    margin-bottom: 15px;
+  }
+  
+  /* Style des étiquettes des filtres */
+  .filter-label {
+    font-size: 18px;
+    color: #6c757d;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  /* Style des sélecteurs de filtres */
+  .filter-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #fff;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  /* Style du bouton de filtre */
+  
+  
+  /* Style de la boîte de recherche */
+  .filter-search {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #fff;
+    outline: none;
+    font-size: 16px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* Style de la boîte de recherche au focus */
+  .filter-search:focus {
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+  }
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e8e8e8;
+  background-color: #f3f3f4;
+  width: 35px;
+  height: 35px;
+  font-size: 24px;
+  text-transform: uppercase;
+  border: 2px solid #dfa974;
+  border-radius: 50%;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15),
+    2px 2px 2px rgba(0, 0, 0, 0.1),
+    -3px -3px 2px rgba(255, 255, 255, 0.05),
+    -2px -2px 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button .span {
+  position: relative;
+  z-index: 2;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  background-color: #e8e8e8;
+  width: 150%;
+  height: 150%;
+  left: 0%;
+  bottom: 0%;
+  transform: translate(-100%, 100%) rotate(45deg);
+  border-radius: 15px;
+}
+
+.button:hover::before {
+  animation: shakeBack 0.6s forwards 0.6s;
+}
+
+.button:hover .span {
+  scale: 1.2;
+}
+
+.button:hover {
+  box-shadow: none;
+}
+
+.button:active {
+  scale: 0.95;
+}
+
+@keyframes shakeBack {
+  0% {
+    transform: translate(-100%, 100%) rotate(45deg);
+  }
+
+  50% {
+    transform: translate(15%, -15%) rotate(45deg);
+  }
+
+  100% {
+    transform: translate(-10%, 10%) rotate(45deg);
+  }
+}
+.input-container {
+	display: flex;
+	align-items: center;
+  }
+
+  .filt {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #dfa974;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+    padding: 16px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    margin-left: 200px;
+   }
+   
+   .filt span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+   }
+   
+   .filt span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+   }
+   
+   .filt:hover span {
+    padding-right: 15px;
+   }
+   
+   .filt:hover span:after {
+    opacity: 1;
+    right: 0;
+   }
+
+   .price-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .price-range {
+    margin: 0px; /* Réduire la marge entre les intervalles de prix */
+    text-align: center;
+  }
+  
+  .price-label {
+    margin-top: 5px; /* Ajuster la marge entre l'étiquette de prix et l'entrée */
+  }
+  
+  .price-filter input[type="range"] {
+    width: 150px; /* Réduire la largeur de l'entrée de l'intervalle de prix */
+    height: 5px;
+    background: #d3d3d3;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0px; /* Réduire la marge autour de l'entrée */
+  }
+  
+  .price-filter input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #ff5757;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .category-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category-checkbox {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.category-checkbox input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.category-checkbox label {
+    font-size: 16px;
+}
+
+.mini-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sort-buttons button:hover {
+  background-color: #45a049;
+}
+
+.pagination button {
+  background-color: #dfa974;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #dfa974;
+}
+
+.pagination span {
+  font-size: 18px;
+  font-weight: bold;
+}
+.sort-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.sort-label {
+  margin-right: 10px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.wrapper .icon {
+  position: relative;
+  background: #fff;
+  border-radius: 50%;
+  margin: 0 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #fff;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #fff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper svg {
+  fill: #dfa974;
+}
+
+.wrapper span:hover,
+.wrapper svg:hover,
+.wrapper .black:hover,
+.wrapper .black:hover .tooltip,
+.wrapper .black:hover .tooltip::before {
+  background: #dfa974;
+  color: white;
+  fill: white;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-container .pagination {
+  margin-top: 20px; /* Ajoutez une marge en haut pour l'espace */
+}
+
+.pagination-container .pagination .page-link {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin: 0 3px;
+}
+
+.pagination-container .pagination .page-link:hover {
+  color: #23527c;
+  background-color: #f5f5f5;
+}
+
+.pagination-container .pagination .page-item.active .page-link {
+  color: #fff;
+  background-color: #dfa974;
+  border-color: #dfa974;
+}
+.card-body .btn-primary {
+  width: 40%;
+  background-color: #a96114dc; /* Change la couleur de fond du bouton en bleu */
+  border-radius: 20px; /* Rend les coins du bouton arrondis */
+}
+
+.card-body .btn-primary {
+  width: 40%;
+  
+  background-color: #a96114dc; /* Change la couleur de fond du bouton en bleu */
+  border-radius: 20px; /* Rend les coins du bouton arrondis */
+}
+
+.d-none {
+  display: none !important; /* Assurez-vous que la classe d-none a la priorité pour masquer les éléments */
+}

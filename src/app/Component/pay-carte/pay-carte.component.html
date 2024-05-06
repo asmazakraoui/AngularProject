@@ -1,0 +1,157 @@
+
+<app-header-front></app-header-front>
+<section class="course-content checkout-widget">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="student-widget">
+                    <div class="student-widget-group add-course-info">
+                        <div class="cart-head">
+                            <h4>Billing Address</h4>
+                        </div>
+                        <div class="checkout-form">
+                            <form [formGroup]="payCarteForm" >
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="input-block">
+                                            <label for="firstName" class="form-control-label">First Name</label>
+                                            <input type="text" class="form-control"  id="firstName" name="firstName" placeholder="Enter your first Name"formControlName="firstName">
+                                            <small class="text-danger" *ngIf="payCarteForm.get('firstName')?.errors && payCarteForm.get('firstName')?.touched">First Name is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input-block">
+                                            <label for="lastName" class="form-control-label">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last Name"formControlName="lastName">
+                                            <small class="text-danger" *ngIf="payCarteForm.get('lastName')?.errors && payCarteForm.get('lastName')?.touched">Last Name is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-block">
+                                            <label for="phone" class="form-control-label">Phone Number </label>
+                                            <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number"formControlName="phone">
+                                            <small class="text-danger" *ngIf="payCarteForm.get('phone')?.errors && payCarteForm.get('phone')?.touched">Phone is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-block">
+                                            <label for="address" class="form-control-label">Address Line </label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Address"formControlName="address">
+                                            <small class="text-danger" *ngIf="payCarteForm.get('address')?.errors && payCarteForm.get('address')?.touched">Address is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="input-block">
+                                            <label for="firstName" class="form-label">Governorate</label>
+                                            <select class="form-select select" id="country" name="country" formControlName="country">
+                                                <option>Select country</option>
+                                                <option>Tunis</option>
+                                                <option>Sousse</option>
+                                                <option>Sfax</option>
+                                                <option>Monastir</option>
+                                                <option>Beja</option>
+                                                <option>Bizerte</option>
+                                                <option>Nabeul</option>
+                                                <option>Ben_Arous</option>
+                                                <option>Ariana</option>
+                                                <option>Mahdia</option>
+                                                <option>Jendouba</option>
+                                                <option>Kef</option>
+                                                <option>Touzer</option> 
+                                                <option>Gabes</option>
+                                                <option>Gafsa</option>
+                                                <option>Tatouine</option>
+                                                <option>Mednine</option>
+                                                <option>Sidi_Bouzid</option>
+                                                <option>Karouine</option>
+                                                <option>kebili</option>
+                                                <option>Kasserine</option>
+                                                <option>Manouba</option>
+                                            </select>
+                                            <small class="text-danger" *ngIf="payCarteForm.get('country')?.errors && payCarteForm.get('country')?.touched">First Name is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="input-block">
+                                            <label for="codePostal" class="form-control-label">Zip/Postal Code</label>
+                                            <input type="number" class="form-control" id="postalCode" name="codePostal" formControlName="postalCode">
+                                            <small class="text-danger" *ngIf="payCarteForm.get('codePostal')?.errors && payCarteForm.get('postalCode')?.touched">Postal Code is required</small>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>         
+                <div class="student-widget pay-method">
+                    <div class="student-widget-group add-course-info">
+                        <div class="cart-head">
+                            <h4>Review Payment</h4>
+                        </div>
+                        <div class="checkout-form">
+                            <form action="cart.html" >
+                                <div class="row">
+                                    <div class="order-details">
+                                        <div class="order-item">
+                                            <div class="product-image-container">
+                                                <h5 class="product-price">Image Product</h5>
+                                            </div>
+                                            <div class="product-details">
+                                                <h5 class="product-price">Product Name</h5>
+                                            </div>
+                                            <div class="product-details">
+                                                <h5 class="product-price">Unit price</h5>
+                                            </div>
+                                            <div class="product-details">
+                                                <h5 class="product-quantity">Quantity</h5>
+                                            </div>
+                                            <div class="product-details">
+                                                <h5 class="product-total-price">Total Price Product</h5>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                                <!-- Lignes de la facture pour chaque article/commande -->
+                                    <ng-container >
+                                        <app-facture-pay *ngFor="let commandeLine of commandLines" [commandeLine]="commandeLine"></app-facture-pay>
+                                    </ng-container>
+                                    
+                                    
+                                    <div class="or-details">
+                                        <div class="prod-details">
+                                            <div class="or-item">
+                                                <h5 class="detail-label">SubTotal :</h5>
+                                                <h5 class="detail-value">{{order.totalPrix + order.remise}}$</h5>
+                                            </div>
+                                            <div class="or-item">
+                                                <h5 class="detail-label">Discount :</h5>
+                                                <h5 class="detail-value">{{order.remise}}$</h5>
+                                            </div>
+                                            <div class="or-item">
+                                                <h5 class="detail-label">Delivery Price :</h5>
+                                                <h5 class="detail-value">7$</h5>
+                                            </div>
+                                            <div class="or-item">
+                                                <h5 class="detail-label">Total :</h5>
+                                                <h5 class="detail-value">{{order.totalPrix +7}}$</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <div class="payment-btn">
+                                <button class="btn btn-primary" type="submit" (click)="Payment()" (click)="addDelivery(order.idCom)">Make a Payment</button>
+                            </div>
+                            <div class="payment-btn">
+                                <button class="btn btn-primary" type="submit" (click)="generateInvoice()" >Your Invoice PDF</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer-front></app-footer-front>

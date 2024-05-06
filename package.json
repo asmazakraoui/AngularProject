@@ -51,6 +51,12 @@
     "rxjs": "~7.8.0",
     "sockjs-client": "^1.6.1",
     "stompjs": "^2.3.3",
+    "@stripe/stripe-js": "^3.3.0",
+    
+    "ng2-charts": "^2.4.1",
+    "pdf-lib": "^1.17.1",
+    "pdfmake": "^0.2.10",
+    "sweetalert2": "^11.10.8",
     "tslib": "^2.3.0",
     "twilio": "^5.0.1",
     "zone.js": "~0.12.0"

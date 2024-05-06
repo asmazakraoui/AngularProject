@@ -1,0 +1,84 @@
+<div class="card">
+  <img [src]="getImageUrl()" alt="Product Image" class="card-img-top" style="width: 300px; height: 300px;">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.nomProduit }}</h5>
+    <h4 class="card-text">{{ product.prixProduit }}TND</h4>
+    <!--<div class="rating" (click)="getStarsArray()">
+      <span (click)="rateProduct(product.idProduit, 1)" [ngStyle]="{ color: selectedStars >= 1 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 0.5 ? 'gold' : 'gray' }">&#9733;</span>
+      <span (click)="rateProduct(product.idProduit, 2)" [ngStyle]="{ color: selectedStars >= 2 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 1.5 ? 'gold' : 'gray' }">&#9733;</span>
+      <span (click)="rateProduct(product.idProduit, 3)" [ngStyle]="{ color: selectedStars >= 3 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 2.5 ? 'gold' : 'gray' }">&#9733;</span>
+      <span (click)="rateProduct(product.idProduit, 4)" [ngStyle]="{ color: selectedStars >= 4 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 3.5 ? 'gold' : 'gray' }">&#9733;</span>
+      <span (click)="rateProduct(product.idProduit, 5)" [ngStyle]="{ color: selectedStars >= 5 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 4.5 ? 'gold' : 'gray' }">&#9733;</span>
+    </div>
+    
+<div>
+  AVG:
+  <span *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+        [class.avg-filled]="averageRating > i">★</span>
+  ({{ averageRating }})
+</div>-->
+  <div class="rating" (click)="loadAverageRating()">
+    <span (click)="rateProduct(product.idProduit, 1)" [ngStyle]="{ color: selectedStars >= 1 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 0.5 ? 'gold' : 'gray' }">&#9733;</span>
+    <span (click)="rateProduct(product.idProduit, 2)" [ngStyle]="{ color: selectedStars >= 2 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 1.5 ? 'gold' : 'gray' }">&#9733;</span>
+    <span (click)="rateProduct(product.idProduit, 3)" [ngStyle]="{ color: selectedStars >= 3 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 2.5 ? 'gold' : 'gray' }">&#9733;</span>
+    <span (click)="rateProduct(product.idProduit, 4)" [ngStyle]="{ color: selectedStars >= 4 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 3.5 ? 'gold' : 'gray' }">&#9733;</span>
+    <span (click)="rateProduct(product.idProduit, 5)" [ngStyle]="{ color: selectedStars >= 5 ? 'gold' : 'gray' }" [ngStyle]="{ color: averageRating >= 4.5 ? 'gold' : 'gray' }">&#9733;</span>
+  </div>
+
+    
+    
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="button-container">
+        <button class="btn btn-p" (click)="openModal(product)">More Details</button>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="button-container">
+          <button class="btn btn-succ" (click)="addToCart(product, 2)">
+              <span class="icon-panier">
+                  <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+                  </svg>
+              </span>
+              Add Cart
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="custom-modal" tabindex="-1" role="dialog" *ngIf="selectedProduct">
+  <div class="custom-modal-dialog" role="document">
+    <div class="custom-modal-content">
+
+      <div class="custom-modal-header ">
+        <h5 class="custom-modal-title">Product Details</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="custom-modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img [src]="getImageUrl()" class="img-fluid" alt="Product Image">
+          </div>
+          <div class="col-md-6">
+            <p><strong style="font-size: 20px;">Product Name:</strong> {{ selectedProduct.nomProduit }}</p>
+            <p><strong style="font-size: 20px;">Price:</strong> {{ selectedProduct.prixProduit }}TND</p>
+            <p><strong style="font-size: 20px;">Description:</strong> {{ selectedProduct.description }}</p>
+            <p><strong style="font-size: 20px;">Quantity in stock:</strong> {{ selectedProduct.nbrProduit }}</p>
+            <div  class="button" (click)="addToCart(selectedProduct, 2)">
+              <div class="button-wrapper">
+                  <div class="text">Buy Now</div>
+                  <span class="icon">
+                      <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+                      </svg>
+                  </span>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+
