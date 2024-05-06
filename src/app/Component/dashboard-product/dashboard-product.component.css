@@ -1,0 +1,31 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .category {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  h3 {
+    margin-bottom: 5px;
+  }
+  /* piechart.component.css */
+
+:host {
+  display: block; /* Par défaut, les éléments Angular sont des blocs */
+}
+
+canvas {
+  width: 100%; /* Assurez-vous que le graphique occupe toute la largeur de son conteneur */
+  height: auto; /* Hauteur automatique pour maintenir les proportions du graphique */
+}
+
+  

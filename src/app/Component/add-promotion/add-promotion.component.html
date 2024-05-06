@@ -1,0 +1,32 @@
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Promotion</h5>
+                <button type="button" class="close" (click)="onClose()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for adding new promotion -->
+                <!-- Example: -->
+                <form (submit)="addPromotion()" [formGroup]="promotionForm">
+                    <div class="form-group">
+                        <label for="code">Code:</label>
+                        <input type="text" class="form-control" id="code" name="code" formControlName="code">
+                        <small class="text-danger" *ngIf="promotionForm.get('code')?.errors && promotionForm.get('code')?.touched">Code Promo is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="discount">Discount:</label>
+                        <input type="number" class="form-control" id="discount" name="discount" formControlName="discountPercentage">
+                        <small class="text-danger" *ngIf="promotionForm.get('discountPercentage')?.errors && promotionForm.get('discountPercentage')?.touched">Discount Percentage is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="expirationDate">Expiration Date:</label>
+                        <input type="date" class="form-control" id="expirationDate" name="expirationDate" formControlName="expirationDate">
+                        <small class="text-danger" *ngIf="promotionForm.get('expirationDate')?.errors && promotionForm.get('expirationDate')?.touched">Expiration Date is required</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" >Add Promotion</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.btn-delivery {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #dfa974; /* Couleur de fond du bouton */
+    color: #ffffff; /* Couleur du texte */
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* Style lorsque le curseur est au-dessus du bouton */
+  .btn-delivery:hover {
+    background-color: #dfa974; /* Couleur de fond du bouton au survol */
+  }
+  
+  /* Style lorsque le bouton est pressé */
+  .btn-delivery:active {
+    background-color: #dfa974; /* Couleur de fond du bouton lorsqu'il est pressé */
+  }
