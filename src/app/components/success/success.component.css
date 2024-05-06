@@ -1,0 +1,105 @@
+/* success.component.css */
+.success-message {
+    font-family: 'Arial', sans-serif;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background: #fff;
+  }
+  
+  .ceremony-details {
+    margin-top: 20px;
+  }
+  
+  .ceremony-details h1, .ceremony-details h2 {
+    color: #333;
+  }
+  
+  .ceremony-details p, .price-table p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  
+  .price-table {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .price-table p {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+  }
+  
+  .price-table p:before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
+  
+  /* Pour le téléchargement en PDF */
+  @media print {
+    body {
+      visibility: hidden;
+    }
+  
+    .success-message, .success-message * {
+      visibility: visible;
+    }
+  
+    .success-message {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+  
+
+  
+/* Styliser le bouton de téléchargement avec juste l'icône */
+.fa-download {
+  background-color: #007bff; /* Bleu */
+  color: white; /* Texte blanc */
+  padding: 10px; /* Espacement autour de l'icône */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur en forme de main au survol */
+  font-size: 16px; /* Taille de l'icône */
+  margin-right: 10px; /* Espacement avec le bouton "Next" */
+  margin: 4px 620px; 
+}
+
+/* Conteneur des boutons */
+.buttons-container {
+  display: flex; /* Utiliser flexbox pour aligner les boutons sur la même ligne */
+  justify-content: center; /* Centrer horizontalement les boutons */
+  margin-top: 20px; /* Espacement entre les boutons et les autres éléments */
+}
+
+.next-button {
+  background-color: #4CAF50; /* Couleur de fond */
+  border: none; /* Pas de bordure */
+  color: white; /* Couleur du texte */
+  padding: 15px 32px; /* Espacement à l'intérieur du bouton */
+  text-align: center; /* Centrer le texte */
+  text-decoration: none; /* Pas de soulignement */
+  font-size: 16px; /* Taille de la police */
+  cursor: pointer; /* Curseur pointeur au survol */
+  border-radius: 8px; /* Bordure arrondie */
+  transition: background-color 0.3s ease; /* Transition en douceur pour la couleur de fond */
+  margin: 4px 600px; 
+}
+
+.next-button:hover {
+  background-color: #45a049; /* Couleur de fond au survol */
+}
+
+.next-button:active {
+  background-color: #367939; /* Couleur de fond lorsque le bouton est enfoncé */
+}
