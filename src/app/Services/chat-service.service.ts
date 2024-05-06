@@ -51,7 +51,7 @@ export class ChatServiceService {
     this.stompClient.activate();
   }
   // Method to subscribe to the specified group chat topic
-subscribeToGroupChatMessages(groupChatId: number): void {
+  subscribeToGroupChatMessages(groupChatId: number): void {
 
   // Subscribe to the topic where group chat messages are being broadcasted
   this.stompClient.subscribe('/topic/groupChat/' + groupChatId, (message: any) => { 
@@ -59,8 +59,8 @@ subscribeToGroupChatMessages(groupChatId: number): void {
     // Handle the received message here, such as emitting it through an observable
     this.messagesSubject.next(receivedMessage);
   });
-
 }
+
    subscribeToTopic(groupChatid: number) {
     this.stompClient.subscribe('/topic/groupChat/' + groupChatid, (message: any) => { 
       const chatMessage = JSON.parse(message.body);
@@ -77,7 +77,8 @@ subscribeToGroupChatMessages(groupChatId: number): void {
   }
   disconnect(): void {
     if (this.stompClient && this.stompClient.connected) {
-      this.stompClient.deactivate();
+      this.stompClient.deactivate(); // Use deactivate instead of disconnect
+      console.log('Disconnected from WebSocket server');
     }
   }
 

@@ -63,8 +63,48 @@
                   </tbody>
                 </table>
                 <pagination-controls (pageChange)="onPageChange($event)" id="userPagination"></pagination-controls>
-
+       
+                
+                
+                
               </div>
+
+
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                    <th>CV</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Gender</th>
+                      <th>Account</th>
+                      <th>Date of Birth</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let job of jobApplications | paginate: { itemsPerPage: pageSize, currentPage: currentPage, id: 'userPagination' }">
+                     
+                      <td>{{ job.user.prenomUser }}</td>
+                      <td>{{ job.user.nomUser }}</td>
+                      <td>{{ job.user.emailUser }}</td>
+                      <td>{{ job.user.sexe }}</td>
+                      <td [ngClass]="job.user.accountConfirmed ? 'Confirmed' : 'Waiting'">{{ job.user.accountConfirmed ? 'Confirmed' : 'Waiting' }}</td>
+                      <td>{{ job.user.dateNaiss | date }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-danger" (click)="confirmJobApplication(job.id)">Confirm</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="onPageChange($event)" id="userPagination"></pagination-controls>
+                <div *ngIf="error">
+                  An error occurred while fetching job applications: {{ error }}
+                </div>
+              </div>
+              
 
            
             </div>

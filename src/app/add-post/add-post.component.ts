@@ -1,9 +1,9 @@
 import { CommentService } from './../Services/comment.service';
 import { Post } from '../models/Post';
-import { Component ,OnInit } from '@angular/core';
 import { PostService } from './../Services/post.service';
 import { FormBuilder,FormGroup, Validator, Validators } from '@angular/forms';
-import { Router } from '@angular/router'; // Importez le service de routage
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -19,8 +19,9 @@ export class AddPostComponent implements OnInit{
     imagePost:"",
     likes:0,
     dislikes:0,
-    commentText:""
-    
+    commentText:"",
+    isDisliked:false,
+    isLiked:false
 
   };
 

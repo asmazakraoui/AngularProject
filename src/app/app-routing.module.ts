@@ -30,7 +30,10 @@ import { FrontComponent } from './FrontOffice/front/front.component';
 import { DashFrontComponent } from './FrontOffice/dash-front/dash-front.component';
 import { AuthGuard } from './User/AuthGuard';
 import { JobAppComponent } from './job-app/job-app.component';
+import { TypeRole } from 'src/models/role';
+import { FacebookCallbackComponent } from './facebook-callback/facebook-callback.component';
 //import { UpdateCommentComponent } from './update-comment/update-comment.component';
+
 export const routes: Routes = [
   {
     path:"",
@@ -46,8 +49,10 @@ export const routes: Routes = [
   },
   { path: 'Register', component: AuthComponentComponent },
   { path:"login",component:LoginComponent },
-  { path:"admin",component:DashbordComponent , canActivate: [AuthGuard]},
-  
+  { path: "admin", component: DashbordComponent, data: { requiredRole: TypeRole.ADMIN }, canActivate: [AuthGuard] },
+  { path: 'oauth2/authorization/facebook', component: LoginComponent },
+  { path: 'facebook-callback', component: FacebookCallbackComponent },
+
   { path:"role", component:RoleComponent },
   { path:"update/:id", component:ProfileComponent, canActivate: [AuthGuard] },
   { path:"showProfile", component:ProfileSeeComponent, canActivate: [AuthGuard] },
@@ -91,45 +96,7 @@ export const routes: Routes = [
  { path: 'getCommentBypostid/:idPost', component: CommentComponent}, // Exemple de route pour les détails de publication avec un paramètre d'ID
  { path: 'add/:idPost', component: ReactComponent}, // Exemple de route pour les détails de publication avec un paramètre d'ID
  { path: 'groupe', component: GroupeComponent },
- { path: 'chat/:id', component: ChatComponent }
- // { path: 'add-funeral-location', component: AddFuneralLocationComponent },
-
-// { path: 'funeral-location-list', component: FuneralLocationListComponent },
-// {path: 'update-funeral-location/:id', component: UpdateFuneralLocationComponent},
-// { path: 'add-cemetery', component: AddBurrialLocationComponent },
-// { path: 'cemetery-list', component: BurrialLocationListComponent },
-// { path: 'update-cemetery/:id', component: UpdateBurrialLocationComponent },
-// { path: 'add-flower', component: AddFlowerComponent },
-// { path: 'flower-list', component: FlowerListComponent },
-// { path: 'update-flower/:id', component: UpdateFlowerComponent },
-// { path: 'add-meal', component: AddMealComponent  },
-// { path: 'Meals-list', component: MealsListComponent },
-// { path: 'update-meal/:id', component: UpdateMealComponent },
-// { path: 'add-ceremony', component: AddCeremonyComponent  },
-// { path: 'ceremony-list', component: CeremonyListComponent },
-// { path: 'update-ceremony/:id', component: UpdateCeremonyComponent },
-// { path: 'meals', component: MealSelectorComponent },
-// { path: 'flowers', component: FlowerSelectorComponent },
-// { path: 'cemeteries', component: BurrialSelectorComponent },
-// { path: 'funeral-locations', component: FuneralSelectorComponent },
-// { path: 'pay', component: PaiementComponent },
-// { path: 'success', component: SuccessComponent },
-// { path: 'invit/:id', component: InvitationComponent },
-// { path: 'rating', component: RatingComponent },
-// { path: 'recaptcha', component: RecaptchaComponent },
-// { path: 'AddFarrangemenet', component: AddFArrangementComponent },
-// { path: 'FarrList', component: FarrangementListComponent },
-// { path: 'UpdateFArr/:id', component: UpdateFarrangementComponent },
-// { path: 'flowerstat', component: FlowerStatisticsComponent },
-//  { path: 'Calendar/:id', component: CalendarComponent }
-
-
-
-
-
-
-
-
+ { path: 'chat/:id', component: ChatComponent },
 
 ];
 

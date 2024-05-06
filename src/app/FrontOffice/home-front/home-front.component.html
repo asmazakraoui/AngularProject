@@ -1,4 +1,5 @@
  <!-- About Us Section Begin -->
+ 
  <section class="aboutus-section spad">
     <div class="container">
         <div class="row">
@@ -11,7 +12,7 @@
                     <p class="f-para">Frontizo steps in to ease your access to medical assistance, Through its user-friendly online platform.</p>
                     <p class="s-para">Our app simplifies the care journey, ensuring smooth communication between health care providers and elderly patients.</p>
                    
-                    <a href="#" class="primary-btn about-btn">Read More</a>
+                    <a [routerLink]="'/dashFront'" class="primary-btn about-btn">Read More</a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -45,50 +46,50 @@
         <div class="row">
             <div class="col-lg-4 col-sm-6">
                 <div class="service-item">
-                    <i class="flaticon-036-parking"></i>
+                    <i class="fas fa-calendar-alt fa-3x"></i>
                     <h4>Events</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna.</p>
+                    <p>Our event feature provides a comprehensive platform for organizing and participating in a variety of enriching activities tailored specifically for seniors. From educational workshops and fitness classes to social gatherings and cultural events,</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="service-item">
-                    <i class="flaticon-033-dinner"></i>
+                    <i class="fas fa-shopping-cart fa-3x"></i>
                     <h4>Shop</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna.</p>
+                    <p>Our Shop offers a diverse selection of carefully vetted products, ranging from nutritious foods to wellness essentials, all tailored to support a healthy lifestyle for seniors. 
+                        Users can  browse and purchase items that cater to their dietary needs and health goals.
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="service-item">
-                    <i class="flaticon-026-bed"></i>
+                    <i class="fas fa-video fa-3x"></i>
                     <h4>TeleMedecine</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna.</p>
+                    <p>. Through video consultations, users can receive personalized medical advice, diagnosis, and treatment plans without the hassle of traveling to a clinic. Our Telemedicine feature prioritizes 
+                         efficiency, ensuring that seniors can easily access the care they need, when they need it.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="service-item">
-                    <i class="flaticon-024-towel"></i>
+                    <i class="fas fa-book fa-3x"></i>
                     <h4>Library</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna.</p>
+                    <p>Whether seeking practical advice, seeking inspiration, or simply indulging in a good read, our Library feature provides a wealth of knowledge to support seniors in leading healthier, happier lives. Dive into a world of discovery, education, 
+                        and empowerment .</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="service-item">
-                    <i class="flaticon-044-clock-1"></i>
+                    <i class="fas fa-comments fa-3x"></i>
                     <h4>Chat</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna.</p>
+                    <p> Whether seeking advice, sharing experiences, or simply enjoying friendly banter, users can connect with like-minded individuals from across the globe,
+                         breaking through social isolation and cultivating a sense of belonging.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="service-item">
-                    <i class="flaticon-012-cocktail"></i>
+                    <i class="fas fa-stethoscope fa-3x"></i>
                     <h4>Diagnostic</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna.</p>
+                    <p> Whether it's identifying potential health risks, suggesting preventative measures, or advising on next steps for medical consultation,
+                         our feature provides invaluable guidance tailored to each individual's unique needs. With</p>
                 </div>
             </div>
         </div>
@@ -102,27 +103,24 @@
         <div class="hp-room-items">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="hp-room-item" style="background-image: url('/assets/FrontOffice/img/room/room-b1.jpg')">
+                    <div class="hp-room-item" style="background-image: url('/assets/FrontOffice/img/sport.jpg')">
                         <div class="hr-text">
-                            <h3>Double Room</h3>
-                            <h2>199$<span>/Pernight</span></h2>
+                            <h3>Sport Event</h3>
+                            <h2>One Day<span>/Week</span></h2>
                             <table>
                                 <tbody>
-                                    <tr>
-                                        <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
-                                    </tr>
+                                   
                                     <tr>
                                         <td class="r-o">Capacity:</td>
-                                        <td>Max persion 5</td>
+                                        <td>Max persion 40</td>
                                     </tr>
                                     <tr>
-                                        <td class="r-o">Bed:</td>
-                                        <td>King Beds</td>
+                                        <td class="r-o">Time:</td>
+                                        <td>Morning</td>
                                     </tr>
                                     <tr>
                                         <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
+                                        <td>Monitored</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -131,27 +129,24 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="hp-room-item set-bg" style="background-image: url('/assets/FrontOffice/img/room/room-b2.jpg')">
+                    <div class="hp-room-item set-bg" style="background-image: url('/assets/FrontOffice/img/yoga.jpg')">
                         <div class="hr-text">
-                            <h3>Premium King Room</h3>
-                            <h2>159$<span>/Pernight</span></h2>
+                            <h3>Yoga</h3>
+                            <h2>3 Day<span>/Week</span></h2>
                             <table>
                                 <tbody>
-                                    <tr>
-                                        <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
-                                    </tr>
+                                   
                                     <tr>
                                         <td class="r-o">Capacity:</td>
-                                        <td>Max persion 5</td>
+                                        <td>Max persion 40</td>
                                     </tr>
                                     <tr>
-                                        <td class="r-o">Bed:</td>
-                                        <td>King Beds</td>
+                                        <td class="r-o">Time:</td>
+                                        <td>Evening</td>
                                     </tr>
                                     <tr>
                                         <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
+                                        <td>Coching</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -160,28 +155,25 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="hp-room-item set-bg" style="background-image: url('/assets/FrontOffice/img/room/room-b3.jpg')">
+                    <div class="hp-room-item set-bg" style="background-image: url('/assets/FrontOffice/img/boook.jpg')">
 
                         <div class="hr-text">
-                            <h3>Deluxe Room</h3>
-                            <h2>198$<span>/Pernight</span></h2>
+                            <h3>Book Session</h3>
+                            <h2>7 Days<span>/Week</span></h2>
                             <table>
                                 <tbody>
-                                    <tr>
-                                        <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
-                                    </tr>
+                                   
                                     <tr>
                                         <td class="r-o">Capacity:</td>
-                                        <td>Max persion 5</td>
+                                        <td>Max persion 40</td>
                                     </tr>
                                     <tr>
-                                        <td class="r-o">Bed:</td>
-                                        <td>King Beds</td>
+                                        <td class="r-o">Time:</td>
+                                        <td>Evening</td>
                                     </tr>
                                     <tr>
                                         <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
+                                        <td>Reading, Hearing</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -190,28 +182,25 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="hp-room-item set-bg" style="background-image: url('/assets/FrontOffice/img/room/room-b4.jpg')">
+                    <div class="hp-room-item set-bg" style="background-image: url('/assets/FrontOffice/img/nature.jpg')">
 
                         <div class="hr-text">
-                            <h3>Family Room</h3>
-                            <h2>299$<span>/Pernight</span></h2>
+                            <h3>Embracing the nature</h3>
+                            <h2>2 Day<span>/Week</span></h2>
                             <table>
                                 <tbody>
-                                    <tr>
-                                        <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
-                                    </tr>
+                                   
                                     <tr>
                                         <td class="r-o">Capacity:</td>
-                                        <td>Max persion 5</td>
+                                        <td>Max persion 40</td>
                                     </tr>
                                     <tr>
-                                        <td class="r-o">Bed:</td>
-                                        <td>King Beds</td>
+                                        <td class="r-o">Time:</td>
+                                        <td>Morning</td>
                                     </tr>
                                     <tr>
                                         <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
+                                        <td>Coching</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -294,52 +283,47 @@
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <div class="blog-item set-bg" style="background-image: url('/assets/FrontOffice/img/blog/blog-1.jpg')">
+                <div class="blog-item set-bg" style="background-image: url('/assets/FrontOffice/img/pos1.jpg')">
 
                     <div class="bi-text">
-                        <span class="b-tag">Travel Trip</span>
-                        <h4><a href="#">Tremblant In Canada</a></h4>
-                        <div class="b-time"><i class="icon_clock_alt"></i> 15th April, 2019</div>
+                        <span class="b-tag">Open Day</span>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 15th May, 2024</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="blog-item set-bg" style="background-image: url('/assets/FrontOffice/img/blog/blog-2.jpg')">
+                <div class="blog-item set-bg" style="background-image: url('/assets/FrontOffice/img/pos3.png')">
 
                     <div class="bi-text">
-                        <span class="b-tag">Camping</span>
-                        <h4><a href="#">Choosing A Static Caravan</a></h4>
-                        <div class="b-time"><i class="icon_clock_alt"></i> 15th April, 2019</div>
+                        <span class="b-tag">Conference</span>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 16th May, 2024</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="blog-item  set-bg" style="background-image: url('/assets/FrontOffice/img/blog/blog-3.jpg')">
+                <div class="blog-item  set-bg" style="background-image: url('/assets/FrontOffice/img/pos2.jpg')">
 
                     <div class="bi-text">
                         <span class="b-tag">Event</span>
-                        <h4><a href="#">Copper Canyon</a></h4>
-                        <div class="b-time"><i class="icon_clock_alt"></i> 21th April, 2019</div>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 21th May, 2024</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="blog-item small-size set-bg" style="background-image: url('/assets/FrontOffice/img/blog/blog-wide.jpg')">
+                <div class="blog-item small-size set-bg" style="background-image: url('/assets/FrontOffice/img/pos4.jpg')">
 
                     <div class="bi-text">
-                        <span class="b-tag">Event</span>
-                        <h4><a href="#">Trip To Iqaluit In Nunavut A Canadian Arctic City</a></h4>
-                        <div class="b-time"><i class="icon_clock_alt"></i> 08th April, 2019</div>
+                        <span class="b-tag">Jazz Party</span>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 08th June, 2024</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="blog-item small-size set-bg" style="background-image: url('/assets/FrontOffice/img/blog/blog-10.jpg')">
+                <div class="blog-item small-size set-bg" style="background-image: url('/assets/FrontOffice/img/pos5.jpg')">
 
                     <div class="bi-text">
-                        <span class="b-tag">Travel</span>
-                        <h4><a href="#">Traveling To Barcelona</a></h4>
-                        <div class="b-time"><i class="icon_clock_alt"></i> 12th April, 2019</div>
+                        <span class="b-tag">Cocktail</span>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 12th July, 2024</div>
                     </div>
                 </div>
             </div>
@@ -347,3 +331,4 @@
     </div>
 </section>
 <!-- Blog Section End -->
+

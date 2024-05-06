@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from '../../Services/register.service';
 import { Router } from '@angular/router';
 import { TypeRole } from 'src/models/role';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-auth-component',
@@ -16,12 +17,13 @@ export class AuthComponentComponent implements OnInit {
   roleNamesPlaceholder: string = '';
   showCertificateUpload: boolean = false;
   certificateFile: File | undefined; // For storing certificate file object
-
+currentUser:User;
   constructor(private userService: RegisterService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
     this.roleNamesPlaceholder = this.getRoleNamesPlaceholder();
+
   }
 
   initForm(): void {

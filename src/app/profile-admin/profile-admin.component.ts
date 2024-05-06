@@ -9,23 +9,21 @@ import { RegisterService } from '../Services/register.service';
 })
 export class ProfileAdminComponent implements OnInit {
   currentUser: User | null = null;
+  editMode: boolean = false;
+  editedUser: User = new User();
+imageUser:null;
+formData: FormData = new FormData();
 
   constructor(private userService: RegisterService) { }
 
   ngOnInit(): void {
-    const editButton = document.getElementById('edit-button');
-    if (editButton) {
-      editButton.addEventListener('click', () => {
-        // Handle edit button click (e.g., toggle an edit form)
-      });
-    }
-  
     this.getCurrentUserProfile();
-    
   }
+
   getImageUrl(user: User): string {
     return `http://localhost/images/${user.imageUser}`;
   }
+
   getCurrentUserProfile(): void {
     if (this.userService.isLoggedIn()) {
       this.userService.getCurrentUser().subscribe(
@@ -41,4 +39,49 @@ export class ProfileAdminComponent implements OnInit {
     }
   }
 
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
+    if (this.editMode && this.currentUser) {
+      // When entering edit mode, clone currentUser to editedUser
+      this.editedUser = { ...this.currentUser };
+    }
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.formData.append('image', file);
+    }
+  }
+  
+  saveChanges(): void {
+    if (this.editedUser && this.formData.has('image')) {
+      const { nomUser, prenomUser, numTel, adressUser, sexe } = this.editedUser;
+      this.userService.updateCurrentUser(
+        nomUser,          // lastName
+        prenomUser,       // firstName
+        numTel,           // mobileNumber
+        adressUser,       // adressUser
+        sexe,             // sexe
+        this.formData.get('image') as File // pass the File object from FormData
+      ).subscribe(
+        (response) => {
+          console.log('Profile updated successfully:', response);
+          // Update currentUser with editedUser's values
+          this.currentUser = { ...this.editedUser };
+          this.editMode = false;
+        },
+        (error) => {
+          console.error('Error updating profile:', error);
+          // Handle error
+        }
+      );
+    } else {
+      console.error('Image is required.');
+      // Handle error - Inform the user that an image is required
+    }
+  }
+  
+  
+ 
 }

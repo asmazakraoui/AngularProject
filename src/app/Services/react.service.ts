@@ -15,19 +15,15 @@ export class ReactService {
     
    }
 
-   /*addReact(react: React): Observable<React> {
-    return this.http.post<React>(`${this.baseURL}/add`, react);
-  }*/
-  /* addReactToPost(typeReact: React, idPost: number): Observable<React> {
-   
-    return this.http.post<React>(`${this.baseURL}/add/${idPost}`, typeReact);
-  }  */
+
 
   removeReact(idReact: number): Observable<void> {
     return this.http.delete<void>(`${this.baseURL}/remove/${idReact}`);
   }
 
   likePost(postId: number): Observable<any> {
+  
+   
     return this.http.post(`http://localhost:8082/test/api/react/like/${postId}`, {}).pipe(
       tap(response => {
         console.log('Like Post Response:', response);
@@ -71,6 +67,21 @@ export class ReactService {
         const url = `${this.baseURL}/total-dislikes/${idPost}`;
         return this.http.get<number>(url);
       }
-
+      unlikePost(idPost: number): Observable<any> {
+        const url = `${this.baseURL}/unlike/${idPost}`;
+        return this.http.post(url, {}).pipe(
+          tap(response => {
+            console.log('Unlike Post Response:', response);
+            // Handle response if needed
+          }),
+          catchError(error => {
+            console.error('Error unliking post:', error);
+            return throwError('Failed to unlike post. Please try again.');
+          })
+        );
+      }
+      
+    
+     
 
 }

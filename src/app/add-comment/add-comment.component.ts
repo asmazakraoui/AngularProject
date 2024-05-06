@@ -1,11 +1,10 @@
-import { Comment } from '@angular/compiler';
 import { PostService } from './../Services/post.service';
 import { CommentService } from './../Services/comment.service';
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { Comment } from './../models/comment';
 import { Post } from './../models/Post';
-import { Router ,ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({

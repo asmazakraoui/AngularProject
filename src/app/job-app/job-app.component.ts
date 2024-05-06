@@ -1,7 +1,9 @@
 
-import { Component, EventEmitter, Output } from '@angular/core';
+//import { Component, EventEmitter, Output } from '@angular/core';
 import { JobApplicationService } from '../Services/job-application.service';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-job-app',
@@ -22,7 +24,7 @@ export class JobAppComponent {
   };
   private modalRef: NgbModalRef | null = null;
   @Output() close = new EventEmitter<void>();
-  constructor(private jobApplicationService: JobApplicationService) { }
+  constructor(private jobApplicationService: JobApplicationService,private dialogRef:MatDialogRef<JobAppComponent>) { }
   submitJobApplication() {
     const formData = new FormData();
     
@@ -109,5 +111,9 @@ export class JobAppComponent {
       this.modalRef.close(); 
     }
   }
-  
+  onCancel() {
+    this.dialogRef.close();
+    
+  }
+
 }

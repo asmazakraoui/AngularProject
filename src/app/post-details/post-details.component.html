@@ -15,8 +15,11 @@
             <img [src]="getImageUrl(post)" class="card-img-top img-fluid fixed-image-size" alt="Image de post">
             <p class="card-text">Description : {{ post.descPost }}</p>
             <div class="like-dislike-container">
-              <a (click)="likePost(post)" class="like-btn"><i class="fas fa-thumbs-up"></i></a>
+              <a (click)="togglePostReaction(post)" class="like-btn">
+                <i class="fas fa-thumbs-up" [ngClass]="{'liked': post.isLiked}"></i>
+              </a>
               <span>{{ post.likes }}</span>
+              
               <a (click)="dislikePost(post)" class="dislike-btn"><i class="fas fa-thumbs-down"></i></a>
               <span>{{ post.dislikes }}</span>
             </div>

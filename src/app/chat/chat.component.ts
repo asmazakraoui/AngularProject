@@ -102,9 +102,7 @@ extractMessageContent(message: any): string {
   }
   ngOnDestroy() {
     // Disconnect from STOMP server on component destruction
-    if (this.chatService.stompClient) {
-      this.chatService.stompClient.disconnect();
-    }
+    this.chatService.disconnect();
   }
 
 

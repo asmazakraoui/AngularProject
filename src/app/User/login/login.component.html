@@ -1,12 +1,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Skydash Admin</title>
- 
+  
   <link rel="stylesheet" href="/assets/BackOffice/vendors/feather/feather.css">
   <link rel="stylesheet" href="/assets/BackOffice/vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="/assets/BackOffice/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="/assets/BackOffice/css/vertical-layout-light/style.css">
   <link rel="shortcut icon" href="/assets/BackOffice/images/favicon.png" />
+
 
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -31,10 +32,29 @@
                   <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="text-danger">
                     Please enter your password.
                   </div>
+                  <div *ngIf="errorMessage" class="alert alert-danger">
+                    {{ errorMessage }}
+                  </div>
+                  
                 </div>
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                 </div>
+                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+                  <div *ngIf="isSuspended" class="card">
+                    <div class="header">
+                      <div class="image">
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </div>
+                      <div class="content">
+                        <span class="title">Account Suspended</span>
+                        <p class="message">Your account is suspended. Please try again later.</p>
+                      </div>
+                    </div>
+                  </div>
+
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <!-- <div class="form-check">
                     <label class="form-check-label text-muted">
@@ -42,15 +62,22 @@
                       Keep me signed in
                     </label>
                   </div>--> 
-                 
+                  <div *ngIf="currentUser">
+                    <p>Current User Roles:</p>
+                    <ul>
+                      <li *ngFor="let role of currentUser.roles">{{ role }}</li>
+                    </ul>
+                  </div>
+                  
                   <a [routerLink]="['/forget']" class="auth-link text-black">Forgot password?</a>
                 </div>
                 <div class="mb-2">
-                  <button type="button" class="btn btn-block btn-facebook auth-form-btn" (click)="loginWithFacebook()">
+                  <button class="btn btn-outline-danger btn-lg btn-block" (click)="signInWithGoogle()">
+                    <i class="fab fa-google"></i> Sign in With Google</button>
+                  
 
-                    <i class="ti-facebook mr-2"></i>Connect using Facebook
-                  </button>
                 </div>
+
                 <div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a [routerLink]="['/Register']" class="text-primary">Create</a>
                 </div>
@@ -69,3 +96,11 @@
   <script src="/assets/BackOffice/js/settings.js"></script>
   <script src="/assets/BackOffice/js/todolist.js"></script>
 
+  
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/intermediate"></script>
+  <div id="g_id_intermediate_iframe"
+       data-src="https://example.com/onetap_iframe.html">
+  </div>

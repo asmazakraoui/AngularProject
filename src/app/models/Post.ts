@@ -9,5 +9,7 @@ export interface Post {
   dislikes: number;
   comments?: Comment[]; // Utilisation du "?" pour indiquer que comments est optionnel
   commentText?: string; // Ajoutez cette propriété
+  isLiked:Boolean;
+  isDisliked:Boolean;
 
 }

@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { ReactService } from '../Services/react.service';
 import { DatePipe } from '@angular/common';
+import { React } from '../models/react';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class PostDetailsComponent implements OnInit {
   likes: number = 0;
   dislikes: number = 0;
   currentDate: Date;
+  react:React;
 
 
 
@@ -62,17 +64,18 @@ id: any;
     this.postService.findAll().subscribe(
       data => {
         this.posts = data;
-
+  
         this.totalPages = Math.ceil(this.posts.length / this.pageSize);
-        this.applyPagination();
+        this.applyPagination(); // Apply pagination first
         this.loadCommentsForAllPosts();
-        this.loadLikesAndDislikes(); // Ajoutez cette ligne
+        this.loadLikesAndDislikes(); // Then load likes and dislikes
       },
       error => {
         console.error('Error getting posts:', error);
       }
     );
   }
+  
   loadLikesAndDislikes(): void {
     // Pour chaque post, charger les nombres de likes et dislikes depuis le stockage local
     this.posts.forEach(post => {
@@ -165,12 +168,30 @@ id: any;
 
 
 //// like and dislike
-likePost(post: Post): void {
+/*likePost(post: Post): void {
   this.reactService.likePost(post.idPost).subscribe(
     response => {
       console.log('Post liked successfully', response);
       post.likes++;
-      localStorage.setItem(`post_${post.idPost}_likes`, post.likes.toString());
+     // localStorage.setItem(`post_${post.idPost}_likes`, post.likes.toString());
+      post.isLiked=true;
+    },
+    error => {
+      console.error('Error liking post:', error);
+      alert('Failed to like post. Please try again.');
+    }
+  );
+}*/
+
+likePost(post:Post): void {
+  if(this.react.idReact==post.idPost){
+  this.reactService.likePost(post.idPost).subscribe(
+    response => {
+      console.log('Post liked successfully', response);
+      post.likes++;
+      this.react.like++;
+     // localStorage.setItem(`post_${post.idPost}_likes`, post.likes.toString());
+      post.isLiked=true;
     },
     error => {
       console.error('Error liking post:', error);
@@ -178,16 +199,15 @@ likePost(post: Post): void {
     }
   );
 }
-
-
+}
 
   dislikePost(post: Post): void {
     this.reactService.dislikePost(post.idPost).subscribe(
       response => {
         console.log('Post disliked successfully', response);
         post.dislikes++;// Decrémente le compteur de like de la publication
-        localStorage.setItem(`post_${post.idPost}_dislikes`, post.dislikes.toString()); // Mettre à jour le stockage local
-
+      //  localStorage.setItem(`post_${post.idPost}_dislikes`, post.dislikes.toString()); // Mettre à jour le stockage local
+        post.isDisliked=true;
       },
       error => {
         console.error('Error disliking post', error);
@@ -198,7 +218,55 @@ likePost(post: Post): void {
     );
 
   }
-
+  unlikePost(post:Post): void {
+    if(this.react.idReact=post.idPost){
+    this.reactService.unlikePost(post.idPost).subscribe(
+      response => {
+        console.log('Post unliked successfully', response);
+        // Update likes count only if the post was previously liked
+        if (post.likes > 0) {
+          post.likes--;
+        }
+       // localStorage.setItem(`post_${post.idPost}_likes`, post.likes.toString()); // Update local storage
+      },
+      error => {
+        console.error('Error unliking post', error);
+        alert('Failed to unlike post. Please try again.');
+      }
+    );
+  }}
+  togglePostReaction(post: Post): void {
+    if (post.isLiked) {
+      // If post is already liked, unlike it
+      this.reactService.unlikePost(post.idPost).subscribe(
+        response => {
+          console.log('Post unliked successfully', response);
+          post.likes--; // Decrement the likes count of the post
+          localStorage.setItem(`post_${post.idPost}_likes`, post.likes.toString()); // Update local storage
+          post.isLiked = false; // Update post state
+        },
+        error => {
+          console.error('Error unliking post', error);
+          alert('Failed to unlike post. Please try again.');
+        }
+      );
+    } else {
+      // If post is not liked, like it
+      this.reactService.likePost(post.idPost).subscribe(
+        response => {
+          console.log('Post liked successfully', response);
+          post.likes++; // Increment the likes count of the post
+          localStorage.setItem(`post_${post.idPost}_likes`, post.likes.toString()); // Update local storage
+          post.isLiked = true; // Update post state
+        },
+        error => {
+          console.error('Error liking post', error);
+          alert('Failed to like post. Please try again.');
+        }
+      );
+    }
+  }
+  
 
    /// pagination
   getPageNumbers(): number[] {
@@ -227,7 +295,7 @@ likePost(post: Post): void {
     const endIndex = startIndex + this.pageSize;
     this.displayedPosts = this.posts.slice(startIndex, endIndex);
   }
-
+  
 
 }
 

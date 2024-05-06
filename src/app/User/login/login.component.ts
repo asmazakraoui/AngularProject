@@ -1,79 +1,144 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../Services/register.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { User } from 'src/models/user';
+import { TypeRole } from 'src/models/role';
+import { GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
+import { SocialAuthService } from "@abacritt/angularx-social-login";
+import { UserService } from 'src/app/Services/user.service';
+import { TokenDto } from 'src/models/TokenDto';
+
+
+declare var gapi: any;
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   user: any = {}; 
+  gapi:any;
   loginForm: FormGroup;
+currentUser:User;
+errorMessage: string = '';
+gapiLoaded: boolean = false;
+socialUser: SocialUser;
+userLogged: SocialUser;
+isLogged: boolean;
+isSuspended: boolean;
 
-  constructor(private registerService: RegisterService, private formBuilder: FormBuilder,private router:Router,private http: HttpClient) {
+  constructor(private registerService: RegisterService, private formBuilder: FormBuilder,private router:Router,private http: HttpClient,private authService: SocialAuthService,private service:UserService) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
-
-  loginUser() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value; // Extract email and password from the form
-      this.registerService.login(email, password).subscribe(
-        (response: any) => {
-          console.log('User logged in successfully!', response);
-          console.log('data', { email, password });
-           // Store access token in local storage
-          localStorage.setItem('accessToken', response.accessToken);
   
-          // Redirect to dashboard if the username is admin@gmail.com
-          if (email === 'rayenpatron58@gmail.com') {
-            this.router.navigate(['/admin']); // Redirect to the dashboard route
-          } else {
-            // For other users, proceed normally to showProfile
-            this.registerService.loginUserToken(response.accessToken);
-            this.registerService.getCurrentUser().subscribe(
-              (user: any) => {
-                this.registerService.setUser(user);
-                console.log(user);
-                this.router.navigate(['/dashFront']);
-              }
-            );
-          }
-        },
-        (error) => {
-          console.error('Login failed:', error);
-          if (error && error.error && error.error.errorMessage) {
-            alert(error.error.errorMessage); // Display suspension message
-          }
-        }
-      );
+  checkUserRole(user: any): void {
+    if (user && user.roles && user.roles.some(role => role.roleName === TypeRole.ADMIN)) {
+      // User is an admin, allow access to admin path
+      console.log('User is an admin.');
+      this.router.navigate(['/admin']);
     } else {
-      console.log("Form invalid");
-      // You can also mark all fields as touched to display validation messages
-      this.loginForm.markAllAsTouched();
+      // User is not an admin, restrict access to admin path
+      console.error('Access denied. User is not an admin.');
+      // Handle access denied
     }
   }
+  loginUser() {
+    if (this.loginForm.valid) {
+        const { email, password } = this.loginForm.value;
+
+        this.registerService.login(email, password).subscribe(
+            (response: any) => {
+                localStorage.setItem('accessToken', response.accessToken);
+
+                this.registerService.getCurrentUser().subscribe(
+                    (user: User) => {
+                        this.registerService.setUser(user);
+                        console.log('User:', user);
+
+                        if (user && user.roles) {
+                            const isAdmin = user.roles.some(role => role.roleName === TypeRole.ADMIN);
+                            if (isAdmin) {
+                                console.log('User is an admin. Redirecting to /admin');
+                                this.router.navigate(['/admin']);
+                            } else {
+                                console.log('User is not an admin. Redirecting to /dashFront');
+                                this.router.navigate(['/dashFront']);
+                            }
+                        } else {
+                            console.error('User roles not found.');
+                        }
+                    },
+                    (error) => {
+                        console.error('Failed to get current user:', error);
+                        // Handle error
+                    }
+                );
+            },
+            (error) => {
+                console.error('Login failed:', error);
+                if (error && error.error && error.error.errorMessage) {
+                    if (error.error.errorMessage === "Your account is suspended. Please try again later.") {
+                        this.isSuspended = true;
+                    } else {
+                        this.errorMessage = error.error.errorMessage;
+                    }
+                } else {
+                    // Handle other errors or display a generic error message
+                    this.errorMessage = "An unexpected error occurred. Please try again later.";
+                }
+            }
+        );
+    } else {
+        console.log("Form invalid");
+        this.loginForm.markAllAsTouched();
+    }
+}
+
   
   redirectToResetPassword(): void {
     this.router.navigate(['/reset-password']); // Navigate to the reset password route
   }
+  
+  
 
-  loginWithFacebook() {
-    // Faites une requête HTTP GET vers votre backend pour rediriger l'utilisateur vers l'URL d'authentification Facebook
-    this.http.get<any>('http://localhost:8082/test/auth/facebook').subscribe(
-      response => {
-        console.log('Redirection vers Facebook effectuée avec succès');
-        // Gérez la réponse si nécessaire (par exemple, afficher un message à l'utilisateur)
-      },
-      error => {
-        console.error('Erreur lors de la redirection vers Facebook:', error);
-        // Gérez l'erreur si nécessaire (par exemple, afficher un message d'erreur)
+ 
+  ngOnInit(): void {
+    this.authService.authState.subscribe(
+      data => {
+        this.userLogged = data;
+        this.isLogged= (this.registerService.isLoggedIn() && this.registerService.getAccessToken() != null);
       }
     );
   }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      data => {
+        this.socialUser = data;
+        const tokenGoogle = new TokenDto(this.socialUser.idToken);
+        this.registerService.google(tokenGoogle).subscribe(
+          res => {
+            this.registerService.loginUserToken(res.value);
+            this.isLogged = true;
+            this.router.navigate(['/dashFront']);
+          },
+          err => {
+            console.log(err);
+            this.registerService.logout();
+          }
+        );
+      }
+    ).catch(
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
 }

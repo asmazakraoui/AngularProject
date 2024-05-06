@@ -3,8 +3,8 @@ import { Post } from '../models/Post';
 import { Comment } from './../models/comment';
 import { CommentService } from './../Services/comment.service';
 import { Component, OnInit,Input  } from '@angular/core';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 //import { PostService } from './../Services/post.service';
 
 //import { Comment } from '../models/post';

@@ -1,9 +1,11 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError,of } from 'rxjs';
 import { TypeReligion, User } from 'src/models/user';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError,map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { TypeRole } from 'src/models/role';
+import { TokenDto } from 'src/models/TokenDto';
 
 
 @Injectable({
@@ -48,7 +50,7 @@ export class RegisterService {
 
  
 
-getCurrentUser(): Observable<User> {
+/*getCurrentUser(): Observable<User> {
   // Replace with your actual backend URL
   const url = 'http://localhost:8082/test/auth/current-user';
 
@@ -58,8 +60,11 @@ getCurrentUser(): Observable<User> {
   });
 
   return this.http.get<User>(url, { headers });
+}*/
+currentUserUrl='http://localhost:8082/test/auth/current-user';
+getCurrentUser(): Observable<User> {
+  return this.http.get<User>(this.currentUserUrl);
 }
-
 //generate token
 login(username: string, password: string): Observable<any> {
   return this.http.post<any>(`${this.baseUrl}/auth/token?username=${username}&password=${password}`, { username, password });
@@ -149,7 +154,17 @@ public getUserRole(){
   return user.authorities[0].authority;
 }
 
-
+isAdmin(): Observable<boolean> {
+  return this.getCurrentUser().pipe(
+      map(user => {
+          if (user && user.roles) {
+              // Check if the user has the ADMIN role
+              return user.roles.some(role => role.name === TypeRole.ADMIN);
+          }
+          return false;
+      })
+  );
+}
   private handleFailedLogin(username: string): void {
     if (!this.failedLoginAttempts[username]) {
       this.failedLoginAttempts[username] = 1;
@@ -180,5 +195,32 @@ public getUserRole(){
       })
     );
   }
-  
+  public google(tokenDto: TokenDto): Observable<TokenDto> {
+    return this.http.post<TokenDto>(`${this.baseUrl}/auth/google`, tokenDto);
+  }
+
+  public setToken(token: string): void {
+    sessionStorage.removeItem('accessToken');
+    sessionStorage.setItem('accessToken', token);
+  }
+
+
+  updateCurrentUser(
+    lastName?: string,
+    firstName?: string,
+    mobileNumber?: string,
+    adressUser?: string,
+    sexe?: string,
+    image?: File
+  ): Observable<any> {
+    const formData = new FormData();
+    if (lastName) formData.append('lastName', lastName);
+    if (firstName) formData.append('firstName', firstName);
+    if (mobileNumber) formData.append('mobileNumber', mobileNumber);
+    if (adressUser) formData.append('adressUser', adressUser);
+    if (sexe) formData.append('sexe', sexe);
+    if (image) formData.append('image', image, image.name);
+
+    return this.http.put<any>(`${this.baseUrl}/updateCurrent`, formData);
+  }
 }

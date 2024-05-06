@@ -82,16 +82,11 @@ export class UserService {
     return this.http.get<Page<User>>(`${this.apiUrl}/all`, { params });
   }
 
-  getCurrentUser(): Observable<User | null> {
-    const url = 'http://localhost:8082/test/auth/current-user';
-    const headers = {};
-        return this.http.get<User>(url, { headers })
-      .pipe(
-        map(response => response), // Assuming successful response maps to User object
-        catchError(this.handleError)
-      );
-  }
 
+  getAllJobApplications(): Observable<JobApplication[]> {
+    const url = `${this.apiUrl}/getJob`;
+    return this.http.get<JobApplication[]>(url);
+  }
   private handleError(error: any): Observable<never> {
     console.error('Error retrieving user profile:', error);
     return throwError('Failed to retrieve user profile');

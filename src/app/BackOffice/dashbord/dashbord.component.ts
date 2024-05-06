@@ -97,6 +97,7 @@ export class DashbordComponent implements OnInit{
         }
       }
     });
+   
   }
   fetchTotalNumberOfUsers(): void {
     this.userService.getTotalNumberOfUsers().subscribe(

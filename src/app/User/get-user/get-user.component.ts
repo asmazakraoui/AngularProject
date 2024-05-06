@@ -21,14 +21,15 @@ export class GetUserComponent implements OnInit {
   pageSize = 3;
   totalElements = 100;
   field = 'firstName';
-  doctors: JobApplication[] = [];
-
+  jobApplications: JobApplication[] = [];
+  loading: boolean = false;
+  error: string | null = null;
   jobApplicationId:number;
   constructor(private messageService:MessageService,private confirmationService:ConfirmationService,private userService: UserService, private router: Router,private registerService:RegisterService) {}
 
   ngOnInit(): void {
     this.retrieveUsers();
-    this.retrieveDoctors();
+    this.getJobApplications();
   }
   onPageChange(page: number): void {
     console.log('Page changed:', page);
@@ -36,16 +37,7 @@ export class GetUserComponent implements OnInit {
     this.retrieveUsers(); // Fetch data for the new page
   }
   
-  retrieveDoctors(): void {
-    this.userService.retrieveDoctors().subscribe(
-      (data: JobApplication[]) => {
-        this.doctors = data;
-      },
-      (error) => {
-        console.error('Error fetching doctors:', error);
-      }
-    );
-  }
+ 
 retrieveUsers(): void {
   console.log('Fetching users for page:', this.currentPage);
   this.userService.retrieveUsers().subscribe(
@@ -124,6 +116,8 @@ sortUsersAlphabetically(): void {
             accountConfirmed:userData.accountConfirmed,
             roles: userData.roles // Assuming roles are properly formatted
           }));
+
+          
         },
         (error) => {
           console.error('Error searching users:', error);
@@ -137,8 +131,43 @@ sortUsersAlphabetically(): void {
     return `http://localhost/images/${user.imageUser}`;
   }
 
-  
 
+  getJobApplications(): void {
+    console.log('Fetching doctors for page:', this.currentPage);
+    this.userService.getAllJobApplications().subscribe(
+      (data: any[]) => {
+        console.log('User data received:', data); // Log the received user data
+        // Check if data is an array and not empty
+        if (Array.isArray(data) && data.length > 0) {
+          this.jobApplications = data.map((jobData: any) => ({
+            id:jobData.id,
+            cvFile: jobData.cv,
+            certificateFile: jobData.certificateFile,
+            applicationDate: new Date(jobData.applicationDate),
+            user: {
+              prenomUser: jobData.prenomUser,
+              nomUser: jobData.nomUser,
+              emailUser: jobData.emailUser,
+              numTel: jobData.numTel,
+              sexe: jobData.sexe,
+              dateNaiss: new Date(jobData.dateNaiss),
+              accountConfirmed: jobData.accountConfirmed,
+              roles: jobData.roles
+            }
+          }));
+          
+          this.totalElements = data.length; // Update totalElements based on the fetched data
+  
+        } else {
+          console.error('Empty or invalid user data received.');
+        }
+  
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+      }
+    );
+  }
 
   editUser(userId: number): void {
     this.router.navigate(['/update', userId]);
@@ -148,6 +177,8 @@ sortUsersAlphabetically(): void {
       response => {
         console.log('Job application confirmed successfully:', response);
         // Handle success, maybe show a success message to the user
+        window.location.reload();
+
       },
       error => {
         console.error('An error occurred while confirming job application:', error);
@@ -183,4 +214,6 @@ sortUsersAlphabetically(): void {
     this.postDialog = false;
     this.submitted = false;
   }
+
+
 }

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JobApplicationService } from 'src/app/Services/job-application.service';
 import { RegisterService } from 'src/app/Services/register.service';
 import { JobAppComponent } from 'src/app/job-app/job-app.component';
@@ -10,24 +11,24 @@ import { JobAppComponent } from 'src/app/job-app/job-app.component';
   templateUrl: './header-front.component.html',
   styleUrls: ['./header-front.component.css']
 })
-export class HeaderFrontComponent {
+export class HeaderFrontComponent  {
+  modalRef: NgbModalRef | undefined;
 
   showApplyModal: boolean = false;
 
+  @ViewChild('firstInput') firstInput: ElementRef | undefined;
+
   constructor(private jobApplicationService: JobApplicationService,private router:Router,
-    private registerService:RegisterService,private modalService: NgbModal) { }
-    
+    private registerService:RegisterService,private modalService: NgbModal,private dialog:MatDialog) { }
 
+ 
 
-  openJobApplicationModal() {
+    openJobApplicationModal(): void {
+      const dialogRef = this.dialog.open(JobAppComponent , {
+        width: '80%', // Adjust the width as needed
+        panelClass: 'job-application-dialog',
+      });
+    }
 
-    this.showApplyModal = true;
-    console.log(this.showApplyModal);
-  }
-
-  closeJobApplicationModal() {
-    this.showApplyModal = false;
-
-  }
-
+  
 }
