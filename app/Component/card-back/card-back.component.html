@@ -1,0 +1,18 @@
+<div class="card">
+    <img [src]="getImageUrl()" alt="Product Image" class="card-img-top" style="height:300px; width: 300px; object-fit: cover;">
+    <div class="card-body">
+        <h5 class="card-title"><strong>Product Name :</strong>{{ product.nomProduit }}</h5>
+        <h4 class="card-text"><strong>Description :</strong> {{ product.description}}</h4>
+        <h4 class="card-text"><strong>Price :</strong> {{ product.prixProduit }}TND</h4>
+        <h4 class="card-text"><strong>Manufacturing Date :</strong> {{ product.dateFabrication }}</h4>
+        <h4 class="card-text"><strong>Expiration Date : </strong>{{ product.dateFabrication}}</h4>
+        <h4 class="card-text"><strong>Quantity :</strong> {{ product.nbrProduit}}</h4>
+        <div class="button-container">
+            <button class="btn btn-primary btn-update" (click)="openUpdateProductModal(product.idProduit)">Edit</button>
+            <button (click)="deleteProduct(product.idProduit)" class="btn btn-danger btn-delete">Delete</button>
+        </div>
+
+    </div>
+</div>
+
+<app-update-product *ngIf="showUpdateProductModal" [productIdToUpdate]="product.idProduit" (close)="closeUpdateProductModal()"></app-update-product>

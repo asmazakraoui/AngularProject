@@ -1,0 +1,88 @@
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Product</h5>
+                <button type="button" class="close" (click)="onClose()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+                    <div class="container">
+                        <div class="form-group">
+                            <label for="nomProduit">Name Product</label>
+                            <input type="text" formControlName="nomProduit" class="input-field" placeholder="Enter Name Product">
+                            <small class="text-danger" *ngIf="productForm.get('nomProduit')?.errors && productForm.get('nomProduit')?.touched">Name Product is required</small>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="prixProduit">Price Product</label>
+                            <input type="number" formControlName="prixProduit" class="input-field" placeholder="Enter Price">
+                            <small class="text-danger" *ngIf="productForm.get('prixProduit')?.errors && productForm.get('prixProduit')?.touched">Price Product is required</small>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="dateFabrication">Manufacturing Date</label>
+                            <input type="date" formControlName="dateFabrication" class="input-field" placeholder="Enter Manufacturing Date">
+                            <small class="text-danger" *ngIf="productForm.get('dateFabrication')?.errors && productForm.get('dateFabrication')?.touched">Manufacturing Date is required</small>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="dateExpiration">Expiration Date</label>
+                            <input type="date" formControlName="dateExpiration" class="input-field" placeholder="Enter Expiration Date">
+                            <small class="text-danger" *ngIf="productForm.get('dateExpiration')?.errors && productForm.get('dateExpiration')?.touched">Expiration Date is required</small>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="description">Description</label>
+                            <input type="text" formControlName="description" class="input-field" placeholder="Enter Description">
+                            <small class="text-danger" *ngIf="productForm.get('description')?.errors && productForm.get('description')?.touched">Description Product is required</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="categorie">Category</label>
+                            <select id="categorie" class="form-control" formControlName="categorie">
+                                <option value="" disabled selected>Select a category</option> 
+                                <option *ngFor="let c of categorieOptions" [value]="c">{{c}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="productForm.get('categorie')?.errors && productForm.get('categorie')?.touched">Category is required</small>
+                        </div>
+                        <!--<div class="form-group">
+                            <label for="typeShop">Shop Type</label>
+                            <select id="typeShop" class="form-control" formControlName="typeShop">
+                                <option value="" disabled selected>Select a shop type</option>
+                                <option *ngFor="let type of typeShopOptions" [value]="type">{{type}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="productForm.get('nomProduit')?.errors && productForm.get('nomProduit')?.touched">Name Product is required</small>
+                        </div>-->
+                        <div class="form-group">
+                            <label for="imageProduit">Image Product</label>
+                            <div class="upload-btn-wrapper">
+                                <button class="btn-image">Upload Photo</button>
+                                <input type="file" (change)="onFileSelected($event)">
+                            </div>
+                        </div>
+                        
+                        <div class="image-preview" *ngIf="imageUrl">
+                            <img [src]="imageUrl" alt="Uploaded Image" style="height: 200px; width: 200px;">
+                        </div>
+                        <div class="form-group"> 
+                            <label for="nbrProduit">Number of Products</label>
+                            <input type="number" formControlName="nbrProduit" class="input-field" placeholder="Enter Number of Products">
+                            <small class="text-danger" *ngIf="productForm.get('nbrProduit')?.errors && productForm.get('nbrProduit')?.touched">Number of Products is required</small>
+                        </div>
+                        <div class="form-group"> 
+                            <label for="nbrProduit">Width Product</label>
+                            <input type="number" formControlName="widthProduct" class="input-field" placeholder="Enter width of Product">
+                            <small class="text-danger" *ngIf="productForm.get('widthProduct')?.errors && productForm.get('widthProduct')?.touched">Width Product is required</small>
+                        </div>
+                        <div class="form-group"> 
+                            <label for="nbrProduit">Height Product</label>
+                            <input type="number" formControlName="heightProduct" class="input-field" placeholder="Enter height of Product">
+                            <small class="text-danger" *ngIf="productForm.get('heightProduct')?.errors && productForm.get('heightProduct')?.touched">Height Product is required</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

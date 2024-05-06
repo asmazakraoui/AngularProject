@@ -1,0 +1,29 @@
+<h1>Products</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Order Number</th>
+            <th>Number Products</th>
+            <th>Discount</th>
+            <th>Order Date</th>
+            <th>Total Price</th>
+            <th>Payment Method</th> 
+            <th>Status Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orderrs">
+            <td>{{order.nbProduit}}</td>
+            <td>{{order.remise}}</td>
+            <td>{{order.dateCommande}}</td>
+            <td>{{order.totalPrix}}</td>
+            <td>{{order.modePayement}}</td>
+            <td>{{order.statusCom}}</td>
+            <td>
+                <button (click)="deleteOrderr(order.idCom)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+

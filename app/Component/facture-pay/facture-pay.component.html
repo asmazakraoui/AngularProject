@@ -1,0 +1,20 @@
+<div *ngIf="product" class="order-details">
+    <div class="order-item">
+        <div class="product-image-container">
+            <img [src]="getImageUrl(product.imageProduit)" alt="Product Image" class="product-image">
+        </div>
+        <div class="product-details">
+            <h5 class="product-name">{{ product.nomProduit }}</h5>
+        </div>
+        <div class="product-details">
+            <h5 class="product-price">{{ product.prixProduit }} $</h5>
+        </div>
+        <div class="product-details">
+            <h5 class="product-quantity">{{ commandeLine.quantite }}</h5>
+        </div>
+        
+        <div class="product-details">
+            <h5 class="product-total-price">{{ commandeLine.prix_total_product }}$</h5>
+        </div>    
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container-scroller">
+    <app-nav-back></app-nav-back>
+    <div class="container-fluid page-body-wrapper">
+      <app-sidebar></app-sidebar>
+      <div class="main-panel">
+        <!-- Contenu principal -->
+        <div class="col-md-12 mt-5">
+          <div class="table-container">
+            <h2 class="mb-4">List of Promotions</h2>
+            <button class="btn btn-primary mb-4" (click)="openAddPromotionModal()">Add New Promotion</button>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                <thead class="bg-primary text-white">
+                  <tr>
+                    <th>Code</th>
+                    <th>Discount</th>
+                    <th>Expiration Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let promotion of promotions">
+                    <td>{{ promotion.code }}</td>
+                    <td>{{ promotion.discountPercentage }}%</td>
+                    <td>{{ promotion.expirationDate | date:'shortDate' }}</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm mr-2 btn-action" (click)="openUpdatePromotionModal(promotion.idPromotion)">Edit</button>
+                      <button class="btn btn-danger btn-sm btn-action" (click)="deletePromotion(promotion.idPromotion)">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-add-promotion *ngIf="showAddPromotionModal" (close)="closeAddPromotionModal()"></app-add-promotion>
+  <app-update-promotion *ngIf="showUpdatePromotionModal" [promotionIdToUpdate]="promotionIdToUpdate" (close)="closeUpdatePromotionModal()"></app-update-promotion>
+  

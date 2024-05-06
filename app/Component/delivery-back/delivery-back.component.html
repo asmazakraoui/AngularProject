@@ -1,0 +1,86 @@
+<div class="container-scroller">
+    <app-nav-back></app-nav-back>
+    <div class="container-fluid page-body-wrapper">
+        <app-sidebar></app-sidebar>
+        <div class="main-panel">
+            <!-- Contenu principal -->
+            <div class="col-md-12 mt-5">
+                <div class="container">
+                    <div class="inputGroup">
+                        <div class="input-container">
+                            <div class="inputGroup">
+                                <input type="text" required="" autocomplete="off">
+                                <label for="name">Search</label>
+                                <button class="button bg-primary" (click)="onSearch()">Search</button>
+                            </div>
+                            
+                        </div> 
+                    </div>
+                </div>
+                
+                
+                <div class="table-container">
+                    <h2>Deliveries List</h2>
+                    <br>
+                    <table class="custom-table">
+                    <thead>
+                        <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Total Price Order</th>
+                        <th>Phone</th>
+                        <th>Delivery Address</th>
+                        <th>Delivery Date</th>
+                        <th>Gouvernorat</th>
+                        <th>Postal Code</th>
+                        <th>Surface Delivery</th>
+                        <th>Affection Status</th>
+                        <th>Delivery Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let delivery of getCurrentPageDelivries()">
+                        <td>{{ delivery.firstName }}</td>
+                        <td>{{ delivery.lastName }}</td>
+                        <td>{{ delivery.totalPrice }}</td>
+                        <td>{{ delivery.phone }}</td>
+                        <td>{{ delivery.adresseLiv }}</td>
+                        <td>{{ delivery.dateLivraison }}</td>
+                        <td>{{ delivery.country }}</td>
+                        <td>{{ delivery.postalCode }}</td>
+                        <td>{{ delivery.surface }}</td>
+                        <td>{{delivery.statusAffect ? 'Affected' : 'Not affected'}}</td>
+                        <td>{{delivery.statusLiv ? 'Delivried' : 'Not delivried'}}</td>
+                        </tr>   
+                    </tbody>
+                    </table>
+                    <br>
+                    <div class="col-lg-12">
+                        <div class="mini-card">
+                            <!-- Pagination -->
+                            <div class="pagination-container d-flex justify-content-center mt-4 ">
+                                <ul class="pagination">
+                                    <li class="page-item" [class.disabled]="currentPage == 1" (click)="onPageChange(currentPage - 1)">
+                                        <a class="page-link" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+                                        <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+                                    </li>
+                                    <li class="page-item" [class.disabled]="currentPage == totalPages" (click)="onPageChange(currentPage + 1)">
+                                        <a class="page-link" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+                

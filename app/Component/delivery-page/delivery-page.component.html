@@ -1,0 +1,78 @@
+<app-header-front></app-header-front>
+
+<div class="container mt-4">
+  <h2 style="padding-bottom: 20px;">List of Deliveries Not Affected</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone</th>
+          <th>Delivery Address</th>
+          <th>Delivery Date</th>
+          <th>Gouvernorat</th>
+          <th>Postal Code</th>
+          <th>Total Price</th>
+          <th>Surface</th>
+          <th>Affection Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let delivery of deliveries">
+          <td>{{ delivery.firstName }}</td>
+          <td>{{ delivery.lastName }}</td>
+          <td>{{ delivery.phone }}</td>
+          <td>{{ delivery.adresseLiv }}</td>
+          <td>{{ delivery.dateLivraison }}</td>
+          <td>{{ delivery.country }}</td>
+          <td>{{ delivery.postalCode }}</td>
+          <td>{{delivery.totalPrice}}</td>
+          <td>{{delivery.surface}}</td>
+          <td>{{ delivery.statusAffect ? 'Affected' : 'Not affected' }}</td>
+          <td><button class="btn btn-delivery" (click)="setDeliveryAccepted(delivery.idLivraison)">Accept</button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container mt-4">
+    <h2 style="padding-bottom: 20px;">My Deliveries </h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Delivery Address</th>
+            <th>Delivery Date</th>
+            <th>Gouvernorat</th>
+            <th>Postal Code</th>
+            <th>Total Price</th>
+            <th>Surface</th>
+            <th>Affection Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let delivery of deliveriii">
+            <td>{{ delivery.firstName }}</td>
+            <td>{{ delivery.lastName }}</td>
+            <td>{{ delivery.phone }}</td>
+            <td>{{ delivery.adresseLiv }}</td>
+            <td>{{ delivery.dateLivraison }}</td>
+            <td>{{ delivery.country }}</td>
+            <td>{{ delivery.postalCode }}</td>
+            <td>{{delivery.totalPrice}}</td>
+            <td>{{delivery.surface}}</td>
+            <td>{{ delivery.statusAffect ? 'Affected' : 'Not affected' }}</td>
+            <td><button class="btn btn-delivery" (click)="setDeliveryDone(delivery.idLivraison)" >Done</button>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<app-footer-front></app-footer-front>

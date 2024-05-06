@@ -1,0 +1,31 @@
+.dropdown {
+    display: none; /* Par défaut, le menu déroulant est masqué */
+    position: absolute;
+    background-color: #fff; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure */
+    padding: 10px; /* Espacement intérieur */
+    z-index: 1000; /* Assurez-vous que le menu déroulant est au-dessus de tout autre contenu */
+}
+
+.nav-item:hover .dropdown {
+    display: block; /* Afficher le menu déroulant lorsque l'élément parent est survolé */
+}
+
+.menu-subtitle {
+    display: block;
+    margin-bottom: 5px; /* Espacement entre chaque élément du menu */
+    color: #333; /* Couleur du texte */
+    text-decoration: none; /* Supprimer le soulignement par défaut */
+}
+
+.menu-subtitle:hover {
+    color: #007bff; /* Couleur du texte au survol */
+}
+
+
+.dropdown.show {
+    display: block;
+}
+
+/* Ajoutez ici vos styles personnalisés pour le sous-menu */
+
