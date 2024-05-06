@@ -74,8 +74,4 @@ export class ProductService {
     const url = `${this.baseUrl}/high-rated`; 
     return this.http.get<Product[]>(url);
   }
-
-  getProductRatingStats(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/stats/product-ratings`);
-  }
 }

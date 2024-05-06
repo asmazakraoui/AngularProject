@@ -20,10 +20,6 @@ export class DashboardProductComponent {
   public barChartLegend: boolean = true;
   public barChartPlugins = [];
 
-  doughnutChartLabels: string[] = [];
-  doughnutChartData: number[] = [];
-  doughnutChartType: string = 'doughnut';
-
   public barChartData: ChartDataSets[] = [
     { data: [], label: 'Product Count' }
   ];
@@ -58,15 +54,51 @@ export class DashboardProductComponent {
         console.error('Error fetching data:', error);
       }
     );
-    this.productService.getProductRatingStats().subscribe(
-      (data: any) => {
-        this.doughnutChartLabels = Object.keys(data);
-        this.doughnutChartData = Object.values(data);
-      },
-      error => {
-        console.error('Error fetching product rating stats:', error);
-      }
-    );
   
   }
+
+ /* getDeliveryStatsByGovernorate(): void {
+    this.deliveryService.getDeliveryStatsByGovernorate().subscribe(
+      (data: any) => {
+        this.chartData = {
+          labels: Object.keys(data),
+          datasets: [{
+            data: Object.values(data),
+            backgroundColor: [
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56',
+              '#4BC0C0',
+              '#9966FF',
+              '#FF9F40',
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56',
+              '#4BC0C0',
+              '#9966FF',
+              '#FF9F40',
+            ],
+            hoverBackgroundColor: [
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56',
+              '#4BC0C0',
+              '#9966FF',
+              '#FF9F40',
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56',
+              '#4BC0C0',
+              '#9966FF',
+              '#FF9F40',
+            ]
+          }]
+        };
+        this.loading = false;
+      },
+      error => {
+        console.error('Erreur lors de la récupération des statistiques de livraison par gouvernorat :', error);
+      }
+    );
+  }*/
 }
