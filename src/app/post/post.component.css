@@ -1,0 +1,28 @@
+/* Styliser les boutons */
+.btn {
+  cursor: pointer;
+}
+
+/* Styliser les icônes */
+.fa {
+  font-size: 18px; /* Taille de l'icône */
+}
+
+.fa-thumbs-up {
+  color: #28a745; /* Couleur de l'icône "thumbs-up" */
+}
+
+.fa-thumbs-down {
+  color: #dc3545; /* Couleur de l'icône "thumbs-down" */
+}
+.liked {
+  background-color: blue;
+  color: pink;
+}
+.custom-update-btn {
+  color: green; /* Changer la couleur du texte */
+}
+
+.custom-delete-btn {
+  color: red; /* Changer la couleur du texte */
+}

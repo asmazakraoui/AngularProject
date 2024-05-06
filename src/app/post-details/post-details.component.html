@@ -1,0 +1,82 @@
+
+<app-header-sec></app-header-sec>
+<div class="container-fluid post-details-section">
+  <div class="row justify-content-center pt-3">
+    <div class="col-md-8">
+      <div class="forum-title">
+        <h2>Forum</h2>
+      </div>
+      <div class="posts-container">
+        <div *ngFor="let post of displayedPosts" class="card post-card mb-3">
+          <div class="card-header">
+            <p class="publication-date">Posted on: {{ formatDate(post.dateCreation) }}</p>
+          </div>
+          <div class="card-body text-center">
+            <img [src]="getImageUrl(post)" class="card-img-top img-fluid fixed-image-size" alt="Image de post">
+            <p class="card-text">Description : {{ post.descPost }}</p>
+            <div class="like-dislike-container">
+              <a (click)="likePost(post)" class="like-btn"><i class="fas fa-thumbs-up"></i></a>
+              <span>{{ post.likes }}</span>
+              <a (click)="dislikePost(post)" class="dislike-btn"><i class="fas fa-thumbs-down"></i></a>
+              <span>{{ post.dislikes }}</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <!-- Formulaire d'ajout de commentaire -->
+            <form (submit)="addComment(post, commentInput.value)">
+              <div class="input-group">
+
+                <input #commentInput type="text" class="form-control" placeholder="Ajouter un commentaire..."  [(ngModel)]="commentText" name="commentText">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary">Add a comment</button>
+                </div>
+              </div>
+            </form>
+            <!-- Section pour afficher les commentaires -->
+            <div *ngFor="let comment of post.comments" class="comment-details">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p>Commentaire : {{ comment.descCmnt }}</p>
+                  <p class="publication-date">Posted on: {{ currentDate | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+
+                </div>
+                <div>
+                  <!-- Bouton de suppression du commentaire -->
+                  <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteComment(comment.idCmnt)"  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination -->
+<div class="pagination-container d-flex justify-content-center">
+  <button
+    [disabled]="currentPage === 1"
+    (click)="goToPage(currentPage - 1)"
+    class="pagination-btn"
+  >
+    Previous
+  </button>
+  <ng-container *ngFor="let page of getPageNumbers()">
+    <button
+      [class.active]="currentPage === page"
+      (click)="goToPage(page)"
+      class="pagination-btn"
+    >
+      {{ page }}
+    </button>
+  </ng-container>
+  <button
+    [disabled]="currentPage === totalPages"
+    (click)="goToPage(currentPage + 1)"
+    class="pagination-btn"
+  >
+    Next
+  </button>
+</div>
+<app-footer-front></app-footer-front>

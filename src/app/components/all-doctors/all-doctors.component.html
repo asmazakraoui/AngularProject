@@ -1,0 +1,43 @@
+<app-header-sec></app-header-sec>
+<section class="hp-room-section hp-room-section-spaced">
+  <div class="container-fluid">
+    <div class="search-container">
+      <input type="text" placeholder="Search Doctors..." [(ngModel)]="searchTerm" />
+    </div>
+    <div class="hp-room-items">
+      <div class="row">
+        <div class="col-lg-3 col-md-6" *ngFor="let user of filteredUsers">
+          <div class="hp-room-item" [style.background-image]="'url(' + getImageUrl(user) + ')'">
+            <div class="hr-text hp-room-item-info">
+              <h3>{{ user.prenomUser }} {{ user.nomUser }}</h3>
+              <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Address:</td>
+                                        <td>{{ user.adressUser }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Phone:</td>
+                                        <td>{{ user.numTel }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Gender:</td>
+                                        <td>{{ user.sexe }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Religion:</td>
+                                        <td>{{ user.religion }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a [routerLink]="['/calendar-patient']" class="primary-btn">Schedule an Appointment</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer-front></app-footer-front>

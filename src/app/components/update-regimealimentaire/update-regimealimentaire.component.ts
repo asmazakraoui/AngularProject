@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegimealimentaireService } from 'src/app/services/regimealimentaire.service';
+import { RegimealimentaireService } from '../../Services/regimealimentaire.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-update-regimealimentaire',

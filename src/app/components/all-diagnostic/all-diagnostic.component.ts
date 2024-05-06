@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Diagnostic } from 'src/app/Models/HealthcareManag/Diagnostic';
-import { DiagnosticService } from 'src/app/services/diagnostic.service';
+import { Diagnostic } from 'src/app/model/Diagnostic';
+import { DiagnosticService } from '../../Services/diagnostic.service';
 
 @Component({
   selector: 'app-all-diagnostic',

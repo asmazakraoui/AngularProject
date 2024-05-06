@@ -1,0 +1,350 @@
+<app-header-sec></app-header-sec>
+<section class="aboutus-section spad" *ngIf="selectedUser">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-text">
+                    <div class="section-title">
+                        <span>User Details</span>
+                        <h3>{{ selectedUser.prenomUser }} {{ selectedUser.nomUser }}</h3>
+                    </div>
+                    <p class="f-para">Address: {{ selectedUser.adressUser }}</p>
+                    <p class="s-para">Phone: {{ selectedUser.numTel }}</p>
+                    <p class="s-para">Gender: {{ selectedUser.sexe }}</p>
+                    <p class="s-para">Religion: {{ selectedUser.religion }}</p>
+                </div>
+               
+            </div>
+            <div class="col-lg-6">
+                <div class="about-pic">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img [src]="getImageUrl(selectedUser)" alt="" height="400">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="containerd">
+  <label for="dateInput">Add Your Reserved Dates</label>
+  <input type="date" id="dateInput" name="dateInput" [(ngModel)]="selectedDate"> <br>
+  <button (click)="addDate()">Add Date</button>
+</div>
+
+
+<section *ngIf="selectedUser" class="medicines-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <button class="add-medicine-button" (click)="openMedicineDialog()">Add Medicine</button>
+          <div class="select-container">
+            <select id="medicineFilter" class="form-select" [(ngModel)]="selectedMedicineFilter" (ngModelChange)="sortMedicines($event)">
+              <option value="">Select</option>
+              <option value="asc">Ascendant</option>
+              <option value="des">Descendant</option>
+            </select>
+          </div>
+        </div>
+          <h2>Medicines</h2>         
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Number of Doses</th>
+                <th>Number of Pills per Day</th>
+                <th>Treatment Duration</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let medicine of medicines">
+                <img [src]="getImageUrlmed(medicine)" alt="" width="100">
+                <td>{{ medicine.nomMed }}</td>
+                <td>{{ medicine.nbrDoses }}</td>
+                <td>{{ medicine.nbrPelJour }}</td>
+                <td>{{ medicine.durreTrait }}</td>
+                
+                <td><button class="update-medicament-button" (click)="openUpdateMedicamentDialog(medicine)">Update</button>
+                <button class="delete-medicament-button" (click)="deleteMedicament(medicine)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="selectedUser" class="reports-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <button class="add-report-button" (click)="openReportDialog()">Add Report</button>
+            <div class="select-container">
+              <select id="reportFilter" class="form-select" [(ngModel)]="selectedReportFilter" (ngModelChange)="sortReports($event)">
+                <option value="">Select</option>
+                <option value="asc">Ascendant</option>
+                <option value="des">Descendant</option>
+              </select>
+            </div>
+          </div>
+          <h2>Reports</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Result</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let report of reports">
+                <td>{{ report.dateReport }}</td>
+                <td>{{ report.descriptionReport }}</td>
+                <td>{{ report.resultatReport }}</td>
+                <td><button class="update-report-button" (click)="openUpdateReportDialog(report)">Update</button>
+                  <button class="delete-report-button" (click)="deleteReport(report)">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section *ngIf="selectedUser" class="regimes-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <button class="add-regime-button" (click)="openRegimeDialog()">Add Regime</button>
+            <div class="select-container">
+              <select id="regimeFilter" class="form-select" [(ngModel)]="selectedRegimeFilter" (ngModelChange)="sortRegimes($event)">
+                <option value="">Select</option>
+                <option value="asc">Ascendant</option>
+                <option value="des">Descendant</option>
+              </select>
+            </div>
+          </div>
+          <h2>Diets</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let regime of regimes">
+                <td>{{ regime.typeRegime }}</td>
+                <td>{{ regime.descriptionRegime }}</td>
+                <td><button class="update-regime-button" (click)="openUpdateRegimeDialog(regime)">Update</button>
+               <button class="delete-regime-button" (click)="deleteRegime(regime)">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="selectedUser" class="diagnostics-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="select-container">
+              <select id="diagnosticFilter" class="form-select" [(ngModel)]="selectedDiagnosticFilter" (ngModelChange)="sortDiagnostics($event)">
+                <option value="">Select</option>
+                <option value="asc">Ascendant</option>
+                <option value="des">Descendant</option>
+              </select>
+            </div>
+          </div>
+          <h2>Diagnostics</h2>         
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of diagnostics">
+                <td>{{ d.typeDiagnostic }}</td>
+                <td>{{ d.dateDiag }}</td>
+                <td>{{ d.numDiag }}</td>
+                  </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+<p-dialog header="Add Medicine" [(visible)]="medicineDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
+    <form [formGroup]="medicineForm" (ngSubmit)="addMedicine()">
+      <div class="field">
+        <label for="nomMed">Medicine Name</label>
+        <input id="nomMed" type="text" formControlName="nomMed" required autofocus />
+        <small class="p-error" *ngIf="medicineForm.get('nomMed')?.errors && medicineForm.get('nomMed')?.touched">Medicine name is required.</small>
+      </div>
+      <div class="field">
+        <label for="nbrDoses">Number of Doses</label>
+        <input id="nbrDoses" type="number" formControlName="nbrDoses" required />
+        <small class="p-error" *ngIf="medicineForm.get('nbrDoses')?.errors && medicineForm.get('nbrDoses')?.touched">Number of doses is required.</small>
+      </div>
+      <div class="field">
+        <label for="nbrPelJour">Number of Pills per Day</label>
+        <input id="nbrPelJour" type="number" formControlName="nbrPelJour" required />
+        <small class="p-error" *ngIf="medicineForm.get('nbrPelJour')?.errors && medicineForm.get('nbrPelJour')?.touched">Number of pills per day is required.</small>
+      </div>
+      <div class="field">
+        <label for="durreTrait">Treatment Duration</label>
+        <input id="durreTrait" type="number" formControlName="durreTrait" required />
+        <small class="p-error" *ngIf="medicineForm.get('durreTrait')?.errors && medicineForm.get('durreTrait')?.touched">Treatment duration is required.</small>
+      </div>
+      <div class="field">
+        <label for="imageFile">Medicine Image:</label>
+        <input type="file" (change)="onFileSelected($event)" class="form-control" id="imageFile" formControlName="imageFile" required>
+        <div *ngIf="medicineForm.get('imageFile')?.errors && (medicineForm.get('imageFile')?.dirty || medicineForm.get('imageFile')?.touched)">
+          <span class="error">Image is required</span>
+        </div>
+      </div>
+  
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideMedicineDialog()"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+    </form>
+  </p-dialog>
+
+  <p-dialog header="Update Medicine" [(visible)]="updateMedicamentDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
+    <form [formGroup]="updateMedicamentForm" (ngSubmit)="updateMedicament()">
+      <div class="field">
+        <label for="nomMed">Medicine Name</label>
+        <input id="nomMed" type="text" formControlName="nomMed" required autofocus />
+        <small class="p-error" *ngIf="updateMedicamentForm.get('nomMed')?.errors && updateMedicamentForm.get('nomMed')?.touched">Medicine name is required.</small>
+      </div>
+      <div class="field">
+        <label for="nbrDoses">Number of Doses</label>
+        <input id="nbrDoses" type="number" formControlName="nbrDoses" required />
+        <small class="p-error" *ngIf="updateMedicamentForm.get('nbrDoses')?.errors && updateMedicamentForm.get('nbrDoses')?.touched">Number of doses is required.</small>
+      </div>
+      <div class="field">
+        <label for="nbrPelJour">Number of Pills per Day</label>
+        <input id="nbrPelJour" type="number" formControlName="nbrPelJour" required />
+        <small class="p-error" *ngIf="updateMedicamentForm.get('nbrPelJour')?.errors && updateMedicamentForm.get('nbrPelJour')?.touched">Number of pills per day is required.</small>
+      </div>
+      <div class="field">
+        <label for="durreTrait">Treatment Duration</label>
+        <input id="durreTrait" type="number" formControlName="durreTrait" required />
+        <small class="p-error" *ngIf="updateMedicamentForm.get('durreTrait')?.errors && updateMedicamentForm.get('durreTrait')?.touched">Treatment duration is required.</small>
+      </div>
+  
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideUpdateMedicamentDialog()"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+    </form>
+  </p-dialog>
+  
+
+  <p-dialog header="Add Report" [(visible)]="reportDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
+    <form [formGroup]="reportForm" (ngSubmit)="addReport()">
+      <div class="field">
+        <label for="dateReport">Date</label>
+        <input id="dateReport" type="date" formControlName="dateReport" required autofocus />
+        <small class="p-error" *ngIf="reportForm.get('dateReport')?.errors && reportForm.get('dateReport')?.touched">Date is required.</small>
+      </div>
+      <div class="field">
+        <label for="descriptionReport">Description</label>
+        <textarea id="descriptionReport" formControlName="descriptionReport" required></textarea>
+        <small class="p-error" *ngIf="reportForm.get('descriptionReport')?.errors && reportForm.get('descriptionReport')?.touched">Description is required.</small>
+      </div>
+      <div class="field">
+        <label for="resultatReport">Result</label>
+        <textarea id="resultatReport" formControlName="resultatReport" required></textarea>
+        <small class="p-error" *ngIf="reportForm.get('resultatReport')?.errors && reportForm.get('resultatReport')?.touched">Result is required.</small>
+      </div>
+  
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideReportDialog()"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+    </form>
+  </p-dialog>
+
+  <p-dialog header="Update Report" [(visible)]="updateReportDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
+    <form [formGroup]="updateReportForm" (ngSubmit)="updateReport()">
+      <div class="field">
+        <label for="dateReport">Date</label>
+        <input id="dateReport" type="date" formControlName="dateReport" required autofocus>
+        <small class="p-error" *ngIf="updateReportForm.get('dateReport')?.errors && updateReportForm.get('dateReport')?.touched">Date is required.</small>
+      </div>
+      <div class="field">
+        <label for="descriptionReport">Description</label>
+        <textarea id="descriptionReport" formControlName="descriptionReport" required></textarea>
+        <small class="p-error" *ngIf="updateReportForm.get('descriptionReport')?.errors && updateReportForm.get('descriptionReport')?.touched">Description is required.</small>
+      </div>
+      <div class="field">
+        <label for="resultatReport">Result</label>
+        <textarea id="resultatReport" formControlName="resultatReport" required></textarea>
+        <small class="p-error" *ngIf="updateReportForm.get('resultatReport')?.errors && updateReportForm.get('resultatReport')?.touched">Result is required.</small>
+      </div>
+  
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideUpdateReportDialog()"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+    </form>
+  </p-dialog>
+  
+
+
+ <p-dialog header="Add Regime" [(visible)]="regimeDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
+  <form [formGroup]="regimeForm" (ngSubmit)="addRegime()">
+    <div class="field">
+      <label for="typeRegime">Type</label>
+      <input id="typeRegime" type="text" formControlName="typeRegime" required autofocus />
+      <small class="p-error" *ngIf="regimeForm.get('typeRegime')?.errors && regimeForm.get('typeRegime')?.touched">Type is required.</small>
+    </div>
+    <div class="field">
+      <label for="descriptionRegime">Description</label>
+      <textarea id="descriptionRegime" formControlName="descriptionRegime" required></textarea>
+      <small class="p-error" *ngIf="regimeForm.get('descriptionRegime')?.errors && regimeForm.get('descriptionRegime')?.touched">Description is required.</small>
+    </div>
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideRegimeDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+  </form>
+</p-dialog>
+
+
+<p-dialog header="Update Regime" [(visible)]="updateRegimeDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
+  <form [formGroup]="updateRegimeForm" (ngSubmit)="updateRegime()">
+    <div class="field">
+      <label for="typeRegime">Type</label>
+      <input id="typeRegime" type="text" formControlName="typeRegime" required autofocus />
+      <small class="p-error" *ngIf="updateRegimeForm.get('typeRegime')?.errors && updateRegimeForm.get('typeRegime')?.touched">Type is required.</small>
+    </div>
+    <div class="field">
+      <label for="descriptionRegime">Description</label>
+      <textarea id="descriptionRegime" formControlName="descriptionRegime" required></textarea>
+      <small class="p-error" *ngIf="updateRegimeForm.get('descriptionRegime')?.errors && updateRegimeForm.get('descriptionRegime')?.touched">Description is required.</small>
+    </div>
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideUpdateRegimeDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+  </form>
+</p-dialog>
+
+
+  
+  
+  
+  
+  
+
+<app-footer-front></app-footer-front>

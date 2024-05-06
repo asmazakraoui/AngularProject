@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Diagnostic } from 'src/app/Models/HealthcareManag/Diagnostic';
-import { DiagnosticService } from 'src/app/services/diagnostic.service';
+import { Diagnostic } from 'src/app/model/Diagnostic';
+import { DiagnosticService } from '../../Services/diagnostic.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { RegimeAlimentaire } from 'src/app/Models/HealthcareManag/regime alimentaire';
-import { RegimealimentaireService } from 'src/app/services/regimealimentaire.service';
+import { RegimeAlimentaire } from 'src/app/model/regime alimentaire';
+import { RegimealimentaireService } from '../../Services/regimealimentaire.service';
 
 @Component({
   selector: 'app-post-diagnostic',
@@ -45,11 +45,10 @@ export class PostDiagnosticComponent implements OnInit {
           this.openSnackBar('Diagnostic added successfully!');
           this.diagnosticForm.reset();
           
-          console.log(res.regimeAlimentaire.descriptionRegime);
+         
          // if(this.regime= this.diagnosticService.getRegimeDiagnostic(newDiagnostic)!=null){
         //  const message = `Votre diagnostic est anormal et le régime alimentaire correspondant est : <span class="regime-description">${res.regimeAlimentaire.descriptionRegime}</span>`;
-        const message = "Votre diagnostic est anormal et le régime alimentaire correspondant est :" +res.regimeAlimentaire.descriptionRegime;
-            this.openSnackBar(message); 
+       
          // }
         },
         error => {

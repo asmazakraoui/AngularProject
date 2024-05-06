@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Diagnostic } from 'src/app/Models/HealthcareManag/Diagnostic';
-import { TypeDiagnostic } from 'src/app/Models/HealthcareManag/TypeDiagnostic';
-import { DiagnosticService } from 'src/app/services/diagnostic.service';
+import { Diagnostic } from 'src/app/model/Diagnostic';
+import { TypeDiagnostic } from 'src/app/model/TypeDiagnostic';
+import { DiagnosticService } from '../../Services/diagnostic.service';
 
 @Component({
   selector: 'app-update-diagnostic',

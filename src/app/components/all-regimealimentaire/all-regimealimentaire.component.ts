@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RegimeAlimentaire } from 'src/app/Models/HealthcareManag/regime alimentaire';
-import { RegimealimentaireService } from 'src/app/services/regimealimentaire.service';
+import { RegimeAlimentaire } from 'src/app/model/regime alimentaire';
+import { RegimealimentaireService } from '../../Services/regimealimentaire.service';
 
 @Component({
   selector: 'app-all-regimealimentaire',

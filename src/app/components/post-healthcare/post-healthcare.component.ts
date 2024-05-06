@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { healthcare } from 'src/app/Models/HealthcareManag/Healthcare';
-import { HealthcareService } from 'src/app/services/healthcare.service';
+import { healthcare } from 'src/app/model/Healthcare';
+import { HealthcareService } from '../../Services/healthcare.service';
 @Component({
   selector: 'app-post-healthcare',
   templateUrl: './post-healthcare.component.html',

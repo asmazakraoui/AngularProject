@@ -1,0 +1,50 @@
+.badge-success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .badge-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  .badge{
+    color: rgb(221, 221, 221);
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: rgb(156, 165, 33);
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    color: white;
+  }
+
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .pagination-button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination-button.active {
+    background-color: #108ee9;
+    color: white;
+  }

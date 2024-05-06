@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RegimealimentaireService } from 'src/app/services/regimealimentaire.service';
+import { RegimealimentaireService } from '../../Services/regimealimentaire.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegimeAlimentaire } from 'src/app/Models/HealthcareManag/regime alimentaire';
+import { RegimeAlimentaire } from 'src/app/model/regime alimentaire';
 @Component({
   selector: 'app-post-regimealimentaire',
   templateUrl: './post-regimealimentaire.component.html',
