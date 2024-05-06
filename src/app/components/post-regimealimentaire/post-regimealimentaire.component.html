@@ -1,0 +1,18 @@
+<app-header-sec></app-header-sec>
+<div class="form">
+  <div class="container">
+    <h2>Création d'un régime alimentaire</h2>
+    <form [formGroup]="regimealimtaireForm" (ngSubmit)="addRegimeAlimentaire()">
+      <div>
+        <label for="typeRegime">Type de régime alimentaire: </label>
+        <input type="text" id="typeRegime" formControlName="typeRegime" name="typeRegime">
+      </div>
+      <div>
+        <label for="descriptionRegime">Description du régime alimentaire: </label>
+        <textarea id="descriptionRegime" formControlName="descriptionRegime" name="descriptionRegime"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Add</button>
+    </form>
+  </div>
+</div>
+<app-footer-front></app-footer-front>

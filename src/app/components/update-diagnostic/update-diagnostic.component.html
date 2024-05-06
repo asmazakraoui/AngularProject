@@ -1,0 +1,24 @@
+<app-header-sec></app-header-sec>
+<div class="container">
+    <h2>Modification d'un diagnostic</h2>
+    <form [formGroup]="diagnosticForm" (submit)="updateDiagnostic()">
+        <div class="form-group">
+            <label for="typeDiagnostic">Type de diagnostic:</label>
+            <select id="typeDiagnostic" class="form-control" formControlName="typeDiagnostic">
+                <option *ngFor="let option of typeDiagnosticOptions" [value]="option">{{ option }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dateDiag">Date du diagnostic:</label>
+            <input type="date" id="dateDiag" class="form-control" formControlName="dateDiag">
+        </div>
+       
+        <div class="form-group">
+            <label for="numDiag">Numéro du diagnostic:</label>
+            <input type="number" id="numDiag" class="form-control" formControlName="numDiag">
+        </div>
+    
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>
+<app-footer-front></app-footer-front>

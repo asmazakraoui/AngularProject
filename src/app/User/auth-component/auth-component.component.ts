@@ -23,7 +23,6 @@ currentUser:User;
   ngOnInit(): void {
     this.initForm();
     this.roleNamesPlaceholder = this.getRoleNamesPlaceholder();
-
   }
 
   initForm(): void {
@@ -51,7 +50,6 @@ currentUser:User;
     return `Enter role names (${roleNames})`;
   }
  
-
 
 
   register(): void {

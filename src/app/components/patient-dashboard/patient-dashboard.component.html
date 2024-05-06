@@ -1,0 +1,216 @@
+<app-header-sec></app-header-sec>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Patient Dashboard</h1>
+      </div>
+    </div>
+    <div class="row">
+      
+      
+        <div class="table-wrapper">
+          <div class="select-container">
+            <select id="diagnosticFilter" class="form-select" [(ngModel)]="selectedDiagnosticFilter" (ngModelChange)="sortDiagnostics($event)">
+              <option value="">Select</option>
+              <option value="asc">Ascendant</option>
+              <option value="des">Descendant</option>
+            </select>
+          </div>
+          <h2>Diagnostics</h2>
+          <button class="add-diagnostic-button" (click)="openDiagnosticDialog()">Add Diagnostic</button>
+          <table class="table">
+            
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Number</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let diagnostic of diagnostics">
+                <td>{{ diagnostic.typeDiagnostic }}</td>
+                <td>{{ diagnostic.dateDiag }}</td>
+                <td>{{ diagnostic.numDiag }}</td>
+              
+                <td>
+                  <button class="update-diagnostic-button" (click)="openUpdateDiagnosticDialog(diagnostic)">Update</button>
+                  <button class="delete-diagnostic-button" (click)="deleteDiagnostic(diagnostic)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         
+        </div>
+        
+        <div class="table-wrapper">
+          <div class="select-container">
+            <select id="reportFilter" class="form-select" [(ngModel)]="selectedReportFilter" (ngModelChange)="sortReports($event)">
+              <option value="">Select</option>
+              <option value="asc">Ascendant</option>
+              <option value="des">Descendant</option>
+            </select>
+          </div>
+          
+            <h2>Reports</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Result</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let report of reports">
+                  <td>{{ report.dateReport }}</td>
+                  <td>{{ report.descriptionReport }}</td>
+                  <td>{{ report.resultatReport }}</td>
+                  <td>
+                    <button class="btn btn-danger" (click)="downloadPdfReport(report.idReport)">Download Report</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="select-container">
+            <select id="medicineFilter" class="form-select" [(ngModel)]="selectedMedicineFilter" (ngModelChange)="sortMedicines($event)">
+              <option value="">Select</option>
+              <option value="asc">Ascendant</option>
+              <option value="des">Descendant</option>
+            </select>
+          </div>
+          <div class="table-wrapper">
+            <h2>Medicines</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Number of Doses</th>
+                  <th>Number of pills per Day</th>
+                  <th>Treatment Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medicine of medicines">
+                  <img [src]="getImageUrlmed(medicine)" alt="" width="100">
+                  <td>{{ medicine.nomMed }}</td>
+                  <td>{{ medicine.nbrDoses }}</td>
+                  <td>{{ medicine.nbrPelJour }}</td>
+                  <td>{{ medicine.durreTrait }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrapper">
+            <div class="select-container">
+              <select id="calendarFilter" class="form-select" [(ngModel)]="selectedCalendarFilter" (ngModelChange)="sortCalendars($event)">
+                <option value="">Select</option>
+                <option value="asc">Ascendant</option>
+                <option value="des">Descendant</option>
+              </select>
+            </div>
+            <h2>My Appointments</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Selected Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let calendar of calendars">
+                  <td>{{ calendar.selectedDate }}</td>
+                  <td [ngClass]="getStatusClass(calendar.status)">
+                    {{ calendar.status === 'ON_PROGRESS' ? 'IN PROGRESS' : calendar.status }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          
+          
+        <div class="table-wrapper">
+          <div class="select-container">
+            <select id="regimeFilter" class="form-select" [(ngModel)]="selectedRegimeFilter" (ngModelChange)="sortRegimes($event)">
+              <option value="">Select</option>
+              <option value="asc">Ascendant</option>
+              <option value="des">Descendant</option>
+            </select>
+          </div>
+          <h2>Regimes</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let regime of regimes">
+                <td>{{ regime.typeRegime }}</td>
+                <td>{{ regime.descriptionRegime }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       
+          
+    </div>
+  </div>
+
+
+<p-dialog header="Add Diagnostic" [(visible)]="addDiagnosticDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
+  <form [formGroup]="diagnosticForm" (ngSubmit)="addDiagnostic()">
+    <div class="field">
+      <label for="typeDiagnostic">Type</label>
+      <select id="typeDiagnostic" formControlName="typeDiagnostic" required>
+        <option *ngFor="let type of getTypeDiagnosticValues()" [value]="type.value">{{type.label}}</option>
+       </select>
+       
+      
+      
+
+    </div>
+    <div class="field">
+      <label for="dateDiag">Date</label>
+      <input id="dateDiag" type="date" formControlName="dateDiag" required>
+    </div>
+    <div class="field">
+      <label for="numDiag">Number</label>
+      <input id="numDiag" type="number" formControlName="numDiag" required>
+    </div>
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDiagnosticDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+  </form>
+</p-dialog>
+
+<p-dialog header="Update Diagnostic" [(visible)]="updateDiagnosticDialog" [modal]="true" [style]="{ 'width': '450px' }" styleClass="p-fluid">
+  <form [formGroup]="updateDiagnosticForm" (ngSubmit)="updateDiagnostic()">
+    <div class="field">
+      <label for="typeDiagnostic">Type</label>
+      <select id="typeDiagnostic" formControlName="typeDiagnostic" required>
+        <option *ngFor="let type of getTypeDiagnosticValues()" [value]="type.value">{{type.label}}</option>
+       </select>
+       
+      
+    </div>
+    <div class="field">
+      <label for="dateDiag">Date</label>
+      <input id="dateDiag" type="date" formControlName="dateDiag" required>
+    </div>
+    <div class="field">
+      <label for="numDiag">Number</label>
+      <input id="numDiag" type="number" formControlName="numDiag" required>
+    </div>
+   
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideUpdateDiagnosticDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" type="submit"></button>
+  </form>
+</p-dialog>
+
+<app-footer-front></app-footer-front>

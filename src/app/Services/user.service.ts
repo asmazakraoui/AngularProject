@@ -19,6 +19,11 @@ export class UserService {
 
   constructor(private http: HttpClient,private registerService:RegisterService) { }
 
+
+  getAllDoctors(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/doctors`); 
+  }
+
   retrieveUser(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/retrieveUser/${id}`);
   }

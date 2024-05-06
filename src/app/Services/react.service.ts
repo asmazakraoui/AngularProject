@@ -16,7 +16,6 @@ export class ReactService {
    }
 
 
-
   removeReact(idReact: number): Observable<void> {
     return this.http.delete<void>(`${this.baseURL}/remove/${idReact}`);
   }
