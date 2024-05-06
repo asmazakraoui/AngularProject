@@ -1,4 +1,15 @@
-
+<link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/FrontOffice/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/flaticon.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/magnific-popup.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/style.css" type="text/css">
 <meta charset="UTF-8">
 <meta name="description" content="Sona Template">
 <meta name="keywords" content="Sona, unica, creative, html">
@@ -104,13 +115,19 @@
                             <img src="/assets/FrontOffice/img/logo3.png" alt="" height="80" width="80">
                         </a>
                     </div>
+                    
                 </div>
                 <div class="col-lg-10">
                     <div class="nav-menu">
                         <nav class="mainmenu">
                             <ul>
                                 <li class="active"><a href="./index.html">Home</a></li>
-                                <li><a href="./rooms.html">Shop</a></li>
+                                <li><a>Shop</a>
+                                    <ul class="dropdown">
+                                        <li><a routerLink="/get-product-front">Store</a></li>
+                                        <!--<li><a routerLink="#">Pharmacy</a></li>-->
+                                    </ul>
+                                </li>
                                 <li><a href="./about-us.html">Library</a></li>
                                 <li><a href="./pages.html">Pages</a>
                                     <ul class="dropdown">
@@ -125,7 +142,7 @@
                             </ul>
                         </nav>
                         <div class="nav-right search-switch">
-                            <i class="icon_search"></i>
+                            <a routerLink="/cart-product"><img src="assets/Images/icon-panier.png" alt="Cart Icon" class="icon-panier"></a>
                         </div>
                     </div>
                 </div>
@@ -134,7 +151,7 @@
     </div>
 
     <!-- Hero Section Begin -->
-    <section class="hero-section">
+    <!--<section class="hero-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -158,7 +175,7 @@
                                 <input type="text" class="date-input" id="date-out">
                                 <i class="icon_calendar"></i>
                             </div>
-                          <!-- <div class="select-option">
+                           <div class="select-option">
                                 <label for="guest">Guests:</label>
                                 <select id="guest">
                                     <option value="">2 Adults</option>
@@ -171,7 +188,7 @@
                                     <option value="">1 Room</option>
                                     <option value="">2 Room</option>
                                 </select>
-                            </div>--> 
+                            </div>
                             <button type="submit">Connect</button>
                         </form>
                     </div>
@@ -182,6 +199,13 @@
             <div class="hs-item set-bg" style="background-image: url('/assets/FrontOffice/img/caree.jpg')"></div>
             
         </div>
-    </section>
- 
+    </section>-->
+    <script src="/assets/FrontOffice/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/FrontOffice/js/bootstrap.min.js"></script>
+    <script src="/assets/FrontOffice/js/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/FrontOffice/js/jquery.nice-select.min.js"></script>
+    <script src="/assets/FrontOffice/js/jquery-ui.min.js"></script>
+    <script src="/assets/FrontOffice/js/jquery.slicknav.js"></script>
+    <script src="/assets/FrontOffice/js/owl.carousel.min.js"></script>
+    <script src="/assets/FrontOffice/js/main.js"></script>
    

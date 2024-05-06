@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommandLineService } from './Services/CommandLine/command-line.service';
+import { CommandLine } from './Models/ShopManag/CommandLine';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,35 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularProjPi';
+ 
+  constructor(private commandLineService: CommandLineService){}
+ /* commandLineForm: FormGroup;
+  constructor(private formBuilder:FormBuilder, private commandLineService: CommandLineService){
+    this.commandLineForm= this.formBuilder.group({
+      quantite: ['', Validators.required],
+      prix_total_product: ['', Validators.required]
+    });
+  }
+
+  commandLines: CommandLine[] = [];
+  loadCommandLines(): void {
+    this.commandLineService.findAllCommandLines().subscribe(commandLines => {
+      this.commandLines = commandLines;
+    });
+  }
+
+  ngOnInit(): void {
+    this.loadCommandLines();
+  }
+  addCommandLine() : void{
+    if(this.commandLineForm.valid){
+      const newCommandLine : CommandLine = this.commandLineForm.value as CommandLine;
+      this.commandLineService.addCommandLine(newCommandLine).subscribe( () :void =>{
+        this.loadCommandLines();
+        this.commandLineForm.reset();
+      });
+    }else{
+      alert("CommandLine added!");
+    }
+  }*/
 }

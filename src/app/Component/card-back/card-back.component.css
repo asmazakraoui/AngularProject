@@ -1,0 +1,102 @@
+.card {
+  width: 300px;
+  height: 650px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 40px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title,
+.card-text,
+.button-container {
+  width: 100%;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-p {
+  background-color: #dfa974;
+  color: #fff;
+  border: none;
+}
+
+.btn-succ {
+  background-color: transparent;
+  color: #dfa974;
+  border: 2px solid #dfa974;
+}
+
+.btn-succ:hover {
+  background-color: #dfa974;
+  color: #fff;
+}
+
+.btn-p:hover,
+.btn-succ:hover {
+  opacity: 0.8;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5px;
+}
+
+.transport-button {
+  border: 2px solid #dfa974;
+  background-color: transparent;
+  color: #dfa974;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.transport-button:hover {
+  background-color: #dfa974;
+  color: #fff;
+}
+.btn-update{
+  margin-right: 5px;
+}
+.btn-delete{
+  margin-left: 5px;
+}

@@ -1,0 +1,153 @@
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 100%; /* Utilisez 100% de la largeur disponible */
+    margin-bottom: 20px;
+    max-width: 1000px; /* Limitez la largeur maximale de la carte */
+    height: auto; /* Laissez la hauteur ajustable en fonction du contenu */
+}
+
+.card:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-img {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    color: #555;
+}
+
+.quantity,
+.price,
+.total-price {
+    font-weight: bold;
+    color: #dfa974;
+    margin-bottom: 30px;
+}
+
+.quantity {
+    margin-top: 14px;
+}
+
+.price,
+.total-price {
+    margin-top: 20px;
+}
+
+.quantity label {
+    margin-right: 5px;
+}
+
+.quantity-input {
+    width: 70px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+.card-body{
+	width: 250px;
+}
+.quantity{
+	width: 150px;
+	margin-left: 20px ;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+.price{
+	width: 150px;
+	margin-left: 20px ;
+	margin-right: 10px;
+	margin-top: 15px;
+}
+.total-price{
+	width: 150px;
+	margin-left: 15px ;
+	margin-right: 0px;
+	margin-top: 15px;
+}
+.supp{
+	width: 30px;
+	height: 30px;
+	margin-left: 35px ;
+	margin-right: 5px;
+}
+.labelll{
+	margin-bottom: 80px;
+}
+.inp{
+	margin-bottom: 100px;
+}
+.button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .svgIcon {
+    width: 12px;
+    transition-duration: .3s;
+  }
+  
+  .svgIcon path {
+    fill: white;
+  }
+  
+  .button:hover {
+    width: 80px;
+    border-radius: 50px;
+    transition-duration: .3s;
+    background-color: rgb(255, 69, 69);
+    align-items: center;
+  }
+  
+  .button:hover .svgIcon {
+    width: 50px;
+    transition-duration: .3s;
+    transform: translateY(60%);
+  }
+  
+  .button::before {
+    position: absolute;
+    top: -20px;
+    content: "Delete";
+    color: white;
+    transition-duration: .3s;
+    font-size: 2px;
+  }
+  
+  .button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(30px);
+    transition-duration: .3s;
+  }
