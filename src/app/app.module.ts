@@ -51,7 +51,6 @@ import { AddFArrangementComponent } from './components/add-farrangement/add-farr
 import { FarrangementListComponent } from './components/farrangement-list/farrangement-list.component';
 import { UpdateFarrangementComponent } from './components/update-farrangement/update-farrangement.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NotificationComponent } from './components/notification/notification.component';
 import { FlowerStatisticsComponent } from './components/flower-statistics/flower-statistics.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 
@@ -97,7 +96,6 @@ import { CalendarComponent } from './components/calendar/calendar.component';
       AddFArrangementComponent,
       FarrangementListComponent,
       UpdateFarrangementComponent,
-      NotificationComponent,
       FlowerStatisticsComponent,
       CalendarComponent,
   

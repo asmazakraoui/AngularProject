@@ -11,12 +11,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./paiement.component.css']
 })
 export class PaiementComponent implements OnInit {
+  
+  
   public totalPriceOfFlowers: number = 0; // Initialisation avec 0
 
   public PriceOfFuneralLoc: number = 0;
+  
 
 
   public totalPriceOfMeals: number = 0; 
+  public amount: number = 0; // Montant total à payer
   constructor(
     private appStateService: AppStateService,
     private ceremonyService: CeremonyService,
@@ -24,6 +28,8 @@ export class PaiementComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.invokeStripe();
+
     this.appStateService.currentCeremonyId$.subscribe(id => {
       if (id !== null) {
         this.ceremonyService.retrieveCeremony(id).subscribe(ceremony => {
@@ -71,7 +77,35 @@ export class PaiementComponent implements OnInit {
 
   }
   
-  confirmPayment(): void {
-    this.router.navigate(['/success']);
+
+
+  Payment() {
+    // Calcul du montant total à partir des prix des fleurs, des repas et de l'emplacement des funérailles
+    this.amount = this.totalPriceOfFlowers + this.PriceOfFuneralLoc + this.totalPriceOfMeals;
+
+  const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51OHZb7FlYpDDZbLlaASCVcJj0pt19RnRuBPRZnGDnPAkCSPFjfXE7iv0kDpfQwG4kRxyDYU7o6HPhw90QeEFJeCI00XOAI7dZX',
+      locale: 'auto',
+      token: (stripeToken: any) => {
+        console.log('stripe hahah');  
+         // Naviguer vers la page de succès lorsque le paiement est réussi
+         this.router.navigate(['/success']);   
+      }
+      });
+    paymentHandler.open({
+      name: 'Payment',
+      description: 'Enter your bank card number',
+      amount: this.amount * 100 ,
+    });
+  }
+
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
+      window.document.body.appendChild(script);
+    }
   }
 }

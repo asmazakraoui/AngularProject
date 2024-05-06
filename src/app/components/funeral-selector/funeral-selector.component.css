@@ -1,7 +1,7 @@
 /* Ajustement des cartes */
 .my-custom-card {
     width: 250px; /* Largeur fixe des cartes */
-    height: 350px; /* Hauteur fixe des cartes */
+    height: 370px; /* Hauteur fixe des cartes */
     margin-right: 10px; /* Marge à droite pour l'espace entre les cartes */
     margin-bottom: 60px; /* Marge en bas pour l'espace entre les lignes */
     float: left; /* Alignement des cartes sur la gauche */
@@ -125,6 +125,20 @@
     box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
     border: 1px solid #ccc;
     z-index: 999; /* Ensure it's just below the bubble */
+}
+
+.btn-cal {
+  background-color: #276b38; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  border: none; /* Supprime la bordure */
+  border-radius: 5px; /* Ajoute des coins arrondis */
+  padding: 5px 10px; /* Ajoute un peu de marge intérieure */
+  cursor: pointer; /* Change le curseur au survol */
+  transition: background-color 0.3s ease; /* Ajoute une transition fluide lors du survol */
+}
+
+.btn-cal:hover {
+  background-color: #02310a; /* Couleur de fond au survol */
 }
 
   

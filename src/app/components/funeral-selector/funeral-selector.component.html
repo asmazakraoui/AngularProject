@@ -8,7 +8,13 @@
 
            
                     <div class="card-body">
-                        <h5 class="card-title">{{ funeralLocation.nameLoc }}</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title">{{ funeralLocation.nameLoc }}</h5>
+                            <!-- Bouton "calendar" à droite -->
+                            <button type="submit" class="btn btn-cal" (click)="goToCalendar(funeralLocation.idLoc)">
+                                <i class="far fa-calendar-alt"></i> <!-- Icône de calendrier Font Awesome -->
+                            </button>
+                        </div>
                         <p class="card-text">capacity: {{ funeralLocation.capacityLoc }}</p>
                         <p class="card-text">Price: {{ funeralLocation.priceLoc }} €</p>
                         
@@ -19,6 +25,8 @@
                        
                         
                     </div>
+                   
+
                     <app-rating [locationId]="funeralLocation.idLoc.toString()"></app-rating>
                     
                 </div>
@@ -41,6 +49,13 @@
             <div class="card my-custom-card" (click)="selectFuneral(ritualLocation)"
                 [class.selected]="selectedFuneralLocations.includes(ritualLocation)" style="cursor: pointer;">
                 <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="card-title">{{ ritualLocation.nameLoc }}</h5>
+                        <!-- Bouton "calendar" à droite -->
+                        <button type="submit" class="btn btn-cal" (click)="goToCalendar(ritualLocation.idLoc)">
+                            <i class="far fa-calendar-alt"></i> <!-- Icône de calendrier Font Awesome -->
+                        </button>
+                    </div>
                     <h5 class="card-title">{{ ritualLocation.nameLoc }}</h5>
                     <div class="meal-image-container">
                         <img [src]="'http://localhost/hadilprojet/' + ritualLocation.imgLoc" alt="{{ ritualLocation.nameLoc }}">

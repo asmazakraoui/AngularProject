@@ -26,25 +26,26 @@ export class AddFArrangementComponent {
           console.log(response);
           this.submitted = true;
           this.router.navigate(["/FarrList"]);
-          this.notificationService.showNotification('step1 done!');
+          this.notificationService.showNotification(`Step: ${this.fArrangement.step} - Status: ${this.fArrangement.statut}`);
         },
         error => {
           console.log(error);
         });
   }
-
+  
   newFArrangement(): void {
     this.submitted = false;
     this.fArrangement = new FArrangement();
   }
 
   showNotification() {
-    this.notificationMessage = 'step 1 done!';
+    this.notificationMessage = `Step ${this.fArrangement.step} - Status: ${this.fArrangement.statut}`;
     this.showingNotification = true;
     setTimeout(() => {
       this.hideNotification();
     }, 5000); // Cacher la notification après 5 secondes
   }
+  
 
   hideNotification() {
     this.showingNotification = false;

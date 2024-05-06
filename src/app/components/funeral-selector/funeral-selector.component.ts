@@ -6,6 +6,9 @@ import { CeremonyService } from 'src/app/services/ceremony.service';
 import { TypeReligion } from 'src/app/model/TypeReligion';
 import { TypeLocation } from 'src/app/model/TypeLocation';
 import { Ceremony } from 'src/app/model/Ceremony';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarComponent } from '../calendar/calendar.component';
+
 // AppStateService est retiré car il n'est pas utilisé dans le code fourni
 // import { AppStateService } from 'src/app/services/app-state.service';
 // take est retiré car il n'est pas utilisé dans le code fourni
@@ -34,7 +37,8 @@ export class FuneralSelectorComponent implements OnInit {
     private route: ActivatedRoute,
     private funeralLocationService: FuneralLocationService,
     private ceremonyService: CeremonyService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
   
   ngOnInit(): void {
@@ -127,8 +131,8 @@ export class FuneralSelectorComponent implements OnInit {
   }
   
   
-  goTocalendar(id: number): void {
-    this.router.navigate(['/Calendar']);
+  goToCalendar(id: number): void {
+    const modalRef = this.modalService.open(CalendarComponent, { size: 'sm' });
+    modalRef.componentInstance.locationId = id; // Passer l'ID à CalendarComponent
   }
-
 }

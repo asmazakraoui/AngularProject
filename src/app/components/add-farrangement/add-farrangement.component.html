@@ -1,4 +1,3 @@
-<!-- app.component.html -->
 <div class="container">
   <div class="card">
     <div class="card-header">
@@ -7,21 +6,23 @@
     <div class="card-body">
       <form (ngSubmit)="saveFArrangement()">
         <div class="form-group">
-          <label for="step">Étape:</label>
+          <label for="step">Step:</label>
           <input type="text" class="form-control" id="step" [(ngModel)]="fArrangement.step" name="step" required>
         </div>
 
         <div class="form-group">
-          <label for="statut">Statut:</label>
-          <input type="text" class="form-control" id="statut" [(ngModel)]="fArrangement.statut" name="statut" required>
+          <label for="statut">Status:</label>
+          <select class="form-control" id="statut" [(ngModel)]="fArrangement.statut" name="statut" required>
+            <option value="done">Done</option>
+            <option value="in_progress">In progress</option>
+          </select>
         </div>
 
-
         <!-- Bouton pour afficher la notification -->
-        <button type="submit" class="btn btn-success" (click)="showNotification()">add</button>
-         <!-- Balise pour afficher la notification -->
-         <div *ngIf="showingNotification" class="alert alert-success">
-          La notification s'affiche ici!
+        <button type="submit" class="btn btn-success" (click)="showNotification()">Add</button>
+        <!-- Balise pour afficher la notification -->
+        <div *ngIf="showingNotification" class="alert alert-success">
+          {{ notificationMessage }}
         </div>
 
         <!-- Bouton pour afficher la notification -->

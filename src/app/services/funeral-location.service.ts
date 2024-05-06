@@ -41,7 +41,9 @@ findFuneralLocationsByReligion(religion: string): Observable<FuneralLocation[]> 
 }
 
 
-findCeremonyDatesByFuneralLocation(locationId: number): Observable<Date[]> {
-  return this.http.get<Date[]>(`${this.baseUrl}${locationId}/ceremony-dates`);
+ // Nouvelle méthode pour récupérer les dates des cérémonies associées à un emplacement de funérarium
+ getCeremonyDatesByFuneralLocationId(funeralLocationId: number): Observable<Date[]> {
+  return this.http.get<Date[]>(`${this.baseUrl}${funeralLocationId}/ceremony-dates`);
 }
+
 }

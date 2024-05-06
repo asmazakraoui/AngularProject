@@ -60,19 +60,46 @@
     }
   }
   
-  .download-pdf-btn {
-    background-color: #007bff; /* Couleur de fond bleue */
-    color: white; /* Texte blanc */
-    padding: 10px 15px; /* Padding autour du texte et de l'icône */
-    border: none; /* Pas de bordure */
-    border-radius: 5px; /* Bordures arrondies */
-    cursor: pointer; /* Curseur en forme de main au survol */
-    font-size: 16px; /* Taille du texte */
-    display: inline-flex; /* Pour aligner l'icône et le texte */
-    align-items: center; /* Centrer verticalement le contenu du bouton */
-  }
+
   
-  .download-pdf-btn i {
-    margin-right: 5px; /* Espacer l'icône du texte */
-  }
-  
+/* Styliser le bouton de téléchargement avec juste l'icône */
+.fa-download {
+  background-color: #007bff; /* Bleu */
+  color: white; /* Texte blanc */
+  padding: 10px; /* Espacement autour de l'icône */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur en forme de main au survol */
+  font-size: 16px; /* Taille de l'icône */
+  margin-right: 10px; /* Espacement avec le bouton "Next" */
+  margin: 4px 620px; 
+}
+
+/* Conteneur des boutons */
+.buttons-container {
+  display: flex; /* Utiliser flexbox pour aligner les boutons sur la même ligne */
+  justify-content: center; /* Centrer horizontalement les boutons */
+  margin-top: 20px; /* Espacement entre les boutons et les autres éléments */
+}
+
+.next-button {
+  background-color: #4CAF50; /* Couleur de fond */
+  border: none; /* Pas de bordure */
+  color: white; /* Couleur du texte */
+  padding: 15px 32px; /* Espacement à l'intérieur du bouton */
+  text-align: center; /* Centrer le texte */
+  text-decoration: none; /* Pas de soulignement */
+  font-size: 16px; /* Taille de la police */
+  cursor: pointer; /* Curseur pointeur au survol */
+  border-radius: 8px; /* Bordure arrondie */
+  transition: background-color 0.3s ease; /* Transition en douceur pour la couleur de fond */
+  margin: 4px 600px; 
+}
+
+.next-button:hover {
+  background-color: #45a049; /* Couleur de fond au survol */
+}
+
+.next-button:active {
+  background-color: #367939; /* Couleur de fond lorsque le bouton est enfoncé */
+}

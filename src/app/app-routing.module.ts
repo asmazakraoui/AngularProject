@@ -103,8 +103,7 @@ export const routes: Routes = [
 { path: 'FarrList', component: FarrangementListComponent },
 { path: 'UpdateFArr/:id', component: UpdateFarrangementComponent },
 { path: 'flowerstat', component: FlowerStatisticsComponent },
-{ path: 'calendar', component: CalendarComponent },
-
+ { path: 'Calendar/:id', component: CalendarComponent }
 
 
 

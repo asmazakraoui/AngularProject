@@ -99,4 +99,5 @@ export class InvitationComponent implements OnInit, OnDestroy {
     return `https://www.facebook.com/sharer/sharer.php?u=https://Invitaion.com/${path}`;
 }
 
+
 }
