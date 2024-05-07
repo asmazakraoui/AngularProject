@@ -52,7 +52,7 @@ export class RegisterService {
 
 /*getCurrentUser(): Observable<User> {
   // Replace with your actual backend URL
-  const url = 'http://localhost:8082/test/auth/current-user';
+  const url = 'http://localhost:8082/test/testtest/auth/current-user';
 
   // Add authorization header if your backend requires authentication
   const headers = new HttpHeaders({

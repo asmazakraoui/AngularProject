@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Product } from 'src/app/Models/ShopManag/Product';
+import { Product } from 'src/app/models/ShopManag/Product';
 import { CommandLineService } from 'src/app/Services/CommandLine/command-line.service';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { RatingService } from 'src/app/Services/Rating/rating.service';

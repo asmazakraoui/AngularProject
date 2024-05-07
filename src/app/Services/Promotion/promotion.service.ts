@@ -1,14 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Promotion } from 'src/app/Models/ShopManag/Promotion';
+import { Promotion } from 'src/app/models/ShopManag/Promotion';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PromotionService {
 
-  private baseUrl :string = 'http://localhost:8082';
+  private baseUrl :string = 'http://localhost:8082/test';
   constructor(private http : HttpClient) { }
 
   addPromotion(promotion: Promotion): Observable<Promotion>{

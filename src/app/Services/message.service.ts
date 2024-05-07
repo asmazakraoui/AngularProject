@@ -7,7 +7,7 @@ import { Message } from '../models/message';
 })
 export class MessageService {
 
-  private baseURL : string = 'http://localhost:8082/AngularProject'
+  private baseURL : string = 'http://localhost:8082/test/AngularProject'
   constructor(private http : HttpClient) {}
 
 

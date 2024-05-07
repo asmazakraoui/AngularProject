@@ -4,7 +4,4 @@
   top: 50%; /* Position the modal vertically at 50% from the top */
   transform: translateY(-50%); /* Adjust vertical position to center */
 }
-.icon-panier{
-    height: 20px;
-    width: 20px;
-}
+

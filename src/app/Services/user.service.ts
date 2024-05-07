@@ -88,7 +88,11 @@ export class UserService {
   }
 
 
-  getAllJobApplications(): Observable<JobApplication[]> {
+  // getAllJobApplications(): Observable<JobApplication[]> {
+  //   const url = `${this.apiUrl}/getJob`;
+  //   return this.http.get<JobApplication[]>(url);
+  // }
+  retrieveJobApplications(): Observable<JobApplication[]> {
     const url = `${this.apiUrl}/getJob`;
     return this.http.get<JobApplication[]>(url);
   }

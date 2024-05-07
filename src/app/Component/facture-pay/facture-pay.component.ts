@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CommandLine } from 'src/app/Models/ShopManag/CommandLine';
-import { Product } from 'src/app/Models/ShopManag/Product';
+import { CommandLine } from 'src/app/models/ShopManag/CommandLine';
+import { Product } from 'src/app/models/ShopManag/Product';
 import { CommandLineService } from 'src/app/Services/CommandLine/command-line.service';
 import { OrderrService } from 'src/app/Services/Orderr/orderr.service';
 

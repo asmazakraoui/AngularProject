@@ -23,7 +23,7 @@ export class ReactService {
   likePost(postId: number): Observable<any> {
   
    
-    return this.http.post(`http://localhost:8082/test/api/react/like/${postId}`, {}).pipe(
+    return this.http.post(`http://localhost:8082/test/testtest/api/react/like/${postId}`, {}).pipe(
       tap(response => {
         console.log('Like Post Response:', response);
         if (response && response.hasOwnProperty('message')) {

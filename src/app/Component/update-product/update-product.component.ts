@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { Location } from '@angular/common';
-import { Categorie, TypeShop } from 'src/app/Models/ShopManag/Product';
+import { Categorie, TypeShop } from 'src/app/models/ShopManag/Product';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { ProductComponent } from '../get-product/product.component';

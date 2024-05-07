@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/Models/ShopManag/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import {NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { Product } from 'src/app/models/ShopManag/Product';
 
 @Component({
   selector: 'app-product',

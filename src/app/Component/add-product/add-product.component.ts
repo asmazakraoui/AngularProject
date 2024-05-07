@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Categorie, Product, TypeShop } from 'src/app/Models/ShopManag/Product';
+import { Categorie, Product, TypeShop } from 'src/app/models/ShopManag/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { Location } from '@angular/common';
 import { NgbModalRef, NgbModal, NgbActiveModal  } from '@ng-bootstrap/ng-bootstrap';

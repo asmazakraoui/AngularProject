@@ -11,8 +11,6 @@ import { HomeFrontComponent } from './FrontOffice/home-front/home-front.componen
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { HeaderFrontComponent } from './FrontOffice/header-front/header-front.component';
 import { FrontComponent } from './FrontOffice/front/front.component';
-import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
 import { ProductComponent } from './Component/get-product/product.component';
 import { AddProductComponent } from './Component/add-product/add-product.component';
 import { OrderrComponent } from './Component/get-orderr/orderr.component';
@@ -22,8 +20,6 @@ import { CardProductFrontComponent } from './Component/card-product-front/card-p
 import { CardBackComponent } from './Component/card-back/card-back.component';
 import { CartProductComponent } from './Component/cart-product/cart-product.component';
 import { CardCartComponent } from './Component/card-cart/card-cart.component'; 
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { PromotionComponent } from './Component/promotion/promotion.component';
 import { AddPromotionComponent } from './Component/add-promotion/add-promotion.component';
 import { UpdatePromotionComponent } from './Component/update-promotion/update-promotion.component';
@@ -150,7 +146,6 @@ import { HeroSectionComponent } from './FrontOffice/hero-section/hero-section.co
 import { DashFrontComponent } from './FrontOffice/dash-front/dash-front.component';
 import { DashAfterlogComponent } from './FrontOffice/dash-afterlog/dash-afterlog.component';
 import { HeaderSecComponent } from './FrontOffice/header-sec/header-sec.component';
-import { FrontComponent } from './FrontOffice/front/front.component';
 import { JobAppComponent } from './job-app/job-app.component';
 import { FacebookCallbackComponent } from './facebook-callback/facebook-callback.component';
 import {  SocialAuthServiceConfig } from 'angularx-social-login';
@@ -231,8 +226,7 @@ import { DashChartComponent } from './components/dash-chart/dash-chart.component
 
 
 
-import { DashbordComponent } from './BackOffice/dashbord/dashbord.component';
-import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { PayCarteComponent } from './Component/pay-carte/pay-carte.component';
 import { FacturePayComponent } from './Component/facture-pay/facture-pay.component';
 import { DeliveryPageComponent } from './Component/delivery-page/delivery-page.component';
@@ -341,7 +335,7 @@ import {ChartsModule} from "ng2-charts";
       CalendarsComponent,
       PatientDashboardComponent,
       ReservedDateComponent,
-      DashChartComponent
+      DashChartComponent,
       
   
 
@@ -396,7 +390,8 @@ import {ChartsModule} from "ng2-charts";
     }),
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ChartsModule
 
 
      
@@ -511,7 +506,7 @@ import {ChartsModule} from "ng2-charts";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
-    MatSnackBarModule 
+    MatSnackBarModule ,
    
     
    

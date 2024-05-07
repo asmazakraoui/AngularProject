@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Categorie, Product } from 'src/app/Models/ShopManag/Product';
+import { Categorie, Product } from 'src/app/models/ShopManag/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap'; 
 

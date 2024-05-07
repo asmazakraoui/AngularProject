@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductInfo } from 'src/app/Models/ShopManag/ProductInfo';
+import { ProductInfo } from 'src/app/models/ShopManag/ProductInfo';
 import { CommandLineService } from 'src/app/Services/CommandLine/command-line.service';
 import { CartProductComponent } from '../cart-product/cart-product.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CommandLine } from 'src/app/Models/ShopManag/CommandLine';
+import { CommandLine } from 'src/app/models/ShopManag/CommandLine';
 import { ProductService } from 'src/app/Services/Product/product.service';
-import { Product } from 'src/app/Models/ShopManag/Product';
+import { Product } from 'src/app/models/ShopManag/Product';
 import { interval } from 'rxjs';
 
 @Component({

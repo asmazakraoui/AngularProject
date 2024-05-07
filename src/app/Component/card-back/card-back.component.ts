@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from 'src/app/Models/ShopManag/Product';
+import { Product } from 'src/app/models/ShopManag/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { ProductComponent } from '../get-product/product.component';
 import { Router } from '@angular/router';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommandLine } from 'src/app/Models/ShopManag/CommandLine';
-import { Orderr } from 'src/app/Models/ShopManag/Orderr';
-import { Product } from 'src/app/Models/ShopManag/Product';
+import { CommandLine } from 'src/app/models/ShopManag/CommandLine';
+import { Orderr } from 'src/app/models/ShopManag/Orderr';
+import { Product } from 'src/app/models/ShopManag/Product';
 import { CommandLineService } from 'src/app/Services/CommandLine/command-line.service';
 import { OrderrService } from 'src/app/Services/Orderr/orderr.service';
 
@@ -52,14 +52,24 @@ export class OrderBackComponent implements OnInit{
     this.orderService.getCommandLinesByOrder(idOrder).subscribe(
       (data: CommandLine[]) => {
         this.commandLines = data;
-        console.log(data);
+        // Pour chaque ligne de commande, récupérez les détails du produit associé
+        this.commandLines.forEach((commandLine) => {
+          this.commandLineService.getProductByCommandLine(commandLine.idLigneCom)
+            .subscribe(
+              (product: Product) => {
+                commandLine.product = product; // Ajoutez les détails du produit à la ligne de commande
+              },
+              error => {
+                console.log('Erreur lors de la récupération du produit :', error);
+              }
+            );
+        });
       },
       error => {
         console.log('Erreur lors du chargement des lignes de commande :', error);
       }
     );
   }
-
   closeModal(): void {
     this.etat=false;
   }

@@ -11,6 +11,7 @@ import { DeliveryService } from 'src/app/Services/Delivery/delivery.service';
   styleUrls: ['./dashboard-product.component.css']
 })
 export class DashboardProductComponent {
+  
 
   public barChartOptions: ChartOptions = {
     responsive: true,

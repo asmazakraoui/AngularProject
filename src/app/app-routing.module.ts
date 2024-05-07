@@ -96,7 +96,6 @@ import { CartProductComponent } from './Component/cart-product/cart-product.comp
 import { PromotionComponent } from './Component/promotion/promotion.component';
 import { AddPromotionComponent } from './Component/add-promotion/add-promotion.component';
 import { UpdatePromotionComponent } from './Component/update-promotion/update-promotion.component';
-import { DashbordComponent } from './BackOffice/dashbord/dashbord.component';
 import { PayCarteComponent } from './Component/pay-carte/pay-carte.component';
 import { DeliveryPageComponent } from './Component/delivery-page/delivery-page.component';
 import { OrderBackComponent } from './Component/order-back/order-back.component';

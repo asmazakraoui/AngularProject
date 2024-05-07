@@ -133,41 +133,19 @@ sortUsersAlphabetically(): void {
 
 
   getJobApplications(): void {
-    console.log('Fetching doctors for page:', this.currentPage);
-    this.userService.getAllJobApplications().subscribe(
+    console.log('Fetching job applications for page:', this.currentPage);
+    this.userService.retrieveJobApplications().subscribe(
       (data: any[]) => {
-        console.log('User data received:', data); // Log the received user data
-        // Check if data is an array and not empty
-        if (Array.isArray(data) && data.length > 0) {
-          this.jobApplications = data.map((jobData: any) => ({
-            id:jobData.id,
-            cvFile: jobData.cv,
-            certificateFile: jobData.certificateFile,
-            applicationDate: new Date(jobData.applicationDate),
-            user: {
-              prenomUser: jobData.prenomUser,
-              nomUser: jobData.nomUser,
-              emailUser: jobData.emailUser,
-              numTel: jobData.numTel,
-              sexe: jobData.sexe,
-              dateNaiss: new Date(jobData.dateNaiss),
-              accountConfirmed: jobData.accountConfirmed,
-              roles: jobData.roles
-            }
-          }));
-          
-          this.totalElements = data.length; // Update totalElements based on the fetched data
-  
-        } else {
-          console.error('Empty or invalid user data received.');
-        }
-  
+        console.log('Job applications data received:', data); // Log the received job applications data
+        // Your existing code to process the data...
       },
       (error) => {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching job applications:', error);
+        this.error = error; // Assign the error to display in the template
       }
     );
-  }
+}
+
 
   editUser(userId: number): void {
     this.router.navigate(['/update', userId]);

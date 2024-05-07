@@ -12,7 +12,7 @@ export class FacebookCallbackComponent implements OnInit {
   ngOnInit(): void {
     // Make a request to your server to handle the Facebook callback
     this.http
-      .get<any>('http://localhost:8082/test/auth/login/oauth2/code/facebook')
+      .get<any>('http://localhost:8082/test/testtest/auth/login/oauth2/code/facebook')
       .subscribe(
         (response) => {
           // Handle successful authentication, if needed

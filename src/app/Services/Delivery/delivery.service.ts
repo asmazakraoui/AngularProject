@@ -1,14 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Delivery } from 'src/app/Models/ShopManag/Delivery';
+import { Delivery } from 'src/app/models/ShopManag/Delivery';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeliveryService {
 
-  private baseUrl :string = 'http://localhost:8082';
+  private baseUrl :string = 'http://localhost:8082/test';
   constructor(private http : HttpClient) { }
 
   addDelivery(deliveryDto: any): Observable<any>{

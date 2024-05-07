@@ -1,14 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Categorie, Product } from 'src/app/Models/ShopManag/Product';
+import { Categorie, Product } from 'src/app/models/ShopManag/Product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private baseUrl :string = 'http://localhost:8082';
+  private baseUrl :string = 'http://localhost:8082/test';
   constructor(private http : HttpClient) { }
 
   findAllProducts(): Observable<Product[]>{

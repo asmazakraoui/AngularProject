@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Chart } from 'chart.js';
 import { UserService } from 'src/app/Services/user.service';
-import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-dashbord',
@@ -91,12 +91,15 @@ export class DashbordComponent implements OnInit{
       options: {
         responsive: true,
         scales: {
-          y: {
-            beginAtZero: true // Updated options for the y scale
-          }
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
         }
       }
     });
+    
    
   }
   fetchTotalNumberOfUsers(): void {

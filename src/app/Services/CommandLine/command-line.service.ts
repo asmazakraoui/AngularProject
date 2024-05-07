@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { CommandLine } from 'src/app/Models/ShopManag/CommandLine';
-import { Product } from 'src/app/Models/ShopManag/Product';
-import { ProductInfo } from 'src/app/Models/ShopManag/ProductInfo';
+import { CommandLine } from 'src/app/models/ShopManag/CommandLine';
+import { Product } from 'src/app/models/ShopManag/Product';
+import { ProductInfo } from 'src/app/models/ShopManag/ProductInfo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommandLineService {
 
-  private baseUrl :string = 'http://localhost:8082';
+  private baseUrl :string = 'http://localhost:8082/test';
   private cartItemsSubject: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
   public cartItems$: Observable<Product[]> = this.cartItemsSubject.asObservable();
 

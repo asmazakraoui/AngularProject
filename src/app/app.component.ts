@@ -4,7 +4,7 @@ import { RegisterService } from './Services/register.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CommandLineService } from './Services/CommandLine/command-line.service';
-import { CommandLine } from './Models/ShopManag/CommandLine';
+import { CommandLine } from './models/ShopManag/CommandLine';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

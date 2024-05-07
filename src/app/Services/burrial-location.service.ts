@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BurrialLocationService {
-  private baseUrl = 'http://localhost:8082/test/api/burrials/'; // Modifier l'URL de base en conséquence
+  private baseUrl = 'http://localhost:8082/test/testtest/api/burrials/'; // Modifier l'URL de base en conséquence
 
 
   constructor(private http: HttpClient) { }

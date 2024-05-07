@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Orderr } from 'src/app/Models/ShopManag/Orderr';
+import { Orderr } from 'src/app/models/ShopManag/Orderr';
 import { OrderrService } from 'src/app/Services/Orderr/orderr.service';
 
 @Component({

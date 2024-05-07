@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
-import { CommandLine } from 'src/app/Models/ShopManag/CommandLine';
-import { Orderr } from 'src/app/Models/ShopManag/Orderr';
+import { CommandLine } from 'src/app/models/ShopManag/CommandLine';
+import { Orderr } from 'src/app/models/ShopManag/Orderr';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderrService {
-  private baseUrl :string = 'http://localhost:8082';
+  private baseUrl :string = 'http://localhost:8082/test';
   constructor(private http : HttpClient) { }
   
   findAllOrderrs(): Observable<Orderr[]>{

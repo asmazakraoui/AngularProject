@@ -84,7 +84,7 @@ extractMessageContent(message: any): string {
     
    
 
-    this.chatService.connect('ws://localhost:8082/test/ws');
+    this.chatService.connect('ws://localhost:8082/testtest/ws');
    // this.chatService.subscribeToGroupChatMessages(this.groupChatid);
 
     this.chatService.messages$.subscribe((result) => {

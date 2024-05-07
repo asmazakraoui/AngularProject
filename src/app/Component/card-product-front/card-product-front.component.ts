@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { Product } from 'src/app/Models/ShopManag/Product';
+import { Product } from 'src/app/models/ShopManag/Product';
 import {NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { CommandLineService } from 'src/app/Services/CommandLine/command-line.service';
-import { Rating } from 'src/app/Models/ShopManag/Rating';
+import { Rating } from 'src/app/models/ShopManag/Rating';
 import { RatingService } from 'src/app/Services/Rating/rating.service';
 import Swal from 'sweetalert2';
 

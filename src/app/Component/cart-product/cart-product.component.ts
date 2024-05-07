@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/Models/ShopManag/Product';
+import { Product } from 'src/app/models/ShopManag/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { CardProductFrontComponent } from '../card-product-front/card-product-front.component';
-import { CommandLine } from 'src/app/Models/ShopManag/CommandLine';
 import { CommandLineService } from 'src/app/Services/CommandLine/command-line.service';
-import { ProductInfo } from 'src/app/Models/ShopManag/ProductInfo';
+import { ProductInfo } from 'src/app/models/ShopManag/ProductInfo';
 import { Observable } from 'rxjs';
 import { OrderrService } from 'src/app/Services/Orderr/orderr.service';
 import { PromotionService } from 'src/app/Services/Promotion/promotion.service';

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Promotion } from 'src/app/Models/ShopManag/Promotion';
+import { Promotion } from 'src/app/models/ShopManag/Promotion';
 import { PromotionService } from 'src/app/Services/Promotion/promotion.service';
 
 @Component({

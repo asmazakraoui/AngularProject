@@ -1,4 +1,4 @@
-import { CommandLine } from "./CommandLine";
+import { CommandLine } from 'src/app/models/ShopManag/CommandLine';
 
 export class Orderr{
     idCom!: number;

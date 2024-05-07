@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
-import { Rating } from 'src/app/Models/ShopManag/Rating';
+import { Rating } from 'src/app/models/ShopManag/Rating';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { Rating } from 'src/app/Models/ShopManag/Rating';
 export class RatingService {
 
   constructor(private http:HttpClient) { }
-  private baseUrl :string = 'http://localhost:8082';
+  private baseUrl :string = 'http://localhost:8082/test';
 
   getAllRatings(): Observable<Rating[]> {
     return this.http.get<Rating[]>(this.baseUrl+'/getAllRatingss');

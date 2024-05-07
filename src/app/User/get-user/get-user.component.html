@@ -56,7 +56,6 @@
                       <td>{{user.dateNaiss}}</td>
                       <td>
                         <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteUser(user)">Delete</button>
-                        <button class="btn btn-sm btn-danger" (click)="confirmJobApplication(user.id)">Confirm</button>
                       </td>
 
                     </tr>
@@ -74,7 +73,6 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                    <th>CV</th>
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Email</th>
@@ -92,7 +90,7 @@
                       <td>{{ job.user.emailUser }}</td>
                       <td>{{ job.user.sexe }}</td>
                       <td [ngClass]="job.user.accountConfirmed ? 'Confirmed' : 'Waiting'">{{ job.user.accountConfirmed ? 'Confirmed' : 'Waiting' }}</td>
-                      <td>{{ job.user.dateNaiss | date }}</td>
+                      <td>{{ job.applicationDate | date }}</td>
                       <td>
                         <button class="btn btn-sm btn-danger" (click)="confirmJobApplication(job.id)">Confirm</button>
                       </td>

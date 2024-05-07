@@ -98,10 +98,10 @@
                 <tr *ngFor="let commandLine of commandLines" >
                     <div (click)="getProductDetails(commandLine.idLigneCom)">
                         <td >
-                        <img [src]="getImageUrl(product.imageProduit)" class="img-fluid" alt="Product Image">
+                            <img [src]="getImageUrl(commandLine.product?.imageProduit)" class="img-fluid" alt="Product Image">
                         </td>
-                        <td>{{product.nomProduit }}</td>
-                        <td>{{product.prixProduit }} TND</td>
+                        <td>{{commandLine.product?.nomProduit }}</td>
+                        <td>{{commandLine.product?.prixProduit }} TND</td>
                         <td>{{ commandLine.quantite }}</td>
                         <td>{{ commandLine.prix_total_product }} TND</td>
                     </div>  
