@@ -1,0 +1,54 @@
+<nav class="navbar">
+    <app-nav-back></app-nav-back>
+</nav>
+
+<div class="container-fluid">
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Contenu de la barre de navigation -->
+        ...
+    </nav>
+    
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        
+        <!-- Contenu principal -->
+        <div class="col-md-9">
+            <div class="mt-5">
+                <h3 class="text-center">Libraries</h3>
+                <button class="btn btn-primary" routerLink="/LibraryAdd">Add Library</button>
+                <br>
+                <br>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm" style="text-align: left;">
+                        <!-- Entêtes du tableau -->
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <!-- Corps du tableau -->
+                        <tbody>
+                            <!-- Boucle à travers les bibliothèques -->
+                            <tr *ngFor="let libraryy of librarys">
+                                <td>{{ libraryy.ttLibrary }}</td>
+                                <td>
+                                  <!--  <button class="btn btn-primary" [routerLink]="['/LibraryUpp', library.idLibrary]">Update</button>
+                                    <button type="button" class="btn btn-danger" (click)="deleteLibrary(library.idLibrary)">Delete</button>
+                                    -->
+                                    <button class="btn btn-primary" [routerLink]="['/LibraryUpp', libraryy.idLibrary]">Update</button>
+                                    <button type="button" class="btn btn-danger" (click)="deleteLibrary(libraryy.idLibrary)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

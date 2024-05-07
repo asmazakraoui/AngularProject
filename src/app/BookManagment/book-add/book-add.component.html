@@ -1,0 +1,57 @@
+<div class="popup-container">
+    <div class="popup-content container">
+        <br>
+        <legend>Détails du livre</legend>
+                <form [formGroup]="bookForm" (ngSubmit)="addBook()" >
+                <div class="form-row">
+
+               
+                    <!-- Groupe de champs pour les détails du livre -->
+                        
+                        <div class="form-group">
+                            <label for="titreBook">Titre:</label>
+                            <input type="text" id="titreBook" formControlName="titreBook" class="form-control" placeholder="titre"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="typeBook">Type:</label>
+                            <select id="typeBook" formControlName="typeBook" class="form-control">
+                                <option *ngFor="let type of typeBookOptions" [value]="type">{{ type }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageBook">Image Book</label>
+                            <input type="file" (change)="onFileSelected($event)" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pdfBook">Book Pdf</label>
+                            <input type="file" (change)="onFileSelectedBook($event)" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="authorName">Nom de l'auteur:</label>
+                            <input type="text" id="authorName" formControlName="authorName" class="form-control" placeholder="name Author"/>
+                        </div>
+                        <div>
+                            <ngx-recaptcha2 #captchaElem
+                              [siteKey]="siteKey"
+                              formControlName="recaptcha">
+                            </ngx-recaptcha2>
+                          </div>
+
+                    
+
+                    <!-- Boutons de soumission et d'annulation -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Ajouter Livre</button>
+                        <button type="button" class="btn btn-secondary" (click)="onCancel()">Annuler</button>
+                    </div>
+
+               
+            </div>
+       
+
+
+
+

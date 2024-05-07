@@ -1,0 +1,22 @@
+.center-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+
+.ngx-pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  
+
+.ngx-pagination li {
+  width: 35px;
+  height: 35px;
+  border-radius: 50% !important ;
+  background: #f8f8f8 ;
+}

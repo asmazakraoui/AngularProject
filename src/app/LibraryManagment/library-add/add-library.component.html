@@ -1,0 +1,42 @@
+<nav class="navbar">
+    <app-nav-back></app-nav-back>
+</nav>
+
+<div class="container-fluid">
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Contenu de la barre de navigation -->
+        ...
+    </nav>
+    
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <div class="container mt-4">
+            <h2>Add Library</h2>
+    
+            <form [formGroup]="libraryForm" (ngSubmit)="addLibrary()" class="library-form">
+    
+                <!-- Groupe de champs pour les détails de la bibliothèque -->
+                <fieldset>
+                    <legend>Library Details</legend>
+    
+                    <div class="form-group">
+                        <label for="ttLibrary">Title:</label>
+                        <input type="text" id="ttLibrary" formControlName="ttLibrary" class="form-control" placeholder="title" />
+                    </div>
+    
+                </fieldset>
+    
+                <!-- Boutons de soumission et d'annulation -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Library</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>
+</div>

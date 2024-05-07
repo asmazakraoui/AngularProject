@@ -1,0 +1,102 @@
+<nav class="navbar">
+    <app-nav-back></app-nav-back>
+</nav>
+
+<div class="container-fluid">
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Contenu de la barre de navigation -->
+        <!-- Ajoutez ici le contenu de la barre de navigation si nécessaire -->
+    </nav>
+
+    <div class="row">
+        
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="mt-5">
+                <h3 class="text-center">Podcasts</h3>
+                <button class="button-add-Event" (click)="openAddPodcast('1000ms','500ms','')">Add Event</button>
+                <br>
+                <br>
+                <div class="table-responsive"> 
+                    <table mat-table [dataSource]="podcasts" class="mat-elevation-z8">
+                    <!-- Définition des colonnes -->
+                    <ng-container matColumnDef="titrePod">
+                        <th mat-header-cell *matHeaderCellDef> Titre </th>
+                        <td mat-cell *matCellDef="let podcast"> {{ podcast.titrePod }} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="typePod">
+                        <th mat-header-cell *matHeaderCellDef> Type </th>
+                        <td mat-cell *matCellDef="let podcast"> {{ podcast.typePod }} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="audio">
+                        <th mat-header-cell *matHeaderCellDef> Audio </th>
+                        <td mat-cell *matCellDef="let podcast">
+                            <audio #audioPlayer controls>
+                                <source [src]="getPodcastUrl(podcast)" type="audio/mpeg">
+                                Votre navigateur ne supporte pas l'élément audio.
+                            </audio>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef> Actions </th>
+                        <td mat-cell *matCellDef="let podcast">
+                            <button mat-icon-button color="warn" (click)="openUpdatePodcast(podcast.idPod)">
+                                <mat-icon>create</mat-icon>
+                              </button>
+                            <button mat-icon-button color="warn" (click)="deletePodcast(podcast.idPod)">
+                                <mat-icon>delete</mat-icon> <!-- Utilisation de l'icône "delete" de Material -->
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <!-- Lignes de données -->
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="select page" showFirstLastButtons></mat-paginator>
+                                    <!-- <table class="table table-striped table-sm" style="text-align: left;">
+                       
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Type</th>
+                                <th>Audio</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                       
+                        <tbody>
+                            
+                            <tr *ngFor="let podcast of podcasts">
+                                <td>{{ podcast.titrePod }}</td>
+                                <td>{{ podcast.typePod }}</td>
+                                <td>
+                                    <audio #audioPlayer controls>
+                                        <source [src]="getPodcastUrl(podcast)" type="audio/mpeg">
+                                        Votre navigateur ne supporte pas l'élément audio.
+                                    </audio>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" [routerLink]="['/PodcastUpp', podcast.idPod]">Update</button>
+                                    <button type="button" class="btn btn-danger" (click)="deletePodcast(podcast.idPod)">Delete</button>
+                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-podcast-upp
+  *ngIf="showUpdatePodcastModal"
+  [podcastIdToUpdate]="podcastIdToUpdate"
+  (close)="closeUpdatePodcastModal()">
+</app-podcast-upp>
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre titre</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/FrontOffice/css/style.css" type="text/css">
+</head>
+<body>
+    <app-header-front></app-header-front>
+    <div class="container-fluid">
+        <div class="row mb-3">
+            <div class="col-md-6 offset-md-3">
+                <form class="form-inline">
+                    <div class="form-group mr-2">
+                        <!-- Input field with ngModelOptions -->
+                        <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="titrePod" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="searchPodcastMUL(titrePod)">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Loop through podcasts -->
+            <div class="col-md-4" *ngFor="let podcast of podcasts |  paginate: { itemsPerPage: itemsParPage, currentPage: p }">
+                <div class="voice-chat-card">
+                    <div class="voice-chat-card-header">
+                        <div class="username">{{ podcast.titrePod }}</div>
+                        <div class="status"></div>
+                    </div>
+                    <div class="voice-chat-card-header">
+                        <div class="username">{{ podcast.typePod }}</div>
+                        <div class="status"></div>
+                    </div>
+                    <div class="voice-chat-card-body">
+                        <div class="audio-container">
+                            <audio controls>
+                                <source [src]="getPodcastUrl(podcast)" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <button class="btn btn-primary mt-3" (click)="openAddToFavoris(podcast)">Add to lib</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-8 py-5 items-center">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+        <!-- Display message if no podcast found -->
+        <div *ngIf="podcasts.length === 0 && titrePod" class="row mt-3">
+            <div class="col-md-6 offset-md-3">
+                <div class="alert alert-warning" role="alert">
+                    No Podcast found.
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer-front></app-footer-front>
+
+    <script src="/assets/FrontOffice/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/FrontOffice/js/bootstrap.min.js"></script>
+    <script src="/assets/FrontOffice/js/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/FrontOffice/js/jquery.nice-select.min.js"></script>
+    <script src="/assets/FrontOffice/js/jquery-ui.min.js"></script>
+    <script src="/assets/FrontOffice/js/jquery.slicknav.js"></script>
+    <script src="/assets/FrontOffice/js/owl.carousel.min.js"></script>
+    <script src="/assets/FrontOffice/js/main.js"></script>
+</body>
+</html>
+

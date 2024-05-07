@@ -57,21 +57,64 @@
                 </div>
                 <div class="col-lg-10">
                     <div class="nav-menu">
-                        <nav class="mainmenu">
+                        <!-- <nav class="mainmenu">
                             <ul>
-                                <li class="active"><a [routerLink]="'/login'">Home</a></li>
-                                <li><a [routerLink]="'/login'">Shop</a></li>
-                                <li><a [routerLink]="'/login'">Library</a></li>
-                                <li><a [routerLink]="'/login'">Pages</a>
+                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li><a href="./rooms.html">Shop</a></li>
+                                
+                                <li><a>Library</a>
+                                    
+                                    <ul class="dropdown">
+                                        <li><a href="/mylib">My Library</a></li>
+                                        <li><a href="/eventOfUser">My Event</a></li>
+                                        <li><a href="/FavorisFrontAFF">Favoris Podcast</a></li>
+                                        <li><a href="BookFrontAff">All Book</a></li>
+                                        <li><a href="/PodcastFrontAff">All Podcast</a></li>
+                                        
+                                        
+                                       
+                                    </ul>
+                                </li>
+                                <ul><a href="./pages.html">Pages</a>
                                     <ul class="dropdown">
                                         <li><a [routerLink]="'/login'">Chat</a></li>
                                         <li><a [routerLink]="'/login'">Post</a></li>
                                         <li><a [routerLink]="'/login'">Funeral</a></li>
                                        
                                     </ul>
+                                </ul>
+                                <ul><a routerLink="/EventFrontAFF">Events</a>
+                                    
+                                <li><a href="./contact.html">HealthCare</a></li>
+                            </ul>
+                        </nav>
+                        <div class="nav-right search-switch">
+                            <i class="icon_search"></i>
+                        </div> -->
+                        <nav class="mainmenu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li><a href="./rooms.html">Shop</a></li>
+                                <li><a>Library</a>
+                                    <ul class="dropdown">
+                                        <li><a href="/mylib">My Library</a></li>
+                                        <li><a href="/eventOfUser">My Event</a></li>
+                                        <li><a href="/FavorisFrontAFF">Favoris Podcast</a></li>
+                                        <li><a href="BookFrontAff">All Book</a></li>
+                                        <li><a href="/PodcastFrontAff">All Podcast</a></li>
+                                    </ul>
                                 </li>
                                 <li><a [routerLink]="'/login'">Events</a></li>
                                 <li><a [routerLink]="'/login'">HealthCare</a></li>
+                                <li><a href="./pages.html">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./room-details.html">Chat</a></li>
+                                        <li><a href="./blog-details.html">Post</a></li>
+                                        <li><a href="#">Funeral</a></li>
+                                    </ul>
+                                </li>
+                                <li><a routerLink="/EventFrontAFF">Events</a></li>
+                                <li><a href="./contact.html">HealthCare</a></li>
                             </ul>
                         </nav>
                        

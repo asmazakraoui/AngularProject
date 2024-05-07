@@ -1,0 +1,74 @@
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/FrontOffice/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/flaticon.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/magnific-popup.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/FrontOffice/css/style.css" type="text/css">
+
+<app-header-front></app-header-front>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <!-- Insérez le contenu de votre barre latérale ici -->
+        </div>
+        <!-- Contenu principal -->
+        <div class="col-md-9">
+            <div class="mt-5">
+                <h3 class="text-center">My Library</h3>
+                <!-- Bouton pour ajouter une bibliothèque -->
+             
+                <button class="btn btn-primary" (click)="openAddLib('1000ms','500ms','')">Add Library</button>
+                <br><br>
+                <!-- Tableau pour afficher les bibliothèques -->
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr *ngFor="let library of librarys">
+                                <td>{{ library.ttLibrary }}</td>
+                                <td>
+                                    
+                                    <button class="btn btn-success"  [routerLink]="['/BookOfLib',library.idLibrary]">show book</button>
+                                    <button class="btn btn-primary" (click)="openUpdateLib(library)">Update</button>
+                                    <button class="btn btn-danger" (click)="deleteLibraryy(library.idLibrary)">delete</button>
+                                    <!-- Ajoutez d'autres boutons d'action au besoin -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
+<app-footer-front></app-footer-front>
+<script src="/assets/FrontOffice/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/FrontOffice/js/bootstrap.min.js"></script>
+<script src="/assets/FrontOffice/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/FrontOffice/js/jquery.nice-select.min.js"></script>
+<script src="/assets/FrontOffice/js/jquery-ui.min.js"></script>
+<script src="/assets/FrontOffice/js/jquery.slicknav.js"></script>
+<script src="/assets/FrontOffice/js/owl.carousel.min.js"></script>
+<script src="/assets/FrontOffice/js/main.js"></script>
+
+

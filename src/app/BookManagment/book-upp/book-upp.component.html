@@ -1,0 +1,56 @@
+    <div class="modal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Edit Event</h5>
+                  <button type="button" class="close" (click)="onClose()">&times;</button>
+              </div>
+              <div class="modal-body">  
+                  <form [formGroup]="bookForm" (ngSubmit)="updateBook()">
+                      <div class="container">
+                          <div class="form-group">
+                              <label for="titreBook">Event Title</label>
+                              <input type="text" formControlName="titreBook" class="input-field" placeholder="Enter name">
+                              <small class="text-danger" *ngIf="bookForm.get('titreBook')?.errors && bookForm.get('titreBook')?.touched">Width Event is required</small>
+                          </div>
+                          <div class="form-group">
+                            <label for="typeBook">Event Type</label>
+                            <select id="typeBook" class="form-control" formControlName="typeBook">
+                                <option value="" disabled selected>Select type Event</option> 
+                                <option *ngFor="let c of typeBookOptions" [value]="c">{{c}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="bookForm.get('typeBook')?.errors && bookForm.get('typeBook')?.touched">Width typeEvent is required</small>
+                            <div class="form-group">
+                                <label for="authorName">Event Address</label>
+                                <input type="text" formControlName="authorName" class="input-field" placeholder="Enter address Event">
+                                <small class="text-danger" *ngIf="bookForm.get('authorName')?.errors && bookForm.get('authorName')?.touched">Width Event adresse is required</small>
+                            </div>
+                        </div>
+                          
+                            <div class="form-group">
+                                <label for="file">Select Photo</label>
+                                <div class="upload-btn-wrapper">
+                                    <button class="btn-image">Upload Photo</button>
+                                    <input type="file" (change)="onFileSelected($event)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="file">PDF URL</label>
+                                <div class="upload-btn-wrapper">
+                                    <button class="btn-image">Upload Pdf</button>
+                                    <input type="file" (change)="onFileSelectedPdf($event)">
+                                </div>
+                            </div>
+                           
+  
+                          <button type="submit" class="btn btn-primary">Update Product</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+ 
+
+    
+   
