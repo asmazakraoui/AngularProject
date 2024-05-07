@@ -3,37 +3,34 @@ import { RouterModule, Routes } from '@angular/router';
 import { FrontComponent } from './FrontOffice/front/front.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
 import { BackComponent } from './BackOffice/back/back.component';
-import { FuneralLocationListComponent } from './components/funeral-location-list/funeral-location-list.component';
-import { AddFuneralLocationComponent } from './components/add-funeral-location/add-funeral-location.component';
-import { UpdateFuneralLocationComponent } from './components/update-funeral-location/update-funeral-location.component';
-import { AddBurrialLocationComponent } from './components/add-burrial-location/add-burrial-location.component';
-import { BurrialLocationListComponent } from './components/burrial-location-list/burrial-location-list.component';
-import { UpdateBurrialLocationComponent } from './components/update-burrial-location/update-burrial-location.component';
-import { AddFlowerComponent } from './components/add-flower/add-flower.component';
-import { FlowerListComponent } from './components/flower-list/flower-list.component';
-import { UpdateFlowerComponent } from './components/update-flower/update-flower.component';
-import { AddMealComponent } from './components/add-meal/add-meal.component';
-import { MealsListComponent } from './components/meals-list/meals-list.component';
-import { UpdateMealComponent } from './components/update-meal/update-meal.component';
-import { AddCeremonyComponent } from './components/add-ceremony/add-ceremony.component';
-import { CeremonyListComponent } from './components/ceremony-list/ceremony-list.component';
-import { UpdateCeremonyComponent } from './components/update-ceremony/update-ceremony.component';
-import { MealSelectorComponent } from './components/meal-selector/meal-selector.component';
-import { FlowerSelectorComponent } from './components/flower-selector/flower-selector.component';
-import { BurrialSelectorComponent } from './components/burrial-selector/burrial-selector.component';
-import { FuneralLocation } from './model/FuneralLocation';
-import { FuneralSelectorComponent } from './components/funeral-selector/funeral-selector.component';
-import { PaiementComponent } from './components/paiement/paiement.component';
-import { SuccessComponent } from './components/success/success.component';
-import { InvitationComponent } from './components/invitation/invitation.component';
-import { RatingComponent } from './components/rating/rating.component';
-import { RecaptchaComponent } from './components/recaptcha/recaptcha.component';
+import { AddLibraryComponent } from './LibraryManagment/library-add/add-library.component';
+import { EventAffComponent } from './EventManagment/event-aff/event-aff.component';
 
-import { AddFArrangementComponent } from './components/add-farrangement/add-farrangement.component';
-import { FarrangementListComponent } from './components/farrangement-list/farrangement-list.component';
-import { UpdateFarrangementComponent } from './components/update-farrangement/update-farrangement.component';
-import { FlowerStatisticsComponent } from './components/flower-statistics/flower-statistics.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
+import { EventUpdateComponent } from './EventManagment/event-update/event-update.component';
+import { UpLibraryComponent } from './LibraryManagment/up-library/up-library.component';
+import { LibraryAffComponent } from './LibraryManagment/library-aff/library-aff.component';
+import { FavorisAddComponent } from './FavorisManagment/favoris-add/favoris-add.component';
+import { FavorisAffComponent } from './FavorisManagment/favoris-aff/favoris-aff.component';
+import { FavorisUppComponent } from './FavorisManagment/favoris-upp/favoris-upp.component';
+import { BookAffComponent } from './BookManagment/book-aff/book-aff.component';
+import { BookAddComponent } from './BookManagment/book-add/book-add.component';
+import { BookUppComponent } from './BookManagment/book-upp/book-upp.component';
+import { PodcastAffComponent } from './PodcastManagment/podcast-aff/podcast-aff.component';
+import { PodcastAddComponent } from './PodcastManagment/podcast-add/podcast-add.component';
+import { PodcastUppComponent } from './PodcastManagment/podcast-upp/podcast-upp.component';
+import { EventfrontAffComponent } from './EventManagment/eventfront-aff/eventfront-aff.component';
+import { FavorisfrontAffComponent } from './FavorisManagment/favorisfront-aff/favorisfront-aff.component';
+import { FavorisfrontUppComponent } from './FavorisManagment/favorisfront-upp/favorisfront-upp.component';
+import { FavorisfrontAddComponent } from './FavorisManagment/favorisfront-add/favorisfront-add.component';
+import { BookfrontAffComponent } from './BookManagment/bookfront-aff/bookfront-aff.component';
+import { PodcastfrontAffComponent } from './PodcastManagment/podcastfront-aff/podcastfront-aff.component';
+import { AffectbookTofavppComponent } from './BookManagment/affectbook-tofavpp/affectbook-tofavpp.component';
+import { FavoriPodComponent } from './FavorisManagment/favori-pod/favori-pod.component';
+import { MylibraryComponent } from './LibraryManagment/mylibrary/mylibrary.component';
+import { BookoflibraryComponent } from './LibraryManagment/bookoflibrary/bookoflibrary.component';
+import { AddlibFrontComponent } from './LibraryManagment/addlib-front/addlib-front.component';
+import { EventStatComponent } from './EventManagment/event-stat/event-stat.component';
+import { EventParteciperComponent } from './EventManagment/event-parteciper/event-parteciper.component';
 
 export const routes: Routes = [
   {
@@ -43,87 +40,47 @@ export const routes: Routes = [
       {
         path:"",
         component:HomeFrontComponent
-        
-      },
-
-     
+      }
     ]
   },
   {
     path:"admin",
     component:BackComponent,
-    children:[
-      { path: 'add-funeral-location', component: AddFuneralLocationComponent },
-      { path: 'funeral-location-list', component: FuneralLocationListComponent },
-{path: 'update-funeral-location/:id', component: UpdateFuneralLocationComponent},
-{ path: 'add-cemetery', component: AddBurrialLocationComponent },
-{ path: 'cemetery-list', component: BurrialLocationListComponent },
-{ path: 'update-cemetery/:id', component: UpdateBurrialLocationComponent },
-{ path: 'add-flower', component: AddFlowerComponent },
-{ path: 'flower-list', component: FlowerListComponent },
-{ path: 'update-flower/:id', component: UpdateFlowerComponent },
-{ path: 'add-meal', component: AddMealComponent  },
-{ path: 'Meals-list', component: MealsListComponent },
-{ path: 'update-meal/:id', component: UpdateMealComponent },
-
-      
-       
-
-        
-      
-     
-    ]
   },
-  { path: 'add-funeral-location', component: AddFuneralLocationComponent },
+  ///// back 
+  {path: "LibraryAdd", component: AddLibraryComponent},
+  {path: "LibraryUpp/:id", component: UpLibraryComponent},
+  {path: "LibraryAff", component: LibraryAffComponent},
+  {path: "mylib", component: MylibraryComponent},
+  {path: "BookOfLib/:id", component: BookoflibraryComponent},
+  {path: "eventOfUser", component: EventParteciperComponent},
 
-{ path: 'funeral-location-list', component: FuneralLocationListComponent },
-{path: 'update-funeral-location/:id', component: UpdateFuneralLocationComponent},
-{ path: 'add-cemetery', component: AddBurrialLocationComponent },
-{ path: 'cemetery-list', component: BurrialLocationListComponent },
-{ path: 'update-cemetery/:id', component: UpdateBurrialLocationComponent },
-{ path: 'add-flower', component: AddFlowerComponent },
-{ path: 'flower-list', component: FlowerListComponent },
-{ path: 'update-flower/:id', component: UpdateFlowerComponent },
-{ path: 'add-meal', component: AddMealComponent  },
-{ path: 'Meals-list', component: MealsListComponent },
-{ path: 'update-meal/:id', component: UpdateMealComponent },
-{ path: 'add-ceremony', component: AddCeremonyComponent  },
-{ path: 'ceremony-list', component: CeremonyListComponent },
-{ path: 'update-ceremony/:id', component: UpdateCeremonyComponent },
-{ path: 'meals', component: MealSelectorComponent },
-{ path: 'flowers', component: FlowerSelectorComponent },
-{ path: 'cemeteries', component: BurrialSelectorComponent },
-{ path: 'funeral-locations', component: FuneralSelectorComponent },
-{ path: 'pay', component: PaiementComponent },
-{ path: 'success', component: SuccessComponent },
-{ path: 'invit/:id', component: InvitationComponent },
-{ path: 'rating', component: RatingComponent },
-{ path: 'recaptcha', component: RecaptchaComponent },
-{ path: 'AddFarrangemenet', component: AddFArrangementComponent },
-{ path: 'FarrList', component: FarrangementListComponent },
-{ path: 'UpdateFArr/:id', component: UpdateFarrangementComponent },
-{ path: 'flowerstat', component: FlowerStatisticsComponent },
- { path: 'Calendar/:id', component: CalendarComponent }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ // {path: "addlibFront", component: AddlibFrontComponent},
+  //////
+  {path: "EventAff", component: EventAffComponent},
+ // {path: "EventAdd", component: EventAddComponent},
+  {path: "EventUpp/:id", component: EventUpdateComponent},
+  {path: "EventStat", component: EventStatComponent},
+  ///////
+  {path: "FaAdd", component: FavorisAddComponent},
+  {path: "FaAff", component: FavorisAffComponent},
+  {path: "FaUpp/:id", component: FavorisUppComponent},
+  {path: "favpod/:id", component: FavoriPodComponent},
+  //////
+  {path: "BookAff", component: BookAffComponent},
+  {path: "BookAdd", component: BookAddComponent},
+  {path: "BookUpp/:id", component: BookUppComponent},
+  /////
+  {path: "PodcastAff", component: PodcastAffComponent},
+  {path: "PodcastAdd", component: PodcastAddComponent},
+  {path: "PodcastUpp/:id", component: PodcastUppComponent},
+  ////////// front
+  {path: "EventFrontAFF", component: EventfrontAffComponent},
+  {path: "FavorisFrontAFF", component: FavorisfrontAffComponent},
+  {path: "FavorisFrontUpp/:id", component: FavorisfrontUppComponent},
+  {path: "FavorisFrontAdd", component: FavorisfrontAddComponent},
+  {path: "BookFrontAff", component: BookfrontAffComponent},
+  {path: "PodcastFrontAff", component: PodcastfrontAffComponent}
 ];
 
 @NgModule({

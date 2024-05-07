@@ -1,0 +1,138 @@
+<!-- <nav class="navbar">
+    <app-nav-back></app-nav-back>
+</nav>
+
+<div class="container-fluid">
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      
+    </nav>
+    
+    <div class="row">
+      
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        
+        
+        <div class="container mt-4">
+            <h2>Update Podcast</h2>
+    
+            <form [formGroup]="podcastForm" (ngSubmit)="updatePodcast()" class="event-form">
+    
+                
+                <fieldset>
+                    <legend>Podcast Details</legend>
+    
+                    <div class="form-group">
+                        <label for="audio">Audio:</label>
+                        <input type="file" (change)="onFileSelected($event)" class="form-control">
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="titrePod">Title:</label>
+                        <input type="text" id="titrePod" formControlName="titrePod" class="form-control" />
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="typePod">Type:</label>
+                        <select id="typePod" formControlName="typePod" class="form-control">
+                            <option *ngFor="let type of typePodcastOptions" [value]="type">{{ type }}</option>
+                        </select>
+                    </div>
+                </fieldset>
+    
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Update Podcast</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+<!-- <div class="popup-container">
+    <div class="popup-content container">
+        <br>
+        <legend>Détails du podcast</legend>
+        <form [formGroup]="podcastForm" (ngSubmit)="updatePodcast()">
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="titrePod">Titre:</label>
+                    <input type="text" id="titrePod" formControlName="titrePod" class="form-control" placeholder="Titre"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="typePod">Type:</label>
+                    <select id="typePod" formControlName="typePod" class="form-control">
+                        <option *ngFor="let type of typePodcastOptions" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="audioFile">Fichier audio:</label>
+                    <input type="file" (change)="onFileSelected($event)" class="form-control" />
+                </div>
+
+                
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Ajouter Podcast</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div> -->
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Podcast</h5>
+                <button type="button" class="close" (click)="onClose()">&times;</button>
+            </div>
+            <div class="modal-body">  
+                <form [formGroup]="podcastForm" (ngSubmit)="updatePodcast()">
+                    <div class="container">
+                        <div class="form-group">
+                            <label for="titrePod"></label>
+                            <input type="text" formControlName="titrePod" class="input-field" placeholder="Enter name">
+                            <small class="text-danger" *ngIf="podcastForm.get('widthProduct')?.errors && podcastForm.get('widthProduct')?.touched">Width Product is required</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="typePod">Category</label>
+                            <select id="typePod" class="form-control" formControlName="typePod">
+                                <option value="" disabled selected>Select a category</option> 
+                                <option *ngFor="let c of typePodcastOptions" [value]="c">{{c}}</option>
+                            </select>
+                            <small class="text-danger" *ngIf="podcastForm.get('widthProduct')?.errors && podcastForm.get('widthProduct')?.touched">Width Product is required</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="file">Image Product</label>
+                            <div class="upload-btn-wrapper">
+                                <button class="btn-image">Upload Podcast</button>
+                                <input type="file" (change)="onFileSelected($event)">
+                            </div>
+                        </div>
+                        <!-- <div class="image-preview" *ngIf="imageUrl">
+                            <img [src]="imageUrl" alt="Uploaded Image" style="height: 200px; width: 200px;">
+                        </div> -->
+                        
+
+                        <button type="submit" class="btn btn-primary">Update Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

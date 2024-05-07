@@ -1,0 +1,21 @@
+<div class="popup-container">
+    <div class="popup-content container">
+        <br>
+        <legend>Ajouter une bibliothèque</legend>
+        <form [formGroup]="libraryForm" (ngSubmit)="addLibrary()">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ttLibrary">Titre de la bibliothèque:</label>
+                    <input type="text" id="ttLibrary" formControlName="ttLibrary" class="form-control" placeholder="Titre de la bibliothèque"/>
+                </div>
+            </div>
+
+            <!-- Boutons de soumission et d'annulation -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Ajouter Bibliothèque</button>
+                <button type="button" class="btn btn-secondary" (click)="onCancel()">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+

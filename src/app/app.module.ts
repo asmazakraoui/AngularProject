@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeFrontComponent } from './FrontOffice/home-front/home-front.component';
@@ -11,48 +11,56 @@ import { NavBackComponent } from './BackOffice/nav-back/nav-back.component';
 import { SidebarComponent } from './BackOffice/sidebar/sidebar.component';
 import { FooterBackComponent } from './BackOffice/footer-back/footer-back.component';
 import { BackComponent } from './BackOffice/back/back.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AddFuneralLocationComponent } from './components/add-funeral-location/add-funeral-location.component';
-import { FuneralLocationListComponent } from './components/funeral-location-list/funeral-location-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
-
-import { FormsModule } from '@angular/forms';
-import { UpdateFuneralLocationComponent } from './components/update-funeral-location/update-funeral-location.component';
-import { AddBurrialLocationComponent } from './components/add-burrial-location/add-burrial-location.component';
-import { BurrialLocationListComponent } from './components/burrial-location-list/burrial-location-list.component';
-import { UpdateBurrialLocationComponent } from './components/update-burrial-location/update-burrial-location.component';
-import { AddFlowerComponent } from './components/add-flower/add-flower.component';
-import { UpdateFlowerComponent } from './components/update-flower/update-flower.component';
-import { FlowerListComponent } from './components/flower-list/flower-list.component';
-import { AddMealComponent } from './components/add-meal/add-meal.component';
-import { MealsListComponent } from './components/meals-list/meals-list.component';
-import { UpdateMealComponent } from './components/update-meal/update-meal.component';
-import { AddCeremonyComponent } from './components/add-ceremony/add-ceremony.component';
-import { CeremonyListComponent } from './components/ceremony-list/ceremony-list.component';
-import { UpdateCeremonyComponent } from './components/update-ceremony/update-ceremony.component';
-import { MealSelectorComponent } from './components/meal-selector/meal-selector.component';
-import { FlowerSelectorComponent } from './components/flower-selector/flower-selector.component';
-import { BurrialSelectorComponent } from './components/burrial-selector/burrial-selector.component';
-import { FuneralSelectorComponent } from './components/funeral-selector/funeral-selector.component';
-import { PaiementComponent } from './components/paiement/paiement.component';
-import { SuccessComponent } from './components/success/success.component';
-import { InvitationComponent } from './components/invitation/invitation.component';
+import { AddLibraryComponent } from './LibraryManagment/library-add/add-library.component';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EventAddComponent } from './EventManagment/event-add/event-add.component';
+import { EventAffComponent } from './EventManagment/event-aff/event-aff.component';
+import { EventUpdateComponent } from './EventManagment/event-update/event-update.component';
+import { UpLibraryComponent } from './LibraryManagment/up-library/up-library.component';
+import { LibraryAffComponent } from './LibraryManagment/library-aff/library-aff.component';
+import { FavorisAddComponent } from './FavorisManagment/favoris-add/favoris-add.component';
+import { FavorisUppComponent } from './FavorisManagment/favoris-upp/favoris-upp.component';
+import { FavorisAffComponent } from './FavorisManagment/favoris-aff/favoris-aff.component';
+import { BookAffComponent } from './BookManagment/book-aff/book-aff.component';
+import { BookUppComponent } from './BookManagment/book-upp/book-upp.component';
+import { BookAddComponent } from './BookManagment/book-add/book-add.component';
+import { PodcastAddComponent } from './PodcastManagment/podcast-add/podcast-add.component';
+import { PodcastAffComponent } from './PodcastManagment/podcast-aff/podcast-aff.component';
+import { PodcastUppComponent } from './PodcastManagment/podcast-upp/podcast-upp.component';
+import { EventfrontAffComponent } from './EventManagment/eventfront-aff/eventfront-aff.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RatingComponent } from './components/rating/rating.component';
-
-
-import { NgxCaptchaModule } from 'ngx-captcha';
-import { RecaptchaComponent } from './components/recaptcha/recaptcha.component';
-import { AddFArrangementComponent } from './components/add-farrangement/add-farrangement.component';
-import { FarrangementListComponent } from './components/farrangement-list/farrangement-list.component';
-import { UpdateFarrangementComponent } from './components/update-farrangement/update-farrangement.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FlowerStatisticsComponent } from './components/flower-statistics/flower-statistics.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRippleModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { FavorisfrontAffComponent } from './FavorisManagment/favorisfront-aff/favorisfront-aff.component';
+import { FavorisfrontUppComponent } from './FavorisManagment/favorisfront-upp/favorisfront-upp.component';
+import { FavorisfrontAddComponent } from './FavorisManagment/favorisfront-add/favorisfront-add.component';
+import { PodcastfrontAffComponent } from './PodcastManagment/podcastfront-aff/podcastfront-aff.component';
+import { EventDetailsComponent } from './EventManagment/event-details/event-details.component';
+import { BookDetailsComponent } from './BookManagment/book-details/book-details.component';
+import { AffectbookTofavppComponent } from './BookManagment/affectbook-tofavpp/affectbook-tofavpp.component';
+import { PodcastDetaisComponent } from './PodcastManagment/podcast-detais/podcast-detais.component';
+import { QRCodeModule } from 'angular2-qrcode';
+import {NgxPaginationModule} from 'ngx-pagination'
+import { BookfrontAffComponent } from './BookManagment/bookfront-aff/bookfront-aff.component';
+import { AddtofavComponent } from './PodcastManagment/addtofav/addtofav.component';
+import { FavoriPodComponent } from './FavorisManagment/favori-pod/favori-pod.component';
+import { MylibraryComponent } from './LibraryManagment/mylibrary/mylibrary.component';
+import { BookoflibraryComponent } from './LibraryManagment/bookoflibrary/bookoflibrary.component';
+import { AddlibFrontComponent } from './LibraryManagment/addlib-front/addlib-front.component';
+import { UplibrayFrontComponent } from './LibraryManagment/uplibray-front/uplibray-front.component';
+import { EventStatComponent } from './EventManagment/event-stat/event-stat.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { EventParteciperComponent } from './EventManagment/event-parteciper/event-parteciper.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -68,55 +76,70 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     SidebarComponent,
     FooterBackComponent,
     BackComponent,
-    AddFuneralLocationComponent,
-   
-  FuneralLocationListComponent,
-      UpdateFuneralLocationComponent,
-      AddBurrialLocationComponent,
-      BurrialLocationListComponent,
-      UpdateBurrialLocationComponent,
-      AddFlowerComponent,
-      UpdateFlowerComponent,
-      FlowerListComponent,
-      AddMealComponent,
-      MealsListComponent,
-      UpdateMealComponent,
-      AddCeremonyComponent,
-      CeremonyListComponent,
-      UpdateCeremonyComponent,
-      MealSelectorComponent,
-      FlowerSelectorComponent,
-      BurrialSelectorComponent,
-      FuneralSelectorComponent,
-      PaiementComponent,
-      SuccessComponent,
-      InvitationComponent,
-      RatingComponent,
-      RecaptchaComponent,
-      AddFArrangementComponent,
-      FarrangementListComponent,
-      UpdateFarrangementComponent,
-      FlowerStatisticsComponent,
-      CalendarComponent,
-  
-
-      
-      
+    AddLibraryComponent,
+    EventAddComponent,
+    EventAffComponent,
+    EventUpdateComponent,
+    UpLibraryComponent,
+    LibraryAffComponent,
+    FavorisAddComponent,
+    FavorisUppComponent,
+    FavorisAffComponent,
+    BookAffComponent,
+    BookUppComponent,
+    BookAddComponent,
+    PodcastAddComponent,
+    PodcastAffComponent,
+    PodcastUppComponent,
+    EventfrontAffComponent,
+    FavorisfrontAffComponent,
+    FavorisfrontUppComponent,
+    FavorisfrontAddComponent,
+    BookfrontAffComponent,
+    PodcastfrontAffComponent,
+      EventDetailsComponent,
+      BookDetailsComponent,
      
+      AffectbookTofavppComponent,
+      PodcastDetaisComponent,
+      AddtofavComponent,
+      FavoriPodComponent,
+      MylibraryComponent,
+      BookoflibraryComponent,
+      AddlibFrontComponent,
+      UplibrayFrontComponent,
+      EventStatComponent,
+      EventParteciperComponent,
       
+      
+
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    CommonModule,
     NgxCaptchaModule,
-    MatSnackBarModule 
-   
+    QRCodeModule,
+    NgxPaginationModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    ChartsModule
     
-   
+
+    
     
   ],
   providers: [],

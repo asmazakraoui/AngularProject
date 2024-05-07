@@ -1,0 +1,76 @@
+   <div class="popup-container">
+    <div class="popup-content container">
+      <h3>Ajouter un événement</h3>
+      <form (ngSubmit)="addEvent()" [formGroup]="eventForm">
+        <div class="form-row">
+          <!-- Première colonne -->
+          <div class="col">
+            <div class="form-group">
+              <label for="titreEvent">Titre de l'événement :</label>
+              <input type="text" formControlName="titreEvent" class="form-control" placeholder="Saisissez le titre de l'événement">
+            </div>
+  
+            <div class="form-group">
+              <label for="dateEvent">Date de l'événement :</label>
+              <input type="date" formControlName="dateEvent" class="form-control">
+            </div>
+  
+            <div class="form-group">
+              <label for="nrParticipants">Nombre de participants :</label>
+              <input type="number" formControlName="nrParticipants" class="form-control" placeholder="Saisissez le nombre de participants">
+            </div>
+  
+            <div class="form-group">
+              <label for="adresseEvent">Adresse de l'événement :</label>
+              <input type="text" formControlName="adresseEvent" class="form-control" placeholder="Saisissez l'adresse de l'événement">
+            </div>
+  
+            <div class="form-group">
+              <label for="prixEvent">Prix de l'événement :</label>
+              <input type="number" formControlName="prixEvent" class="form-control" placeholder="Saisissez le prix de l'événement">
+            </div>
+          </div>
+  
+          <!-- Deuxième colonne -->
+          <div class="col">
+            <div class="form-group">
+              <label for="imageEvent">Image de l'événement :</label>
+              <input type="file" formControlName="imageEvent" (change)="onFileSelected($event)" class="form-control">
+            </div>
+  
+            <div class="form-group">
+              <label for="nbTotalPlace">Nombre de places totales :</label>
+              <input type="number" formControlName="nbTotalPlace" class="form-control" placeholder="Saisissez le nombre de places totales">
+            </div>
+  
+            <div class="form-group">
+              <label for="typeEvent">Type d'événement :</label>
+              <select formControlName="typeEvent" class="form-control">
+                <option *ngFor="let type of typeEventOptions" [value]="type">{{ type }}</option>
+              </select>
+            </div>
+  
+            <div class="form-group">
+              <label for="meansTransport">Moyen de transport :</label>
+              <select formControlName="meansTransport" class="form-control">
+                <option *ngFor="let transport of MeansTransportOptions" [value]="transport">{{ transport }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Captcha -->
+        <div>
+          <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha"></ngx-recaptcha2>
+        </div>
+  
+        <!-- Buttons -->
+        <div class="form-group">
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">Annuler</button>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,80 @@
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    height: 2000px; /* Ajoutez la hauteur du card selon vos besoins */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    background: #ffffff; /* Ajoutez la couleur de fond */
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    color: #212121; /* Couleur du texte */
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .content h2 {
+    font-weight: 700;
+    font-size: 24px; /* Taille de la police du titre */
+  }
+  
+  .content p {
+    line-height: 1.5;
+  }
+  
+  .content button {
+    color: #ffffff; /* Couleur du texte du bouton */
+    text-decoration: none;
+    padding: 10px 20px; /* Ajoutez un peu de marge autour du texte */
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+    z-index: -1;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .card:hover::before {
+    width: 100%;
+  }
+  
+  .card:hover {
+    box-shadow: none;
+  }
+  
+  .card:hover button {
+    color: #212121; /* Couleur du texte du bouton au survol */
+    background: #ffffff; /* Couleur de fond du bouton au survol */
+  }
+  
+  .content button:hover {
+    outline: 2px solid #ffffff; /* Ajoutez une bordure au survol */
+    background: transparent;
+    color: #ffffff;
+  }
+  
+  .content button:active {
+    box-shadow: none;
+  }
+  

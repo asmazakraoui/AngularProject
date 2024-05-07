@@ -1,0 +1,17 @@
+<div class="popup-container">
+    <div class="popup-content">
+      <h1>Add Podcast to Favoris</h1>
+      <!--<form [formGroup]="LibraryForm" (submit)="addBookToLibrary(book.idBook, LibraryForm.value.ttLibrary)">-->
+        <form [formGroup]="favoriForm" (submit)="addPodcastToFavoris(podcast.idPod)">
+  
+        <div class="form-group">
+          <label for="ttLibrary">Favoris name:</label>
+          <input type="text" id="nomFav" formControlName="nomFav" placeholder="Enter Favoris name">
+        </div>
+        <div class="form-group">
+          <button type="button" mat-button (click)="onCancel()">Cancel</button>
+          <button type="submit">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
